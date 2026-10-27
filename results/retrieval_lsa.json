@@ -1,0 +1,1331 @@
+{
+  "index": {
+    "built_at": "2026-10-21T10:37:17",
+    "embedder": "lsa",
+    "chunker": "section",
+    "chunk_tokens": 350,
+    "chunk_overlap": 50,
+    "n_docs": 4569,
+    "n_chunks": 41554,
+    "dims": 256,
+    "seconds": {
+      "chunk": 3.19498348236084,
+      "bm25": 6.398914337158203,
+      "embed": 14.72535753250122
+    },
+    "bytes": {
+      "chunks.jsonl": 53153044,
+      "lsa.pkl": 55711073,
+      "meta.json": 507,
+      "bm25.idf.npy": 495212,
+      "bm25.vocab.json": 2690817,
+      "vectors.npy": 21275776,
+      "bm25.npz": 9517334
+    }
+  },
+  "rows": [
+    {
+      "mode": "bm25",
+      "n": 113,
+      "recall@1": 0.6372,
+      "recall@3": 0.7522,
+      "recall@5": 0.7876,
+      "recall@10": 0.8761,
+      "recall@20": 0.9292,
+      "mrr": 0.7291,
+      "doc@5": 0.9469,
+      "p50_ms": 0.4,
+      "p95_ms": 0.6,
+      "recall@5_by_category": {
+        "boot-param": 1.0,
+        "build": 0.571,
+        "coding": 0.789,
+        "config": 0.9,
+        "factual": 0.913,
+        "internals": 0.8,
+        "multi-hop": 0.0,
+        "procedure": 0.909,
+        "process": 0.5,
+        "procfs": 1.0,
+        "sysctl": 0.75,
+        "sysfs": 0.889,
+        "tracing": 0.667,
+        "troubleshooting": 0.75
+      },
+      "misses@5": [
+        {
+          "id": "q004",
+          "question": "In cgroup v1, how do I limit a memory cgroup to 4 MB?",
+          "gold": "admin-guide/cgroup-v1/memory.rst",
+          "rank": 7,
+          "got": [
+            "admin-guide/cgroup-v1/memcg_test.rst :: ntation Memo > 9. Typical Tests. > 9.1 Small limit to memcg.",
+            "admin-guide/cgroup-v1/memory.rst :: Memory Resource Controller > 2. Memory Control > 2.5 Reclaim",
+            "admin-guide/cgroup-v1/memory.rst ::  What happens when a cgroup hits memory.memsw.limit_in_bytes"
+          ]
+        },
+        {
+          "id": "q011",
+          "question": "What does the L flag do in binfmt_misc?",
+          "gold": "admin-guide/binfmt-misc.rst",
+          "rank": 20,
+          "got": [
+            "admin-guide/binfmt-misc.rst :: ernel Support for miscellaneous Binary Formats (binfmt_misc)",
+            "admin-guide/binfmt-misc.rst :: ernel Support for miscellaneous Binary Formats (binfmt_misc)",
+            "admin-guide/binfmt-misc.rst :: ernel Support for miscellaneous Binary Formats (binfmt_misc)"
+          ]
+        },
+        {
+          "id": "q013",
+          "question": "What should I use instead of one-element or zero-length trailing arrays in kernel structs?",
+          "gold": "process/deprecated.rst",
+          "rank": 7,
+          "got": [
+            "process/deprecated.rst :: ibutes, and Conventions > Zero-length and one-element arrays",
+            "process/deprecated.rst :: d Conventions > open-coded arithmetic in allocator arguments",
+            "process/deprecated.rst :: ibutes, and Conventions > Zero-length and one-element arrays"
+          ]
+        },
+        {
+          "id": "q016",
+          "question": "Why shouldn't I print pointers with %p, and what should I use for code addresses?",
+          "gold": "process/deprecated.rst",
+          "rank": null,
+          "got": [
+            "core-api/printk-formats.rst :: ntk format specifiers right > Pointer types > Plain Pointers",
+            "arch/x86/kernel-stacks.rst :: Kernel Stacks > Printing backtraces on x86",
+            "process/debugging/driver_development_debugging_guide.rst :: advice for driver development > printk() & friends > dev_dbg"
+          ]
+        },
+        {
+          "id": "q018",
+          "question": "What severity levels does checkpatch.pl report?",
+          "gold": "process/submitting-patches.rst",
+          "rank": 8,
+          "got": [
+            "dev-tools/checkpatch.rst :: Checkpatch > Message Levels",
+            "dev-tools/checkpatch.rst :: Checkpatch",
+            "dev-tools/checkpatch.rst :: Checkpatch > Options"
+          ]
+        },
+        {
+          "id": "q048",
+          "question": "Why does ftrace sometimes show <...> instead of a task name?",
+          "gold": "trace/ftrace.rst",
+          "rank": 12,
+          "got": [
+            "trace/ftrace.rst :: ftrace - Function Tracer > Output format:",
+            "trace/events-landlock.rst :: Landlock Trace Events > Event samples",
+            "trace/ftrace.rst :: ftrace - Function Tracer > trace_options"
+          ]
+        },
+        {
+          "id": "q054",
+          "question": "When does a Kconfig menu entry become visible?",
+          "gold": "kbuild/kconfig-language.rst",
+          "rank": 6,
+          "got": [
+            "kbuild/kconfig-language.rst :: Kconfig Language > Menu structure",
+            "kbuild/kconfig-language.rst :: Kconfig Language > Kconfig syntax",
+            "kbuild/kconfig-language.rst :: Kconfig Language > Menu attributes"
+          ]
+        },
+        {
+          "id": "q055",
+          "question": "What is Energy Aware Scheduling trying to optimise?",
+          "gold": "scheduler/sched-energy.rst",
+          "rank": 19,
+          "got": [
+            "scheduler/sched-energy.rst ::  Aware Scheduling > 6. Dependencies and requirements for EAS",
+            "scheduler/sched-energy.rst :: Energy Aware Scheduling > 1. Introduction",
+            "scheduler/sched-energy.rst :: ies and requirements for EAS > 6.3 - Energy Model complexity"
+          ]
+        },
+        {
+          "id": "q060",
+          "question": "In a lockdep report like {-.-.}, what do the '-' and '.' characters mean?",
+          "gold": "locking/lockdep-design.rst",
+          "rank": 16,
+          "got": [
+            "hid/hidintro.rst :: g HID report descriptors > Output, Input and Feature Reports",
+            "RCU/lockdep.rst :: RCU and lockdep checking",
+            "RCU/lockdep.rst :: RCU and lockdep checking"
+          ]
+        },
+        {
+          "id": "q081",
+          "question": "What does spin_lock_bh() block?",
+          "gold": "kernel-hacking/locking.rst",
+          "rank": 8,
+          "got": [
+            "kernel-hacking/locking.rst ::  Locking > Common Problems > Racing Timers: A Kernel Pastime",
+            "kernel-hacking/locking.rst :: ng > Cheat Sheet For Locking > Table of Minimum Requirements",
+            "kernel-hacking/locking.rst :: the Linux Kernel > Locking Between User Context and Softirqs"
+          ]
+        },
+        {
+          "id": "q084",
+          "question": "How do I free the page cache and slab objects without rebooting?",
+          "gold": "admin-guide/sysctl/vm.rst",
+          "rank": 8,
+          "got": [
+            "ABI/testing/sysfs-kernel-slab :: : sysfs-kernel-slab > /sys/kernel/slab/<cache>/free_fastpath",
+            "ABI/testing/sysfs-kernel-slab :: ABI: sysfs-kernel-slab > /sys/kernel/slab/<cache>/free_calls",
+            "ABI/testing/sysfs-kernel-slab :: BI: sysfs-kernel-slab > /sys/kernel/slab/<cache>/free_frozen"
+          ]
+        },
+        {
+          "id": "q088",
+          "question": "What is the preferred maximum line length in kernel code?",
+          "gold": "process/coding-style.rst",
+          "rank": 8,
+          "got": [
+            "dev-tools/checkpatch.rst :: Checkpatch > Type Descriptions > Indentation and Line Breaks",
+            "dev-tools/checkpatch.rst :: Checkpatch > Type Descriptions > Indentation and Line Breaks",
+            "process/coding-style.rst :: Linux kernel coding style > 8) Commenting"
+          ]
+        },
+        {
+          "id": "q089",
+          "question": "How do I reference the commit that introduced the bug my patch fixes?",
+          "gold": "process/submitting-patches.rst",
+          "rank": 6,
+          "got": [
+            "process/maintainer-tip.rst ::  handbook > Patch submission notes > Ordering of commit tags",
+            "process/5.Posting.rst :: Posting patches > Patch formatting and changelogs",
+            "process/5.Posting.rst :: Posting patches > Patch formatting and changelogs"
+          ]
+        },
+        {
+          "id": "q090",
+          "question": "What rules must a patch meet to be accepted into a -stable kernel?",
+          "gold": "process/stable-kernel-rules.rst",
+          "rank": 7,
+          "got": [
+            "process/stable-kernel-rules.rst :: know about Linux -stable releases > Following the submission",
+            "process/stable-kernel-rules.rst :: cedure for submitting patches to the -stable tree > Option 3",
+            "process/stable-kernel-rules.rst :: r wanted to know about Linux -stable releases > Review cycle"
+          ]
+        },
+        {
+          "id": "q093",
+          "question": "My kernel is tainted with 'P'. What does that mean?",
+          "gold": "admin-guide/tainted-kernels.rst",
+          "rank": 6,
+          "got": [
+            "admin-guide/tainted-kernels.rst :: nted kernels > Tainted flag in bugs, oops or panics messages",
+            "sound/kernel-api/writing-an-alsa-driver.rst :: Writing an ALSA Driver > Module Parameters",
+            "admin-guide/tainted-kernels.rst :: Tainted kernels"
+          ]
+        },
+        {
+          "id": "q096",
+          "question": "How do I set a parameter for a module that is built into the kernel?",
+          "gold": "admin-guide/kernel-parameters.rst",
+          "rank": 11,
+          "got": [
+            "driver-api/dmaengine/dmatest.rst :: DMA Test Guide > Part 3 - When built-in in the kernel",
+            "ABI/stable/sysfs-module :: ABI: sysfs-module > /sys/module/<MODULENAME>",
+            "admin-guide/kernel-parameters.txt :: The kernel's command-line parameters > refscale.shutdown"
+          ]
+        },
+        {
+          "id": "q099",
+          "question": "What is the minimum GCC version needed to build this kernel?",
+          "gold": "process/changes.rst",
+          "rank": null,
+          "got": [
+            "dev-tools/container.rst :: Containerized Builds > Examples",
+            "admin-guide/quickly-build-trimmed-linux.rst :: tion for the step-by-step guide > Install build requirements",
+            "admin-guide/verify-bugs-and-bisect-regressions.rst :: s for building your own kernels > Install build requirements"
+          ]
+        },
+        {
+          "id": "q100",
+          "question": "What is the minimum Rust version for building Rust support in this kernel?",
+          "gold": "process/changes.rst",
+          "rank": null,
+          "got": [
+            "rust/quick-start.rst :: Quick Start",
+            "rust/quick-start.rst :: tart > Requirements: Building > Rust standard library source",
+            "rust/quick-start.rst :: Quick Start > Requirements: Building > rustc"
+          ]
+        },
+        {
+          "id": "q104",
+          "question": "Should I attach patches to emails when sending them to kernel mailing lists?",
+          "gold": "process/email-clients.rst",
+          "rank": null,
+          "got": [
+            "process/submitting-patches.rst :: tting your code into the kernel > Respond to review comments",
+            "process/email-clients.rst :: Email clients info for Linux > General Preferences",
+            "process/stable-kernel-rules.rst :: r wanted to know about Linux -stable releases > Review cycle"
+          ]
+        },
+        {
+          "id": "q105",
+          "question": "How do I enable the function tracer with ftrace?",
+          "gold": "trace/ftrace.rst",
+          "rank": 18,
+          "got": [
+            "trace/ftrace.rst :: ftrace - Function Tracer > trace_options",
+            "trace/boottime-trace.rst :: g > Options in the Boot Config > Ftrace Per-instance Options",
+            "trace/ftrace.rst :: ftrace - Function Tracer > Stack trace"
+          ]
+        },
+        {
+          "id": "q106",
+          "question": "What does setting transparent_hugepage defrag to 'always' do?",
+          "gold": "admin-guide/mm/transhuge.rst",
+          "rank": null,
+          "got": [
+            "admin-guide/mm/transhuge.rst :: Transparent Hugepage Support > sysfs > Global THP controls",
+            "admin-guide/mm/transhuge.rst :: Transparent Hugepage Support > sysfs > Khugepaged controls",
+            "ABI/testing/sysfs-kernel-mm-transparent-hugepage :: -transparent-hugepage > /sys/kernel/mm/transparent_hugepage/"
+          ]
+        },
+        {
+          "id": "q111",
+          "question": "What is the cgroup v2 equivalent of cgroup v1's memory.limit_in_bytes, and what happens when it is reached?",
+          "gold": "admin-guide/cgroup-v2.rst",
+          "rank": null,
+          "got": [
+            "admin-guide/cgroup-v1/memory.rst ::  What happens when a cgroup hits memory.memsw.limit_in_bytes",
+            "admin-guide/cgroup-v1/memory.rst :: Memory Resource Controller > 3. User Interface",
+            "admin-guide/cgroup-v1/memory.rst :: Resource Controller > 2. Memory Control > 2.4 Swap Extension"
+          ]
+        },
+        {
+          "id": "q112",
+          "question": "What is the global default swappiness, and can a cgroup v1 memory group override it?",
+          "gold": "admin-guide/sysctl/vm.rst",
+          "rank": null,
+          "got": [
+            "admin-guide/cgroup-v1/memory.rst :: y Resource Controller > 5. Misc. interfaces > 5.3 swappiness",
+            "admin-guide/cgroup-v2.rst :: rol Group v2 > Controllers > Memory > Memory Interface Files",
+            "admin-guide/cgroup-v1/memory.rst :: e Controller > Benefits and Purpose of the memory controller"
+          ]
+        },
+        {
+          "id": "q113",
+          "question": "What is the minimum Clang version to build the kernel, and how do I build with a versioned LLVM like clang-14?",
+          "gold": "process/changes.rst",
+          "rank": null,
+          "got": [
+            "kbuild/llvm.rst :: Building Linux with Clang/LLVM > The LLVM= argument",
+            "dev-tools/kmsan.rst :: ernel Memory Sanitizer (KMSAN) > Usage > Building the kernel",
+            "kbuild/llvm.rst :: Building Linux with Clang/LLVM > Getting LLVM"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "vector",
+      "n": 113,
+      "recall@1": 0.2124,
+      "recall@3": 0.4071,
+      "recall@5": 0.5221,
+      "recall@10": 0.6018,
+      "recall@20": 0.6991,
+      "mrr": 0.359,
+      "doc@5": 0.823,
+      "p50_ms": 40.2,
+      "p95_ms": 58.2,
+      "recall@5_by_category": {
+        "boot-param": 0.0,
+        "build": 0.571,
+        "coding": 0.789,
+        "config": 0.4,
+        "factual": 0.565,
+        "internals": 0.8,
+        "multi-hop": 0.0,
+        "procedure": 0.636,
+        "process": 0.25,
+        "procfs": 0.0,
+        "sysctl": 0.25,
+        "sysfs": 0.667,
+        "tracing": 0.333,
+        "troubleshooting": 0.25
+      },
+      "misses@5": [
+        {
+          "id": "q002",
+          "question": "Why can't early parameters like mem= see values set in an embedded bootconfig, and which option fixes it?",
+          "gold": "admin-guide/bootconfig.rst",
+          "rank": 12,
+          "got": [
+            "admin-guide/kernel-parameters.txt :: The kernel's command-line parameters > checkreqprot",
+            "arch/m68k/kernel-options.rst :: r Linux/m68k > 5) Options for Amiga Only: > 5.2) fd_def_df0=",
+            "admin-guide/kernel-parameters.txt :: The kernel's command-line parameters > apparmor"
+          ]
+        },
+        {
+          "id": "q004",
+          "question": "In cgroup v1, how do I limit a memory cgroup to 4 MB?",
+          "gold": "admin-guide/cgroup-v1/memory.rst",
+          "rank": null,
+          "got": [
+            "admin-guide/cgroup-v1/memory.rst ::  What happens when a cgroup hits memory.memsw.limit_in_bytes",
+            "admin-guide/cgroup-v1/memory.rst :: Memory Resource Controller > 7. Soft limits (DEPRECATED)",
+            "admin-guide/cgroup-v1/memory.rst :: Memory Resource Controller > 6. Hierarchy support"
+          ]
+        },
+        {
+          "id": "q005",
+          "question": "How do I remove a cgroup v1 memory limit and make it unlimited again?",
+          "gold": "admin-guide/cgroup-v1/memory.rst",
+          "rank": null,
+          "got": [
+            "admin-guide/cgroup-v1/memory.rst ::  What happens when a cgroup hits memory.memsw.limit_in_bytes",
+            "admin-guide/cgroup-v1/memory.rst :: Memory Resource Controller > 7. Soft limits (DEPRECATED)",
+            "admin-guide/cgroup-v1/memory.rst :: Memory Resource Controller > 6. Hierarchy support"
+          ]
+        },
+        {
+          "id": "q006",
+          "question": "Which dmem cgroup file tells me the total capacity of a device memory region, and where does it exist?",
+          "gold": "admin-guide/cgroup-v2.rst",
+          "rank": 11,
+          "got": [
+            "admin-guide/cgroup-v1/memory.rst :: mory Resource Controller > 5. Misc. interfaces > 5.4 failcnt",
+            "admin-guide/cgroup-v1/memory.rst ::  What happens when a cgroup hits memory.memsw.limit_in_bytes",
+            "admin-guide/cgroup-v2.rst :: rol Group v2 > Controllers > Memory > Memory Interface Files"
+          ]
+        },
+        {
+          "id": "q011",
+          "question": "What does the L flag do in binfmt_misc?",
+          "gold": "admin-guide/binfmt-misc.rst",
+          "rank": null,
+          "got": [
+            "driver-api/device_link.rst :: Device links > Usage",
+            "admin-guide/binfmt-misc.rst :: ernel Support for miscellaneous Binary Formats (binfmt_misc)",
+            "filesystems/fiemap.rst :: Fiemap Ioctl > Request Basics"
+          ]
+        },
+        {
+          "id": "q016",
+          "question": "Why shouldn't I print pointers with %p, and what should I use for code addresses?",
+          "gold": "process/deprecated.rst",
+          "rank": null,
+          "got": [
+            "process/coding-style.rst :: Linux kernel coding style > 5) Typedefs",
+            "core-api/printk-formats.rst :: ntk format specifiers right > Pointer types > Plain Pointers",
+            "arch/arm64/tagged-pointers.rst :: ed virtual addresses in AArch64 Linux > Other considerations"
+          ]
+        },
+        {
+          "id": "q018",
+          "question": "What severity levels does checkpatch.pl report?",
+          "gold": "process/submitting-patches.rst",
+          "rank": null,
+          "got": [
+            "hid/intel-ish-hid.rst ::  in above blocks > End to End HID transport Sequence Diagram",
+            "dev-tools/checkpatch.rst :: Checkpatch > Message Levels",
+            "networking/netif-msg.rst :: NETIF Msg Level"
+          ]
+        },
+        {
+          "id": "q021",
+          "question": "How do I make my Dell laptop keyboard backlight turn off after 10 minutes of inactivity?",
+          "gold": "ABI/testing/sysfs-platform-dell-laptop",
+          "rank": null,
+          "got": [
+            "admin-guide/laptops/asus-laptop.rst :: Asus Laptop Extras > Backlight",
+            "admin-guide/laptops/asus-laptop.rst :: Asus Laptop Extras > Wireless devices",
+            "admin-guide/laptops/lg-laptop.rst :: LG Gram laptop extra features > Keyboard backlight"
+          ]
+        },
+        {
+          "id": "q024",
+          "question": "How are duplicate DMI entry types named under /sys/firmware/dmi/entries?",
+          "gold": "ABI/testing/sysfs-firmware-dmi-entries",
+          "rank": 6,
+          "got": [
+            "ABI/testing/sysfs-firmware-efi-esrt :: e-efi-esrt > /sys/firmware/efi/esrt/entries/entry<N>/fw_type",
+            "ABI/testing/sysfs-firmware-efi-esrt :: firmware-efi-esrt > /sys/firmware/efi/esrt/entries/entry<N>/",
+            "ABI/testing/sysfs-firmware-dmi-entries :: ABI: sysfs-firmware-dmi-entries > /sys/firmware/dmi/entries/"
+          ]
+        },
+        {
+          "id": "q025",
+          "question": "My USB NCM modem fails with default cdc_ncm settings. Is there a quirk I can test?",
+          "gold": "ABI/testing/sysfs-class-net-cdc_ncm",
+          "rank": null,
+          "got": [
+            "driver-api/usb/dwc3.rst ::  USB 3.0 Controller > Debugging > ``DebugFS`` > ``testmode``",
+            "usb/acm.rst :: Linux ACM driver v0.16 > 1. Usage",
+            "usb/gadget-testing.rst ::  > 15. SOURCESINK function > Testing the SOURCESINK function"
+          ]
+        },
+        {
+          "id": "q027",
+          "question": "Until what date will ext4 timestamps work on filesystems with large inodes?",
+          "gold": "filesystems/ext4/inodes.rst",
+          "rank": null,
+          "got": [
+            "filesystems/ext4/blockmap.rst :: filesystems/ext4/blockmap.rst",
+            "filesystems/ext3.rst :: Ext3 Filesystem",
+            "filesystems/ext4/journal.rst :: Journal (jbd2)"
+          ]
+        },
+        {
+          "id": "q028",
+          "question": "What is the name of the quota generic netlink interface?",
+          "gold": "filesystems/quota.rst",
+          "rank": null,
+          "got": [
+            "userspace-api/netlink/specs.rst :: otocol specifications (in YAML) > genetlink > Globals > name",
+            "userspace-api/netlink/c-code-gen.rst :: Netlink spec C code generation > Multicast groups",
+            "networking/generic_netlink.rst :: Generic Netlink"
+          ]
+        },
+        {
+          "id": "q030",
+          "question": "Can I send only some patches of an XFS patchset to linux-xfs?",
+          "gold": "filesystems/xfs/xfs-maintainer-entry-profile.rst",
+          "rank": null,
+          "got": [
+            "filesystems/xfs/xfs-online-fsck-design.rst :: ithms and Data Structures > Freezing to Fix Summary Counters",
+            "filesystems/xfs/xfs-online-fsck-design.rst ::  3. Testing Plan > Targeted Fuzz Testing of Metadata Records",
+            "filesystems/xfs/xfs-online-fsck-design.rst :: ntual Consistency vs. Online Fsck > Discovery of the Problem"
+          ]
+        },
+        {
+          "id": "q032",
+          "question": "What naming convention should switch port netdevs follow?",
+          "gold": "networking/switchdev.rst",
+          "rank": 9,
+          "got": [
+            "networking/dsa/sja1105.rst :: e Tree bindings and board design > Port compatibility matrix",
+            "networking/switchdev.rst :: h device driver model (switchdev) > Switch Ports > Switch ID",
+            "networking/dsa/sja1105.rst :: e Tree bindings and board design > Port compatibility matrix"
+          ]
+        },
+        {
+          "id": "q041",
+          "question": "How old must an object be before kmemleak reports it as a leak?",
+          "gold": "dev-tools/kmemleak.rst",
+          "rank": null,
+          "got": [
+            "core-api/debug-objects.rst :: e object-lifetime debugging infrastructure > Debug functions",
+            "core-api/debug-objects.rst :: e object-lifetime debugging infrastructure > Debug functions",
+            "core-api/debug-objects.rst :: e object-lifetime debugging infrastructure > Debug functions"
+          ]
+        },
+        {
+          "id": "q043",
+          "question": "Where do I read KUnit results when I run tests without kunit.py?",
+          "gold": "dev-tools/kunit/faq.rst",
+          "rank": null,
+          "got": [
+            "dev-tools/kunit/running_tips.rst :: nit Tests > Running tests manually > Pretty-printing results",
+            "dev-tools/kunit/start.rst :: ool > Selecting which tests to run > Filtering tests by name",
+            "dev-tools/kunit/run_wrapper.rst :: Running tests with kunit_tool > Filtering tests"
+          ]
+        },
+        {
+          "id": "q044",
+          "question": "Is it OK to enable CONFIG_KUNIT in a production kernel?",
+          "gold": "dev-tools/kunit/start.rst",
+          "rank": 6,
+          "got": [
+            "dev-tools/kunit/start.rst :: ing Tests without the KUnit Wrapper > Configuring the Kernel",
+            "rust/testing.rst :: Testing > The KUnit tests > Usage",
+            "dev-tools/kunit/run_manual.rst :: Run Tests without kunit_tool > Configure the Kernel"
+          ]
+        },
+        {
+          "id": "q047",
+          "question": "In the function graph tracer, what does setting max_graph_depth to 1 do?",
+          "gold": "trace/ftrace.rst",
+          "rank": null,
+          "got": [
+            "trace/ftrace.rst :: ftrace - Function Tracer > function graph tracer",
+            "trace/ftrace.rst :: ction Tracer > Dynamic ftrace with the function graph tracer",
+            "trace/ftrace.rst :: ftrace - Function Tracer > The Tracers"
+          ]
+        },
+        {
+          "id": "q048",
+          "question": "Why does ftrace sometimes show <...> instead of a task name?",
+          "gold": "trace/ftrace.rst",
+          "rank": null,
+          "got": [
+            "trace/ftrace.rst :: ftrace - Function Tracer > preemptoff",
+            "trace/ftrace.rst :: ftrace - Function Tracer > Output format:",
+            "trace/ftrace.rst :: ftrace - Function Tracer > wakeup_rt"
+          ]
+        },
+        {
+          "id": "q051",
+          "question": "How do I build the kernel with clang-14 / ld.lld-14 instead of the unversioned LLVM tools?",
+          "gold": "kbuild/llvm.rst",
+          "rank": 17,
+          "got": [
+            "dev-tools/kmsan.rst :: ernel Memory Sanitizer (KMSAN) > Usage > Building the kernel",
+            "dev-tools/container.rst :: Containerized Builds > Examples",
+            "dev-tools/gcov.rst :: Using gcov with the Linux kernel > Note on compilers"
+          ]
+        },
+        {
+          "id": "q052",
+          "question": "How do I pass a comma inside an argument of a Kconfig $(shell ...) call?",
+          "gold": "kbuild/kconfig-macro-language.rst",
+          "rank": 8,
+          "got": [
+            "kbuild/kconfig-macro-language.rst :: Kconfig macro language > Built-in functions",
+            "kbuild/kconfig-macro-language.rst :: Kconfig macro language > Make vs Kconfig",
+            "filesystems/coda.rst ::  Interface > 5.  The minicache and downcalls > 5.4.  ZAPFILE"
+          ]
+        },
+        {
+          "id": "q054",
+          "question": "When does a Kconfig menu entry become visible?",
+          "gold": "kbuild/kconfig-language.rst",
+          "rank": null,
+          "got": [
+            "kbuild/kconfig-language.rst :: Kconfig Language > Kconfig syntax",
+            "kbuild/kconfig-language.rst :: Kconfig Language > Menu structure",
+            "kbuild/kconfig-language.rst :: Kconfig Language > Menu entries"
+          ]
+        },
+        {
+          "id": "q055",
+          "question": "What is Energy Aware Scheduling trying to optimise?",
+          "gold": "scheduler/sched-energy.rst",
+          "rank": 9,
+          "got": [
+            "scheduler/sched-energy.rst :: Energy Aware Scheduling > 4. Energy-Aware task placement",
+            "scheduler/sched-energy.rst :: Energy Aware Scheduling > 2. Background and Terminology",
+            "scheduler/sched-energy.rst :: ndencies and requirements for EAS > 6.6 Multithreading (SMT)"
+          ]
+        },
+        {
+          "id": "q056",
+          "question": "How can I check whether a task is running under sched_ext?",
+          "gold": "scheduler/sched-ext.rst",
+          "rank": null,
+          "got": [
+            "scheduler/sched-deadline.rst :: eduling > 2. Scheduling algorithm > 2.2 Bandwidth reclaiming",
+            "scheduler/sched-ext.rst :: Extensible Scheduler Class > The Basics > Task Lifecycle",
+            "scheduler/sched-deadline.rst :: Deadline Task Scheduling > 1. Overview"
+          ]
+        },
+        {
+          "id": "q060",
+          "question": "In a lockdep report like {-.-.}, what do the '-' and '.' characters mean?",
+          "gold": "locking/lockdep-design.rst",
+          "rank": null,
+          "got": [
+            "hid/hidintro.rst :: eport descriptors > Collections, Report IDs and Evdev events",
+            "admin-guide/reporting-issues.rst :: rite and send the report > Things each report should mention",
+            "hid/hidintro.rst :: Introduction to HID report descriptors"
+          ]
+        },
+        {
+          "id": "q061",
+          "question": "What does a new Linux Security Module need before it is accepted into the kernel?",
+          "gold": "security/lsm-development.rst",
+          "rank": 8,
+          "got": [
+            "security/lsm.rst :: ity Modules: General Security Hooks for Linux > Introduction",
+            "security/lsm.rst :: : General Security Hooks for Linux > LSM Capabilities Module",
+            "security/lsm.rst :: ty Modules: General Security Hooks for Linux > LSM Framework"
+          ]
+        },
+        {
+          "id": "q064",
+          "question": "How many bytes does the CDROMREADMODE2 ioctl read per block?",
+          "gold": "userspace-api/ioctl/cdrom.rst",
+          "rank": 15,
+          "got": [
+            "driver-api/mmc/mmc-test.rst :: MMC Test Framework > Usage - Debugfs Entries",
+            "staging/lzo.rst :: t as understood by Linux's LZO decompressor > Byte sequences",
+            "gpu/nova/core/tlv.rst :: TLV Tags in Nova Firmware Images"
+          ]
+        },
+        {
+          "id": "q067",
+          "question": "What error do I get if I try to become an exclusive CEC follower when another process already is one?",
+          "gold": "userspace-api/media/cec/cec-ioc-g-mode.rst",
+          "rank": 6,
+          "got": [
+            "userspace-api/media/cec/cec-ioc-g-mode.rst :: ioctls CEC_G_MODE and CEC_S_MODE > Description",
+            "userspace-api/media/cec/cec-ioc-receive.rst :: ioctls CEC_RECEIVE and CEC_TRANSMIT > Return Value",
+            "userspace-api/media/cec/cec-ioc-receive.rst :: ioctls CEC_RECEIVE and CEC_TRANSMIT > Description"
+          ]
+        },
+        {
+          "id": "q072",
+          "question": "On arm64 with SVE, what happens to the SVE registers across a system call?",
+          "gold": "arch/arm64/sve.rst",
+          "rank": 11,
+          "got": [
+            "arch/riscv/vector.rst :: RISC-V Linux > 3.  Vector Register State Across System Calls",
+            "arch/arm64/sve.rst :: on support for AArch64 Linux > A.2.  Procedure call standard",
+            "arch/arm64/sme.rst :: ension support for AArch64 Linux > 3.  System call behaviour"
+          ]
+        },
+        {
+          "id": "q075",
+          "question": "What is the EHCI log2_irq_thresh module parameter and what are its limits?",
+          "gold": "usb/ehci.rst",
+          "rank": null,
+          "got": [
+            "admin-guide/kernel-parameters.txt :: The kernel's command-line parameters > pnp_reserve_irq",
+            "admin-guide/kernel-parameters.txt :: The kernel's command-line parameters > module_blacklist",
+            "gpu/amdgpu/module-parameters.rst :: Module Parameters"
+          ]
+        },
+        {
+          "id": "q076",
+          "question": "What should I do if the EHCI driver misbehaves with my USB 2.0 devices?",
+          "gold": "usb/ehci.rst",
+          "rank": null,
+          "got": [
+            "driver-api/usb/writing_usb_driver.rst :: Writing USB Device Drivers > Linux USB Basics",
+            "driver-api/usb/anchors.rst ::  on multitudes of URBs > :c:func:`usb_scuttle_anchored_urbs`",
+            "driver-api/usb/writing_usb_driver.rst :: Writing USB Device Drivers > Conclusion"
+          ]
+        },
+        {
+          "id": "q080",
+          "question": "If every operation on my cache happens in user context, what kind of lock should protect it?",
+          "gold": "kernel-hacking/locking.rst",
+          "rank": 11,
+          "got": [
+            "kernel-hacking/locking.rst :: Locking > Common Examples > Accessing From Interrupt Context",
+            "kernel-hacking/locking.rst :: ble Guide To Locking > Common Examples > All In User Context",
+            "arch/x86/buslock.rst :: Bus lock detection and handling > Problem"
+          ]
+        },
+        {
+          "id": "q081",
+          "question": "What does spin_lock_bh() block?",
+          "gold": "kernel-hacking/locking.rst",
+          "rank": null,
+          "got": [
+            "filesystems/locking.rst :: Locking > file_lock_operations",
+            "kernel-hacking/locking.rst :: ng > Cheat Sheet For Locking > Table of Minimum Requirements",
+            "locking/lockstat.rst :: Lock Statistics > How"
+          ]
+        },
+        {
+          "id": "q083",
+          "question": "What does vm.swappiness control, what range does it take, and what is its default?",
+          "gold": "admin-guide/sysctl/vm.rst",
+          "rank": null,
+          "got": [
+            "admin-guide/sysctl/vm.rst :: Documentation for /proc/sys/vm/ > vfs_cache_pressure_denom",
+            "gpu/rfc/i915_vm_bind.rst :: s > Other VM_BIND use cases > Page level Cache/CLOS settings",
+            "gpu/drm-vm-bind-async.rst :: onous / Asynchronous VM_BIND operation > Synchronous VM_BIND"
+          ]
+        },
+        {
+          "id": "q084",
+          "question": "How do I free the page cache and slab objects without rebooting?",
+          "gold": "admin-guide/sysctl/vm.rst",
+          "rank": null,
+          "got": [
+            "ABI/testing/sysfs-kernel-slab :: ABI: sysfs-kernel-slab > /sys/kernel/slab/<cache>/ctor",
+            "ABI/testing/sysfs-kernel-slab :: : sysfs-kernel-slab > /sys/kernel/slab/<cache>/total_objects",
+            "ABI/testing/sysfs-kernel-slab :: sysfs-kernel-slab > /sys/kernel/slab/<cache>/reclaim_account"
+          ]
+        },
+        {
+          "id": "q086",
+          "question": "Which SysRq bitmask value allows only reboot and poweroff?",
+          "gold": "admin-guide/sysrq.rst",
+          "rank": 13,
+          "got": [
+            "input/devices/walkera0701.rst :: -0701 transmitter > Technical details > Checksum calculation",
+            "kbuild/kconfig-language.rst :: Kconfig Language > Menu attributes",
+            "networking/netconsole.rst :: Netconsole > Dynamic reconfiguration: > Append User Data"
+          ]
+        },
+        {
+          "id": "q088",
+          "question": "What is the preferred maximum line length in kernel code?",
+          "gold": "process/coding-style.rst",
+          "rank": null,
+          "got": [
+            "process/coding-style.rst :: Linux kernel coding style > 8) Commenting",
+            "admin-guide/kernel-parameters.txt :: The kernel's command-line parameters > noisapnp",
+            "process/coding-style.rst :: Linux kernel coding style > 3) Placing Braces and Spaces"
+          ]
+        },
+        {
+          "id": "q089",
+          "question": "How do I reference the commit that introduced the bug my patch fixes?",
+          "gold": "process/submitting-patches.rst",
+          "rank": 11,
+          "got": [
+            "process/submitting-patches.rst :: ing your code into the kernel > Explicit In-Reply-To headers",
+            "process/maintainer-netdev.rst :: (netdev) > netdev patch review > Handling misapplied patches",
+            "process/backporting.rst :: ing and conflict resolution > Submitting backports to stable"
+          ]
+        },
+        {
+          "id": "q090",
+          "question": "What rules must a patch meet to be accepted into a -stable kernel?",
+          "gold": "process/stable-kernel-rules.rst",
+          "rank": null,
+          "got": [
+            "process/stable-kernel-rules.rst :: cedure for submitting patches to the -stable tree > Option 3",
+            "process/stable-kernel-rules.rst :: cedure for submitting patches to the -stable tree > Option 2",
+            "process/stable-kernel-rules.rst :: cedure for submitting patches to the -stable tree > Option 1"
+          ]
+        },
+        {
+          "id": "q091",
+          "question": "What values can /proc/<pid>/oom_score_adj take, and how do I stop the OOM killer from picking a process?",
+          "gold": "filesystems/proc.rst",
+          "rank": 7,
+          "got": [
+            "filesystems/proc.rst :: adj & /proc/<pid>/oom_score_adj- Adjust the oom-killer score",
+            "filesystems/proc.rst :: 3.2 /proc/<pid>/oom_score - Display current oom-killer score",
+            "filesystems/proc.rst :: meters > 3.6\t/proc/<pid>/comm  & /proc/<pid>/task/<tid>/comm"
+          ]
+        },
+        {
+          "id": "q093",
+          "question": "My kernel is tainted with 'P'. What does that mean?",
+          "gold": "admin-guide/tainted-kernels.rst",
+          "rank": null,
+          "got": [
+            "kernel-hacking/hacking.rst :: To Hacking The Linux Kernel > Routines and Conventions > C++",
+            "process/coding-style.rst :: Linux kernel coding style > 22) Do not crash the kernel",
+            "admin-guide/tainted-kernels.rst :: Tainted kernels > Table for decoding tainted state"
+          ]
+        },
+        {
+          "id": "q096",
+          "question": "How do I set a parameter for a module that is built into the kernel?",
+          "gold": "admin-guide/kernel-parameters.rst",
+          "rank": 10,
+          "got": [
+            "admin-guide/kernel-parameters.txt :: The kernel's command-line parameters > module_blacklist",
+            "admin-guide/kernel-parameters.rst :: The kernel's command-line parameters",
+            "admin-guide/module-signing.rst :: Kernel module signing facility > Loading signed modules"
+          ]
+        },
+        {
+          "id": "q101",
+          "question": "How do I make CPUs 1, 6, 7 and 8 adaptive-ticks (tickless) CPUs?",
+          "gold": "timers/no_hz.rst",
+          "rank": null,
+          "got": [
+            "admin-guide/cpu-isolation.rst :: CPU Isolation > Full isolation example",
+            "arch/powerpc/cpu_families.rst :: CPU Families > Book3S (aka sPAPR)",
+            "admin-guide/cpu-isolation.rst :: CPU Isolation > Housekeeping"
+          ]
+        },
+        {
+          "id": "q102",
+          "question": "What does crashkernel=64M@16M mean for kdump?",
+          "gold": "admin-guide/kdump/kdump.rst",
+          "rank": null,
+          "got": [
+            "admin-guide/kdump/kdump.rst :: mentation for Kdump - The kexec-based Crash Dumping Solution",
+            "admin-guide/kdump/vmcoreinfo.rst :: VMCOREINFO > powerpc > X2TLB",
+            "admin-guide/kdump/vmcoreinfo.rst :: VMCOREINFO > powerpc > mmu_psize_def|(mmu_psize_def, shift)"
+          ]
+        },
+        {
+          "id": "q104",
+          "question": "Should I attach patches to emails when sending them to kernel mailing lists?",
+          "gold": "process/email-clients.rst",
+          "rank": null,
+          "got": [
+            "process/researcher-guidelines.rst :: Researcher Guidelines > Patches",
+            "process/submitting-patches.rst ::  code into the kernel > Select the recipients for your patch",
+            "bpf/bpf_devel_QA.rst :: Q: To which mailing list do I need to submit my BPF patches?"
+          ]
+        },
+        {
+          "id": "q105",
+          "question": "How do I enable the function tracer with ftrace?",
+          "gold": "trace/ftrace.rst",
+          "rank": 14,
+          "got": [
+            "trace/ftrace.rst :: ction Tracer > Dynamic ftrace with the function graph tracer",
+            "trace/ftrace-design.rst :: er Design > HAVE_DYNAMIC_FTRACE + HAVE_FUNCTION_GRAPH_TRACER",
+            "trace/ftrace.rst :: ftrace - Function Tracer > function graph tracer"
+          ]
+        },
+        {
+          "id": "q106",
+          "question": "What does setting transparent_hugepage defrag to 'always' do?",
+          "gold": "admin-guide/mm/transhuge.rst",
+          "rank": 13,
+          "got": [
+            "admin-guide/mm/transhuge.rst ::  Support > Hugepages in tmpfs/shmem > shmem / internal tmpfs",
+            "admin-guide/mm/transhuge.rst :: Transparent Hugepage Support > Boot parameters",
+            "admin-guide/mm/transhuge.rst :: t Hugepage Support > Hugepages in tmpfs/shmem > tmpfs mounts"
+          ]
+        },
+        {
+          "id": "q107",
+          "question": "How can I tell whether my kernel supports dynamic debug?",
+          "gold": "admin-guide/dynamic-debug-howto.rst",
+          "rank": null,
+          "got": [
+            "admin-guide/dynamic-debug-howto.rst :: Dynamic debug > Kernel Configuration",
+            "arch/s390/s390dbf.rst :: S390 Debug Feature > Flushing debug areas",
+            "filesystems/orangefs.rst :: ORANGEFS > Debugging"
+          ]
+        },
+        {
+          "id": "q108",
+          "question": "Which boot parameter makes the kernel run a different program instead of /sbin/init?",
+          "gold": "admin-guide/kernel-parameters.txt",
+          "rank": null,
+          "got": [
+            "admin-guide/kernel-parameters.txt :: The kernel's command-line parameters > initrd",
+            "admin-guide/kernel-parameters.txt :: The kernel's command-line parameters > keep_bootcon",
+            "admin-guide/nfs/nfsroot.rst :: Mounting the root filesystem via NFS (nfsroot) > Boot Loader"
+          ]
+        },
+        {
+          "id": "q109",
+          "question": "What does the nosmp boot parameter do?",
+          "gold": "admin-guide/kernel-parameters.txt",
+          "rank": null,
+          "got": [
+            "admin-guide/kernel-parameters.txt :: The kernel's command-line parameters > initrd",
+            "admin-guide/kernel-parameters.txt :: The kernel's command-line parameters > boot_delay",
+            "admin-guide/kernel-parameters.txt :: The kernel's command-line parameters > keep_bootcon"
+          ]
+        },
+        {
+          "id": "q110",
+          "question": "What does adding 'quiet' to the kernel command line do?",
+          "gold": "admin-guide/kernel-parameters.txt",
+          "rank": null,
+          "got": [
+            "admin-guide/kernel-parameters.txt :: The kernel's command-line parameters > bootconfig",
+            "admin-guide/kernel-parameters.txt :: The kernel's command-line parameters > i8042.noloop",
+            "admin-guide/kernel-parameters.txt :: The kernel's command-line parameters > kgdbwait"
+          ]
+        },
+        {
+          "id": "q111",
+          "question": "What is the cgroup v2 equivalent of cgroup v1's memory.limit_in_bytes, and what happens when it is reached?",
+          "gold": "admin-guide/cgroup-v2.rst",
+          "rank": null,
+          "got": [
+            "admin-guide/cgroup-v1/memory.rst ::  What happens when a cgroup hits memory.memsw.limit_in_bytes",
+            "admin-guide/cgroup-v1/memory.rst :: Memory Resource Controller > 7. Soft limits (DEPRECATED)",
+            "admin-guide/cgroup-v2.rst :: trol Group v2 > Controllers > Misc > Migration and Ownership"
+          ]
+        },
+        {
+          "id": "q112",
+          "question": "What is the global default swappiness, and can a cgroup v1 memory group override it?",
+          "gold": "admin-guide/sysctl/vm.rst",
+          "rank": null,
+          "got": [
+            "admin-guide/cgroup-v1/memory.rst :: emory Resource Controller > 11. Memory Pressure (DEPRECATED)",
+            "admin-guide/cgroup-v1/memory.rst :: y Resource Controller > 5. Misc. interfaces > 5.3 swappiness",
+            "admin-guide/cgroup-v1/memory.rst ::  Hierarchy support > 6.1 Hierarchical accounting and reclaim"
+          ]
+        },
+        {
+          "id": "q113",
+          "question": "What is the minimum Clang version to build the kernel, and how do I build with a versioned LLVM like clang-14?",
+          "gold": "process/changes.rst",
+          "rank": 11,
+          "got": [
+            "process/changes.rst :: to compile the Kernel > Intro > Current Minimal Requirements",
+            "process/changes.rst :: to compile the Kernel > Intro > Current Minimal Requirements",
+            "doc-guide/sphinx.rst :: kernel documentation > Sphinx Install > PDF and LaTeX builds"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "hybrid",
+      "n": 113,
+      "recall@1": 0.4513,
+      "recall@3": 0.6372,
+      "recall@5": 0.7168,
+      "recall@10": 0.7788,
+      "recall@20": 0.9027,
+      "mrr": 0.5797,
+      "doc@5": 0.9027,
+      "p50_ms": 39.6,
+      "p95_ms": 53.3,
+      "recall@5_by_category": {
+        "boot-param": 0.667,
+        "build": 0.571,
+        "coding": 0.842,
+        "config": 0.8,
+        "factual": 0.87,
+        "internals": 0.8,
+        "multi-hop": 0.333,
+        "procedure": 0.727,
+        "process": 0.625,
+        "procfs": 1.0,
+        "sysctl": 0.5,
+        "sysfs": 0.778,
+        "tracing": 0.333,
+        "troubleshooting": 0.25
+      },
+      "misses@5": [
+        {
+          "id": "q004",
+          "question": "In cgroup v1, how do I limit a memory cgroup to 4 MB?",
+          "gold": "admin-guide/cgroup-v1/memory.rst",
+          "rank": null,
+          "got": [
+            "admin-guide/cgroup-v1/memory.rst ::  What happens when a cgroup hits memory.memsw.limit_in_bytes",
+            "admin-guide/cgroup-v1/memory.rst :: Memory Resource Controller > 7. Soft limits (DEPRECATED)",
+            "admin-guide/cgroup-v1/memory.rst :: mory Resource Controller > 5. Misc. interfaces > 5.4 failcnt"
+          ]
+        },
+        {
+          "id": "q005",
+          "question": "How do I remove a cgroup v1 memory limit and make it unlimited again?",
+          "gold": "admin-guide/cgroup-v1/memory.rst",
+          "rank": 8,
+          "got": [
+            "admin-guide/cgroup-v1/memory.rst ::  What happens when a cgroup hits memory.memsw.limit_in_bytes",
+            "admin-guide/cgroup-v1/memory.rst :: Memory Resource Controller > 7. Soft limits (DEPRECATED)",
+            "admin-guide/cgroup-v1/memory.rst :: Memory Resource Controller > 2. Memory Control > 2.5 Reclaim"
+          ]
+        },
+        {
+          "id": "q011",
+          "question": "What does the L flag do in binfmt_misc?",
+          "gold": "admin-guide/binfmt-misc.rst",
+          "rank": null,
+          "got": [
+            "admin-guide/binfmt-misc.rst :: ernel Support for miscellaneous Binary Formats (binfmt_misc)",
+            "admin-guide/binfmt-misc.rst :: ernel Support for miscellaneous Binary Formats (binfmt_misc)",
+            "admin-guide/binfmt-misc.rst :: ellaneous Binary Formats (binfmt_misc) > bpf-backed handlers"
+          ]
+        },
+        {
+          "id": "q016",
+          "question": "Why shouldn't I print pointers with %p, and what should I use for code addresses?",
+          "gold": "process/deprecated.rst",
+          "rank": null,
+          "got": [
+            "core-api/printk-formats.rst :: ntk format specifiers right > Pointer types > Plain Pointers",
+            "arch/arm64/pointer-authentication.rst :: nter authentication in AArch64 Linux > Architecture overview",
+            "core-api/printk-formats.rst :: ntk format specifiers right > Pointer types > IPv6 addresses"
+          ]
+        },
+        {
+          "id": "q018",
+          "question": "What severity levels does checkpatch.pl report?",
+          "gold": "process/submitting-patches.rst",
+          "rank": 14,
+          "got": [
+            "dev-tools/checkpatch.rst :: Checkpatch > Message Levels",
+            "ABI/testing/configfs-tsm-report :: s-tsm-report > /sys/kernel/config/tsm/report/$name/privlevel",
+            "hid/intel-ish-hid.rst ::  in above blocks > End to End HID transport Sequence Diagram"
+          ]
+        },
+        {
+          "id": "q021",
+          "question": "How do I make my Dell laptop keyboard backlight turn off after 10 minutes of inactivity?",
+          "gold": "ABI/testing/sysfs-platform-dell-laptop",
+          "rank": 13,
+          "got": [
+            "admin-guide/laptops/lg-laptop.rst :: LG Gram laptop extra features > Keyboard backlight",
+            "admin-guide/laptops/asus-laptop.rst :: Asus Laptop Extras > Backlight",
+            "admin-guide/laptops/asus-laptop.rst :: Asus Laptop Extras"
+          ]
+        },
+        {
+          "id": "q025",
+          "question": "My USB NCM modem fails with default cdc_ncm settings. Is there a quirk I can test?",
+          "gold": "ABI/testing/sysfs-class-net-cdc_ncm",
+          "rank": 8,
+          "got": [
+            "usb/acm.rst :: Linux ACM driver v0.16 > 1. Usage",
+            "networking/cdc_mbim.rst :: ile Broadband modems > Command Line Parameters > prefer_mbim",
+            "networking/cdc_mbim.rst :: cdc_mbim - Driver for CDC MBIM Mobile Broadband modems"
+          ]
+        },
+        {
+          "id": "q027",
+          "question": "Until what date will ext4 timestamps work on filesystems with large inodes?",
+          "gold": "filesystems/ext4/inodes.rst",
+          "rank": null,
+          "got": [
+            "filesystems/ext4/blockgroup.rst :: Block Groups > Layout",
+            "filesystems/ext4/journal.rst :: Journal (jbd2)",
+            "filesystems/ext4/inodes.rst :: Index Nodes"
+          ]
+        },
+        {
+          "id": "q043",
+          "question": "Where do I read KUnit results when I run tests without kunit.py?",
+          "gold": "dev-tools/kunit/faq.rst",
+          "rank": null,
+          "got": [
+            "dev-tools/kunit/running_tips.rst :: nit Tests > Running tests manually > Pretty-printing results",
+            "dev-tools/kunit/start.rst :: ool > Selecting which tests to run > Filtering tests by name",
+            "dev-tools/kunit/run_manual.rst :: Run Tests without kunit_tool > Retrieve Test Results"
+          ]
+        },
+        {
+          "id": "q047",
+          "question": "In the function graph tracer, what does setting max_graph_depth to 1 do?",
+          "gold": "trace/ftrace.rst",
+          "rank": null,
+          "got": [
+            "admin-guide/kernel-parameters.txt :: The kernel's command-line parameters > fred",
+            "trace/ftrace.rst :: ftrace - Function Tracer > The Tracers",
+            "trace/ftrace.rst :: ction Tracer > Dynamic ftrace with the function graph tracer"
+          ]
+        },
+        {
+          "id": "q048",
+          "question": "Why does ftrace sometimes show <...> instead of a task name?",
+          "gold": "trace/ftrace.rst",
+          "rank": 14,
+          "got": [
+            "trace/ftrace.rst :: ftrace - Function Tracer > Output format:",
+            "trace/ftrace.rst :: ftrace - Function Tracer > preemptoff",
+            "trace/ftrace.rst :: ftrace - Function Tracer > wakeup_rt"
+          ]
+        },
+        {
+          "id": "q051",
+          "question": "How do I build the kernel with clang-14 / ld.lld-14 instead of the unversioned LLVM tools?",
+          "gold": "kbuild/llvm.rst",
+          "rank": 6,
+          "got": [
+            "dev-tools/kmsan.rst :: ernel Memory Sanitizer (KMSAN) > Usage > Building the kernel",
+            "dev-tools/propeller.rst :: Using Propeller with the Linux kernel",
+            "dev-tools/autofdo.rst :: Using AutoFDO with the Linux kernel > Workflow"
+          ]
+        },
+        {
+          "id": "q054",
+          "question": "When does a Kconfig menu entry become visible?",
+          "gold": "kbuild/kconfig-language.rst",
+          "rank": 10,
+          "got": [
+            "kbuild/kconfig-language.rst :: Kconfig Language > Menu structure",
+            "kbuild/kconfig-language.rst :: Kconfig Language > Kconfig syntax",
+            "kbuild/kconfig-language.rst :: Kconfig Language > Introduction"
+          ]
+        },
+        {
+          "id": "q055",
+          "question": "What is Energy Aware Scheduling trying to optimise?",
+          "gold": "scheduler/sched-energy.rst",
+          "rank": 12,
+          "got": [
+            "scheduler/sched-energy.rst :: Energy Aware Scheduling > 4. Energy-Aware task placement",
+            "scheduler/sched-energy.rst :: ndencies and requirements for EAS > 6.6 Multithreading (SMT)",
+            "scheduler/sched-energy.rst ::  Aware Scheduling > 6. Dependencies and requirements for EAS"
+          ]
+        },
+        {
+          "id": "q060",
+          "question": "In a lockdep report like {-.-.}, what do the '-' and '.' characters mean?",
+          "gold": "locking/lockdep-design.rst",
+          "rank": null,
+          "got": [
+            "hid/hidintro.rst :: eport descriptors > Collections, Report IDs and Evdev events",
+            "hid/hidintro.rst :: g HID report descriptors > Output, Input and Feature Reports",
+            "hid/hid-transport.rst :: rt Drivers > 1) HID Bus > 1.2) Transport Driver Requirements"
+          ]
+        },
+        {
+          "id": "q075",
+          "question": "What is the EHCI log2_irq_thresh module parameter and what are its limits?",
+          "gold": "usb/ehci.rst",
+          "rank": 20,
+          "got": [
+            "sound/alsa-configuration.rst ::  Configuration guide > Module parameters > Module snd-gusmax",
+            "sound/alsa-configuration.rst :: figuration guide > Module parameters > Module snd-gusclassic",
+            "sound/alsa-configuration.rst ::  Configuration guide > Module parameters > Module snd-mpu401"
+          ]
+        },
+        {
+          "id": "q076",
+          "question": "What should I do if the EHCI driver misbehaves with my USB 2.0 devices?",
+          "gold": "usb/ehci.rst",
+          "rank": 8,
+          "got": [
+            "usb/acm.rst :: Linux ACM driver v0.16 > 1. Usage",
+            "usb/ehci.rst :: EHCI driver",
+            "driver-api/usb/writing_usb_driver.rst :: Writing USB Device Drivers > Linux USB Basics"
+          ]
+        },
+        {
+          "id": "q081",
+          "question": "What does spin_lock_bh() block?",
+          "gold": "kernel-hacking/locking.rst",
+          "rank": 19,
+          "got": [
+            "kernel-hacking/locking.rst :: ng > Cheat Sheet For Locking > Table of Minimum Requirements",
+            "kernel-hacking/locking.rst ::  Locking Between Tasklets/Timers > Different Tasklets/Timers",
+            "locking/spinlocks.rst :: Locking lessons > Reference information:"
+          ]
+        },
+        {
+          "id": "q083",
+          "question": "What does vm.swappiness control, what range does it take, and what is its default?",
+          "gold": "admin-guide/sysctl/vm.rst",
+          "rank": 16,
+          "got": [
+            "admin-guide/sysctl/vm.rst :: Documentation for /proc/sys/vm/ > vfs_cache_pressure_denom",
+            "networking/device_drivers/ethernet/stmicro/stmmac.rst :: ernet Controllers \"stmmac\" > Command Line Parameters > pause",
+            "gpu/drm-vm-bind-async.rst :: onous / Asynchronous VM_BIND operation > Synchronous VM_BIND"
+          ]
+        },
+        {
+          "id": "q084",
+          "question": "How do I free the page cache and slab objects without rebooting?",
+          "gold": "admin-guide/sysctl/vm.rst",
+          "rank": null,
+          "got": [
+            "ABI/testing/sysfs-kernel-slab :: : sysfs-kernel-slab > /sys/kernel/slab/<cache>/free_fastpath",
+            "ABI/testing/sysfs-kernel-slab :: ABI: sysfs-kernel-slab > /sys/kernel/slab/<cache>/free_calls",
+            "ABI/testing/sysfs-kernel-slab :: ABI: sysfs-kernel-slab > /sys/kernel/slab/<cache>/free_slab"
+          ]
+        },
+        {
+          "id": "q088",
+          "question": "What is the preferred maximum line length in kernel code?",
+          "gold": "process/coding-style.rst",
+          "rank": 16,
+          "got": [
+            "process/coding-style.rst :: Linux kernel coding style > 8) Commenting",
+            "dev-tools/checkpatch.rst :: Checkpatch > Type Descriptions > Indentation and Line Breaks",
+            "dev-tools/checkpatch.rst :: Checkpatch > Type Descriptions > Indentation and Line Breaks"
+          ]
+        },
+        {
+          "id": "q090",
+          "question": "What rules must a patch meet to be accepted into a -stable kernel?",
+          "gold": "process/stable-kernel-rules.rst",
+          "rank": 17,
+          "got": [
+            "process/stable-kernel-rules.rst :: cedure for submitting patches to the -stable tree > Option 3",
+            "process/stable-kernel-rules.rst :: know about Linux -stable releases > Following the submission",
+            "process/stable-kernel-rules.rst :: cedure for submitting patches to the -stable tree > Option 2"
+          ]
+        },
+        {
+          "id": "q093",
+          "question": "My kernel is tainted with 'P'. What does that mean?",
+          "gold": "admin-guide/tainted-kernels.rst",
+          "rank": 13,
+          "got": [
+            "admin-guide/tainted-kernels.rst :: Tainted kernels > Table for decoding tainted state",
+            "admin-guide/tainted-kernels.rst :: Tainted kernels",
+            "kernel-hacking/hacking.rst :: Unreliable Guide To Hacking The Linux Kernel > Thanks"
+          ]
+        },
+        {
+          "id": "q100",
+          "question": "What is the minimum Rust version for building Rust support in this kernel?",
+          "gold": "process/changes.rst",
+          "rank": 10,
+          "got": [
+            "process/changes.rst :: le the Kernel > Intro > Kernel compilation > Rust (optional)",
+            "rust/quick-start.rst :: tart > Requirements: Building > Rust standard library source",
+            "rust/quick-start.rst :: Quick Start"
+          ]
+        },
+        {
+          "id": "q101",
+          "question": "How do I make CPUs 1, 6, 7 and 8 adaptive-ticks (tickless) CPUs?",
+          "gold": "timers/no_hz.rst",
+          "rank": 7,
+          "got": [
+            "admin-guide/cpu-isolation.rst :: olation > Isolation features > Full Dynticks (aka nohz_full)",
+            "admin-guide/kernel-per-CPU-kthreads.rst :: OS jitter due to per-cpu kthreads > kthreads > SCHED_SOFTIRQ",
+            "admin-guide/kernel-per-CPU-kthreads.rst :: g OS jitter due to per-cpu kthreads > kthreads > RCU_SOFTIRQ"
+          ]
+        },
+        {
+          "id": "q104",
+          "question": "Should I attach patches to emails when sending them to kernel mailing lists?",
+          "gold": "process/email-clients.rst",
+          "rank": null,
+          "got": [
+            "process/researcher-guidelines.rst :: Researcher Guidelines > Patches",
+            "process/5.Posting.rst :: Posting patches > Sending the patch",
+            "process/stable-kernel-rules.rst :: r wanted to know about Linux -stable releases > Review cycle"
+          ]
+        },
+        {
+          "id": "q105",
+          "question": "How do I enable the function tracer with ftrace?",
+          "gold": "trace/ftrace.rst",
+          "rank": 14,
+          "got": [
+            "trace/ftrace.rst :: ftrace - Function Tracer > trace_options",
+            "trace/ftrace-design.rst :: er Design > HAVE_DYNAMIC_FTRACE + HAVE_FUNCTION_GRAPH_TRACER",
+            "trace/ftrace.rst :: ction Tracer > Dynamic ftrace with the function graph tracer"
+          ]
+        },
+        {
+          "id": "q106",
+          "question": "What does setting transparent_hugepage defrag to 'always' do?",
+          "gold": "admin-guide/mm/transhuge.rst",
+          "rank": 14,
+          "got": [
+            "admin-guide/mm/transhuge.rst :: Transparent Hugepage Support > sysfs > Global THP controls",
+            "admin-guide/mm/transhuge.rst :: Transparent Hugepage Support > sysfs > Global THP controls",
+            "admin-guide/mm/transhuge.rst ::  Support > Hugepages in tmpfs/shmem > shmem / internal tmpfs"
+          ]
+        },
+        {
+          "id": "q107",
+          "question": "How can I tell whether my kernel supports dynamic debug?",
+          "gold": "admin-guide/dynamic-debug-howto.rst",
+          "rank": 14,
+          "got": [
+            "admin-guide/dynamic-debug-howto.rst :: Dynamic debug > Kernel Configuration",
+            "admin-guide/dynamic-debug-howto.rst :: Dynamic debug > Kernel *prdbg* API",
+            "admin-guide/dynamic-debug-howto.rst :: Dynamic debug > Debug Messages at Module Initialization Time"
+          ]
+        },
+        {
+          "id": "q109",
+          "question": "What does the nosmp boot parameter do?",
+          "gold": "admin-guide/kernel-parameters.txt",
+          "rank": null,
+          "got": [
+            "admin-guide/kernel-parameters.txt :: The kernel's command-line parameters > boot_delay",
+            "admin-guide/kernel-parameters.txt :: el's command-line parameters > torture.disable_onoff_at_boot",
+            "admin-guide/kernel-parameters.txt :: The kernel's command-line parameters > keep_bootcon"
+          ]
+        },
+        {
+          "id": "q111",
+          "question": "What is the cgroup v2 equivalent of cgroup v1's memory.limit_in_bytes, and what happens when it is reached?",
+          "gold": "admin-guide/cgroup-v2.rst",
+          "rank": 12,
+          "got": [
+            "admin-guide/cgroup-v1/memory.rst ::  What happens when a cgroup hits memory.memsw.limit_in_bytes",
+            "admin-guide/cgroup-v1/memory.rst :: Memory Resource Controller > 7. Soft limits (DEPRECATED)",
+            "admin-guide/cgroup-v1/memory.rst :: Resource Controller > 2. Memory Control > 2.4 Swap Extension"
+          ]
+        },
+        {
+          "id": "q112",
+          "question": "What is the global default swappiness, and can a cgroup v1 memory group override it?",
+          "gold": "admin-guide/sysctl/vm.rst",
+          "rank": null,
+          "got": [
+            "admin-guide/cgroup-v1/memory.rst :: y Resource Controller > 5. Misc. interfaces > 5.3 swappiness",
+            "admin-guide/cgroup-v1/memory.rst :: emory Resource Controller > 11. Memory Pressure (DEPRECATED)",
+            "admin-guide/cgroup-v1/cgroups.rst :: Control Groups > 1. Control Groups > 1.1 What are cgroups ?"
+          ]
+        }
+      ]
+    }
+  ]
+}

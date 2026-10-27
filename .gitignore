@@ -1,0 +1,47 @@
+# Python environments and bytecode
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+
+# Test, lint, and coverage caches
+tests/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
+# Python build artifacts
+build/
+dist/
+*.egg-info/
+
+# Local editor and operating system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Local secrets (keep the example configuration)
+.env
+.env.*
+!.env.example
+
+# Downloaded corpus and generated indexes
+corpus/linux/
+index/
+index_*/
+corpus/dates.json
+
+# Runtime logs and resumable evaluation state
+logs/
+*.log
+results/load_*.json
+results/*.checkpoint.json

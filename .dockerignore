@@ -1,0 +1,7 @@
+.venv
+corpus
+index
+index_*
+logs
+results
+.git

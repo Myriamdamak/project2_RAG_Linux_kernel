@@ -1,0 +1,16 @@
+# core
+numpy>=1.26
+scipy>=1.11
+scikit-learn>=1.4        # LSA offline embedder
+requests>=2.31           # OpenAI REST calls
+flask>=3.0               # web service
+gunicorn>=22.0           # production server (Docker / Render)
+
+# dense embeddings + cross-encoder reranker (CPU is fine)
+sentence-transformers>=3.0
+# CPU-only torch keeps the install ~200 MB instead of ~2 GB:
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+torch>=2.2
+
+# dev
+pytest>=8.0

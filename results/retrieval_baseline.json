@@ -1,0 +1,919 @@
+{
+  "index": {
+    "built_at": "2026-10-27T15:54:19",
+    "embedder": "st:BAAI/bge-small-en-v1.5",
+    "chunker": "section",
+    "chunk_tokens": 350,
+    "chunk_overlap": 50,
+    "n_docs": 4569,
+    "n_chunks": 41554,
+    "dims": 384,
+    "seconds": {
+      "chunk": 47.64141082763672,
+      "bm25": 8.252227306365967,
+      "embed": 4257.9415419101715
+    },
+    "bytes": {
+      "bm25.idf.npy": 495212,
+      "bm25.npz": 9517334,
+      "bm25.vocab.json": 2690817,
+      "chunks.jsonl": 53153044,
+      "meta.json": 482,
+      "vectors.npy": 31913600
+    }
+  },
+  "rows": [
+    {
+      "mode": "bm25",
+      "n": 113,
+      "recall@1": 0.6372,
+      "recall@3": 0.7522,
+      "recall@5": 0.7876,
+      "recall@10": 0.8761,
+      "recall@20": 0.9292,
+      "mrr": 0.7291,
+      "doc@5": 0.9469,
+      "p50_ms": 0.4,
+      "p95_ms": 0.6,
+      "recall@5_by_category": {
+        "boot-param": 1.0,
+        "build": 0.571,
+        "coding": 0.789,
+        "config": 0.9,
+        "factual": 0.913,
+        "internals": 0.8,
+        "multi-hop": 0.0,
+        "procedure": 0.909,
+        "process": 0.5,
+        "procfs": 1.0,
+        "sysctl": 0.75,
+        "sysfs": 0.889,
+        "tracing": 0.667,
+        "troubleshooting": 0.75
+      },
+      "misses@5": [
+        {
+          "id": "q004",
+          "question": "In cgroup v1, how do I limit a memory cgroup to 4 MB?",
+          "gold": "admin-guide/cgroup-v1/memory.rst",
+          "rank": 7,
+          "got": [
+            "admin-guide/cgroup-v1/memcg_test.rst :: ntation Memo > 9. Typical Tests. > 9.1 Small limit to memcg.",
+            "admin-guide/cgroup-v1/memory.rst :: Memory Resource Controller > 2. Memory Control > 2.5 Reclaim",
+            "admin-guide/cgroup-v1/memory.rst ::  What happens when a cgroup hits memory.memsw.limit_in_bytes"
+          ]
+        },
+        {
+          "id": "q011",
+          "question": "What does the L flag do in binfmt_misc?",
+          "gold": "admin-guide/binfmt-misc.rst",
+          "rank": 20,
+          "got": [
+            "admin-guide/binfmt-misc.rst :: ernel Support for miscellaneous Binary Formats (binfmt_misc)",
+            "admin-guide/binfmt-misc.rst :: ernel Support for miscellaneous Binary Formats (binfmt_misc)",
+            "admin-guide/binfmt-misc.rst :: ernel Support for miscellaneous Binary Formats (binfmt_misc)"
+          ]
+        },
+        {
+          "id": "q013",
+          "question": "What should I use instead of one-element or zero-length trailing arrays in kernel structs?",
+          "gold": "process/deprecated.rst",
+          "rank": 7,
+          "got": [
+            "process/deprecated.rst :: ibutes, and Conventions > Zero-length and one-element arrays",
+            "process/deprecated.rst :: d Conventions > open-coded arithmetic in allocator arguments",
+            "process/deprecated.rst :: ibutes, and Conventions > Zero-length and one-element arrays"
+          ]
+        },
+        {
+          "id": "q016",
+          "question": "Why shouldn't I print pointers with %p, and what should I use for code addresses?",
+          "gold": "process/deprecated.rst",
+          "rank": null,
+          "got": [
+            "core-api/printk-formats.rst :: ntk format specifiers right > Pointer types > Plain Pointers",
+            "arch/x86/kernel-stacks.rst :: Kernel Stacks > Printing backtraces on x86",
+            "process/debugging/driver_development_debugging_guide.rst :: advice for driver development > printk() & friends > dev_dbg"
+          ]
+        },
+        {
+          "id": "q018",
+          "question": "What severity levels does checkpatch.pl report?",
+          "gold": "process/submitting-patches.rst",
+          "rank": 8,
+          "got": [
+            "dev-tools/checkpatch.rst :: Checkpatch > Message Levels",
+            "dev-tools/checkpatch.rst :: Checkpatch",
+            "dev-tools/checkpatch.rst :: Checkpatch > Options"
+          ]
+        },
+        {
+          "id": "q048",
+          "question": "Why does ftrace sometimes show <...> instead of a task name?",
+          "gold": "trace/ftrace.rst",
+          "rank": 12,
+          "got": [
+            "trace/ftrace.rst :: ftrace - Function Tracer > Output format:",
+            "trace/events-landlock.rst :: Landlock Trace Events > Event samples",
+            "trace/ftrace.rst :: ftrace - Function Tracer > trace_options"
+          ]
+        },
+        {
+          "id": "q054",
+          "question": "When does a Kconfig menu entry become visible?",
+          "gold": "kbuild/kconfig-language.rst",
+          "rank": 6,
+          "got": [
+            "kbuild/kconfig-language.rst :: Kconfig Language > Menu structure",
+            "kbuild/kconfig-language.rst :: Kconfig Language > Kconfig syntax",
+            "kbuild/kconfig-language.rst :: Kconfig Language > Menu attributes"
+          ]
+        },
+        {
+          "id": "q055",
+          "question": "What is Energy Aware Scheduling trying to optimise?",
+          "gold": "scheduler/sched-energy.rst",
+          "rank": 19,
+          "got": [
+            "scheduler/sched-energy.rst ::  Aware Scheduling > 6. Dependencies and requirements for EAS",
+            "scheduler/sched-energy.rst :: Energy Aware Scheduling > 1. Introduction",
+            "scheduler/sched-energy.rst :: ies and requirements for EAS > 6.3 - Energy Model complexity"
+          ]
+        },
+        {
+          "id": "q060",
+          "question": "In a lockdep report like {-.-.}, what do the '-' and '.' characters mean?",
+          "gold": "locking/lockdep-design.rst",
+          "rank": 16,
+          "got": [
+            "hid/hidintro.rst :: g HID report descriptors > Output, Input and Feature Reports",
+            "RCU/lockdep.rst :: RCU and lockdep checking",
+            "RCU/lockdep.rst :: RCU and lockdep checking"
+          ]
+        },
+        {
+          "id": "q081",
+          "question": "What does spin_lock_bh() block?",
+          "gold": "kernel-hacking/locking.rst",
+          "rank": 8,
+          "got": [
+            "kernel-hacking/locking.rst ::  Locking > Common Problems > Racing Timers: A Kernel Pastime",
+            "kernel-hacking/locking.rst :: ng > Cheat Sheet For Locking > Table of Minimum Requirements",
+            "kernel-hacking/locking.rst :: the Linux Kernel > Locking Between User Context and Softirqs"
+          ]
+        },
+        {
+          "id": "q084",
+          "question": "How do I free the page cache and slab objects without rebooting?",
+          "gold": "admin-guide/sysctl/vm.rst",
+          "rank": 8,
+          "got": [
+            "ABI/testing/sysfs-kernel-slab :: : sysfs-kernel-slab > /sys/kernel/slab/<cache>/free_fastpath",
+            "ABI/testing/sysfs-kernel-slab :: ABI: sysfs-kernel-slab > /sys/kernel/slab/<cache>/free_calls",
+            "ABI/testing/sysfs-kernel-slab :: BI: sysfs-kernel-slab > /sys/kernel/slab/<cache>/free_frozen"
+          ]
+        },
+        {
+          "id": "q088",
+          "question": "What is the preferred maximum line length in kernel code?",
+          "gold": "process/coding-style.rst",
+          "rank": 8,
+          "got": [
+            "dev-tools/checkpatch.rst :: Checkpatch > Type Descriptions > Indentation and Line Breaks",
+            "dev-tools/checkpatch.rst :: Checkpatch > Type Descriptions > Indentation and Line Breaks",
+            "process/coding-style.rst :: Linux kernel coding style > 8) Commenting"
+          ]
+        },
+        {
+          "id": "q089",
+          "question": "How do I reference the commit that introduced the bug my patch fixes?",
+          "gold": "process/submitting-patches.rst",
+          "rank": 6,
+          "got": [
+            "process/maintainer-tip.rst ::  handbook > Patch submission notes > Ordering of commit tags",
+            "process/5.Posting.rst :: Posting patches > Patch formatting and changelogs",
+            "process/5.Posting.rst :: Posting patches > Patch formatting and changelogs"
+          ]
+        },
+        {
+          "id": "q090",
+          "question": "What rules must a patch meet to be accepted into a -stable kernel?",
+          "gold": "process/stable-kernel-rules.rst",
+          "rank": 7,
+          "got": [
+            "process/stable-kernel-rules.rst :: know about Linux -stable releases > Following the submission",
+            "process/stable-kernel-rules.rst :: cedure for submitting patches to the -stable tree > Option 3",
+            "process/stable-kernel-rules.rst :: r wanted to know about Linux -stable releases > Review cycle"
+          ]
+        },
+        {
+          "id": "q093",
+          "question": "My kernel is tainted with 'P'. What does that mean?",
+          "gold": "admin-guide/tainted-kernels.rst",
+          "rank": 6,
+          "got": [
+            "admin-guide/tainted-kernels.rst :: nted kernels > Tainted flag in bugs, oops or panics messages",
+            "sound/kernel-api/writing-an-alsa-driver.rst :: Writing an ALSA Driver > Module Parameters",
+            "admin-guide/tainted-kernels.rst :: Tainted kernels"
+          ]
+        },
+        {
+          "id": "q096",
+          "question": "How do I set a parameter for a module that is built into the kernel?",
+          "gold": "admin-guide/kernel-parameters.rst",
+          "rank": 11,
+          "got": [
+            "driver-api/dmaengine/dmatest.rst :: DMA Test Guide > Part 3 - When built-in in the kernel",
+            "ABI/stable/sysfs-module :: ABI: sysfs-module > /sys/module/<MODULENAME>",
+            "admin-guide/kernel-parameters.txt :: The kernel's command-line parameters > refscale.shutdown"
+          ]
+        },
+        {
+          "id": "q099",
+          "question": "What is the minimum GCC version needed to build this kernel?",
+          "gold": "process/changes.rst",
+          "rank": null,
+          "got": [
+            "dev-tools/container.rst :: Containerized Builds > Examples",
+            "admin-guide/quickly-build-trimmed-linux.rst :: tion for the step-by-step guide > Install build requirements",
+            "admin-guide/verify-bugs-and-bisect-regressions.rst :: s for building your own kernels > Install build requirements"
+          ]
+        },
+        {
+          "id": "q100",
+          "question": "What is the minimum Rust version for building Rust support in this kernel?",
+          "gold": "process/changes.rst",
+          "rank": null,
+          "got": [
+            "rust/quick-start.rst :: Quick Start",
+            "rust/quick-start.rst :: tart > Requirements: Building > Rust standard library source",
+            "rust/quick-start.rst :: Quick Start > Requirements: Building > rustc"
+          ]
+        },
+        {
+          "id": "q104",
+          "question": "Should I attach patches to emails when sending them to kernel mailing lists?",
+          "gold": "process/email-clients.rst",
+          "rank": null,
+          "got": [
+            "process/submitting-patches.rst :: tting your code into the kernel > Respond to review comments",
+            "process/email-clients.rst :: Email clients info for Linux > General Preferences",
+            "process/stable-kernel-rules.rst :: r wanted to know about Linux -stable releases > Review cycle"
+          ]
+        },
+        {
+          "id": "q105",
+          "question": "How do I enable the function tracer with ftrace?",
+          "gold": "trace/ftrace.rst",
+          "rank": 18,
+          "got": [
+            "trace/ftrace.rst :: ftrace - Function Tracer > trace_options",
+            "trace/boottime-trace.rst :: g > Options in the Boot Config > Ftrace Per-instance Options",
+            "trace/ftrace.rst :: ftrace - Function Tracer > Stack trace"
+          ]
+        },
+        {
+          "id": "q106",
+          "question": "What does setting transparent_hugepage defrag to 'always' do?",
+          "gold": "admin-guide/mm/transhuge.rst",
+          "rank": null,
+          "got": [
+            "admin-guide/mm/transhuge.rst :: Transparent Hugepage Support > sysfs > Global THP controls",
+            "admin-guide/mm/transhuge.rst :: Transparent Hugepage Support > sysfs > Khugepaged controls",
+            "ABI/testing/sysfs-kernel-mm-transparent-hugepage :: -transparent-hugepage > /sys/kernel/mm/transparent_hugepage/"
+          ]
+        },
+        {
+          "id": "q111",
+          "question": "What is the cgroup v2 equivalent of cgroup v1's memory.limit_in_bytes, and what happens when it is reached?",
+          "gold": "admin-guide/cgroup-v2.rst",
+          "rank": null,
+          "got": [
+            "admin-guide/cgroup-v1/memory.rst ::  What happens when a cgroup hits memory.memsw.limit_in_bytes",
+            "admin-guide/cgroup-v1/memory.rst :: Memory Resource Controller > 3. User Interface",
+            "admin-guide/cgroup-v1/memory.rst :: Resource Controller > 2. Memory Control > 2.4 Swap Extension"
+          ]
+        },
+        {
+          "id": "q112",
+          "question": "What is the global default swappiness, and can a cgroup v1 memory group override it?",
+          "gold": "admin-guide/sysctl/vm.rst",
+          "rank": null,
+          "got": [
+            "admin-guide/cgroup-v1/memory.rst :: y Resource Controller > 5. Misc. interfaces > 5.3 swappiness",
+            "admin-guide/cgroup-v2.rst :: rol Group v2 > Controllers > Memory > Memory Interface Files",
+            "admin-guide/cgroup-v1/memory.rst :: e Controller > Benefits and Purpose of the memory controller"
+          ]
+        },
+        {
+          "id": "q113",
+          "question": "What is the minimum Clang version to build the kernel, and how do I build with a versioned LLVM like clang-14?",
+          "gold": "process/changes.rst",
+          "rank": null,
+          "got": [
+            "kbuild/llvm.rst :: Building Linux with Clang/LLVM > The LLVM= argument",
+            "dev-tools/kmsan.rst :: ernel Memory Sanitizer (KMSAN) > Usage > Building the kernel",
+            "kbuild/llvm.rst :: Building Linux with Clang/LLVM > Getting LLVM"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "vector",
+      "n": 113,
+      "recall@1": 0.6018,
+      "recall@3": 0.8407,
+      "recall@5": 0.8761,
+      "recall@10": 0.9027,
+      "recall@20": 0.9469,
+      "mrr": 0.7262,
+      "doc@5": 0.9646,
+      "p50_ms": 44.7,
+      "p95_ms": 96.5,
+      "recall@5_by_category": {
+        "boot-param": 1.0,
+        "build": 0.857,
+        "coding": 0.947,
+        "config": 0.9,
+        "factual": 0.957,
+        "internals": 1.0,
+        "multi-hop": 0.0,
+        "procedure": 0.818,
+        "process": 0.75,
+        "procfs": 1.0,
+        "sysctl": 1.0,
+        "sysfs": 0.889,
+        "tracing": 0.833,
+        "troubleshooting": 0.75
+      },
+      "misses@5": [
+        {
+          "id": "q003",
+          "question": "Which architectures support CONFIG_CMDLINE_FROM_BOOTCONFIG?",
+          "gold": "admin-guide/bootconfig.rst",
+          "rank": null,
+          "got": [
+            "arch/powerpc/booting.rst :: DeviceTree Booting > Entry point",
+            "features/locking/cmpxchg-local/arch-support.txt :: features/locking/cmpxchg-local/arch-support.txt",
+            "features/io/dma-contiguous/arch-support.txt :: features/io/dma-contiguous/arch-support.txt"
+          ]
+        },
+        {
+          "id": "q012",
+          "question": "What happens to processes in a cgroup v2 group once its memory usage goes over memory.high?",
+          "gold": "admin-guide/cgroup-v2.rst",
+          "rank": 13,
+          "got": [
+            "admin-guide/cgroup-v2.rst :: Control Group v2 > Controllers > Memory > Usage Guidelines",
+            "admin-guide/cgroup-v2.rst :: rol Group v2 > Controllers > Memory > Memory Interface Files",
+            "admin-guide/cgroup-v2.rst ::  Rationales for v2 > Controller Issues and Remedies > Memory"
+          ]
+        },
+        {
+          "id": "q017",
+          "question": "Is sending pure coding-style cleanup patches a good way to start contributing?",
+          "gold": "process/4.Coding.rst",
+          "rank": null,
+          "got": [
+            "process/5.Posting.rst :: Posting patches > When to post",
+            "process/6.Followthrough.rst :: Followthrough",
+            "process/6.Followthrough.rst :: Followthrough > Working with reviewers"
+          ]
+        },
+        {
+          "id": "q018",
+          "question": "What severity levels does checkpatch.pl report?",
+          "gold": "process/submitting-patches.rst",
+          "rank": null,
+          "got": [
+            "dev-tools/checkpatch.rst :: Checkpatch > Message Levels",
+            "dev-tools/checkpatch.rst :: Checkpatch",
+            "dev-tools/checkpatch.rst :: Checkpatch > Options"
+          ]
+        },
+        {
+          "id": "q025",
+          "question": "My USB NCM modem fails with default cdc_ncm settings. Is there a quirk I can test?",
+          "gold": "ABI/testing/sysfs-class-net-cdc_ncm",
+          "rank": null,
+          "got": [
+            "usb/acm.rst :: Linux ACM driver v0.16 > 1. Usage",
+            "usb/gadget-testing.rst :: Gadget Testing > 10. NCM function > Testing the NCM function",
+            "usb/gadget-testing.rst :: ng > 10. NCM function > Function-specific configfs interface"
+          ]
+        },
+        {
+          "id": "q043",
+          "question": "Where do I read KUnit results when I run tests without kunit.py?",
+          "gold": "dev-tools/kunit/faq.rst",
+          "rank": null,
+          "got": [
+            "dev-tools/kunit/run_manual.rst :: Run Tests without kunit_tool > Retrieve Test Results",
+            "dev-tools/kunit/run_manual.rst :: Run Tests without kunit_tool > debugfs",
+            "dev-tools/kunit/run_manual.rst :: Run Tests without kunit_tool > Configure the Kernel"
+          ]
+        },
+        {
+          "id": "q048",
+          "question": "Why does ftrace sometimes show <...> instead of a task name?",
+          "gold": "trace/ftrace.rst",
+          "rank": 15,
+          "got": [
+            "trace/ftrace.rst :: ftrace - Function Tracer > dynamic ftrace",
+            "trace/ftrace.rst :: ftrace - Function Tracer > Output format:",
+            "trace/ftrace.rst :: ftrace - Function Tracer > dynamic ftrace"
+          ]
+        },
+        {
+          "id": "q054",
+          "question": "When does a Kconfig menu entry become visible?",
+          "gold": "kbuild/kconfig-language.rst",
+          "rank": 17,
+          "got": [
+            "kbuild/kconfig-language.rst :: Kconfig Language > Menu structure",
+            "kbuild/kconfig-language.rst :: Kconfig Language > Menu attributes",
+            "kbuild/kconfig-language.rst :: Kconfig Language > Kconfig syntax"
+          ]
+        },
+        {
+          "id": "q056",
+          "question": "How can I check whether a task is running under sched_ext?",
+          "gold": "scheduler/sched-ext.rst",
+          "rank": 10,
+          "got": [
+            "scheduler/sched-ext.rst :: Extensible Scheduler Class > Switching to and from sched_ext",
+            "scheduler/sched-ext.rst :: Extensible Scheduler Class > The Basics > Task Lifecycle",
+            "scheduler/sched-domains.rst :: Scheduler Domains"
+          ]
+        },
+        {
+          "id": "q081",
+          "question": "What does spin_lock_bh() block?",
+          "gold": "kernel-hacking/locking.rst",
+          "rank": null,
+          "got": [
+            "kernel-hacking/locking.rst :: the Linux Kernel > Locking Between User Context and Softirqs",
+            "kernel-hacking/locking.rst ::  Locking Between Tasklets/Timers > Different Tasklets/Timers",
+            "kernel-hacking/locking.rst :: To Locking > Common Problems > Deadlock: Simple and Advanced"
+          ]
+        },
+        {
+          "id": "q106",
+          "question": "What does setting transparent_hugepage defrag to 'always' do?",
+          "gold": "admin-guide/mm/transhuge.rst",
+          "rank": 9,
+          "got": [
+            "admin-guide/mm/transhuge.rst :: Transparent Hugepage Support > sysfs > Global THP controls",
+            "admin-guide/kernel-parameters.txt :: The kernel's command-line parameters > transparent_hugepage",
+            "admin-guide/mm/transhuge.rst :: Transparent Hugepage Support > sysfs > Khugepaged controls"
+          ]
+        },
+        {
+          "id": "q111",
+          "question": "What is the cgroup v2 equivalent of cgroup v1's memory.limit_in_bytes, and what happens when it is reached?",
+          "gold": "admin-guide/cgroup-v2.rst",
+          "rank": 7,
+          "got": [
+            "admin-guide/cgroup-v1/memory.rst ::  What happens when a cgroup hits memory.memsw.limit_in_bytes",
+            "admin-guide/cgroup-v1/memory.rst :: Memory Resource Controller > 7. Soft limits (DEPRECATED)",
+            "admin-guide/cgroup-v2.rst :: rol Group v2 > Controllers > Memory > Memory Interface Files"
+          ]
+        },
+        {
+          "id": "q112",
+          "question": "What is the global default swappiness, and can a cgroup v1 memory group override it?",
+          "gold": "admin-guide/sysctl/vm.rst",
+          "rank": 17,
+          "got": [
+            "admin-guide/cgroup-v1/memory.rst :: y Resource Controller > 5. Misc. interfaces > 5.3 swappiness",
+            "admin-guide/cgroup-v2.rst :: rol Group v2 > Controllers > Memory > Memory Interface Files",
+            "admin-guide/cgroup-v1/memory.rst ::  What happens when a cgroup hits memory.memsw.limit_in_bytes"
+          ]
+        },
+        {
+          "id": "q113",
+          "question": "What is the minimum Clang version to build the kernel, and how do I build with a versioned LLVM like clang-14?",
+          "gold": "process/changes.rst",
+          "rank": 15,
+          "got": [
+            "process/changes.rst ::  Kernel > Intro > Kernel compilation > Clang/LLVM (optional)",
+            "kbuild/llvm.rst :: Building Linux with Clang/LLVM > About",
+            "kbuild/llvm.rst :: Building Linux with Clang/LLVM > Getting LLVM"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "hybrid",
+      "n": 113,
+      "recall@1": 0.646,
+      "recall@3": 0.8053,
+      "recall@5": 0.8584,
+      "recall@10": 0.9469,
+      "recall@20": 0.9912,
+      "mrr": 0.7559,
+      "doc@5": 0.9735,
+      "p50_ms": 47.2,
+      "p95_ms": 100.4,
+      "recall@5_by_category": {
+        "boot-param": 1.0,
+        "build": 0.571,
+        "coding": 0.842,
+        "config": 1.0,
+        "factual": 0.913,
+        "internals": 1.0,
+        "multi-hop": 0.0,
+        "procedure": 0.909,
+        "process": 0.75,
+        "procfs": 1.0,
+        "sysctl": 1.0,
+        "sysfs": 0.889,
+        "tracing": 1.0,
+        "troubleshooting": 0.75
+      },
+      "misses@5": [
+        {
+          "id": "q011",
+          "question": "What does the L flag do in binfmt_misc?",
+          "gold": "admin-guide/binfmt-misc.rst",
+          "rank": 7,
+          "got": [
+            "admin-guide/binfmt-misc.rst :: ernel Support for miscellaneous Binary Formats (binfmt_misc)",
+            "admin-guide/binfmt-misc.rst :: ernel Support for miscellaneous Binary Formats (binfmt_misc)",
+            "admin-guide/binfmt-misc.rst :: ernel Support for miscellaneous Binary Formats (binfmt_misc)"
+          ]
+        },
+        {
+          "id": "q013",
+          "question": "What should I use instead of one-element or zero-length trailing arrays in kernel structs?",
+          "gold": "process/deprecated.rst",
+          "rank": 7,
+          "got": [
+            "process/deprecated.rst :: ibutes, and Conventions > Zero-length and one-element arrays",
+            "process/deprecated.rst :: ibutes, and Conventions > Zero-length and one-element arrays",
+            "process/deprecated.rst :: ibutes, and Conventions > Zero-length and one-element arrays"
+          ]
+        },
+        {
+          "id": "q016",
+          "question": "Why shouldn't I print pointers with %p, and what should I use for code addresses?",
+          "gold": "process/deprecated.rst",
+          "rank": 15,
+          "got": [
+            "core-api/printk-formats.rst :: ntk format specifiers right > Pointer types > Plain Pointers",
+            "core-api/printk-formats.rst :: rmat specifiers right > Pointer types > Unmodified Addresses",
+            "core-api/printk-formats.rst :: ntk format specifiers right > Pointer types > IPv6 addresses"
+          ]
+        },
+        {
+          "id": "q018",
+          "question": "What severity levels does checkpatch.pl report?",
+          "gold": "process/submitting-patches.rst",
+          "rank": 17,
+          "got": [
+            "dev-tools/checkpatch.rst :: Checkpatch > Message Levels",
+            "dev-tools/checkpatch.rst :: Checkpatch",
+            "dev-tools/checkpatch.rst :: Checkpatch > Options"
+          ]
+        },
+        {
+          "id": "q025",
+          "question": "My USB NCM modem fails with default cdc_ncm settings. Is there a quirk I can test?",
+          "gold": "ABI/testing/sysfs-class-net-cdc_ncm",
+          "rank": 6,
+          "got": [
+            "networking/cdc_mbim.rst :: r CDC MBIM Mobile Broadband modems > Command Line Parameters",
+            "usb/acm.rst :: Linux ACM driver v0.16 > 1. Usage",
+            "ABI/testing/sysfs-class-net-cdc_ncm :: c_ncm > /sys/class/net/<iface>/cdc_ncm/bmNtbFormatsSupported"
+          ]
+        },
+        {
+          "id": "q043",
+          "question": "Where do I read KUnit results when I run tests without kunit.py?",
+          "gold": "dev-tools/kunit/faq.rst",
+          "rank": 10,
+          "got": [
+            "dev-tools/kunit/run_manual.rst :: Run Tests without kunit_tool > Retrieve Test Results",
+            "dev-tools/kunit/run_wrapper.rst :: Running tests with kunit_tool > Parsing test results",
+            "dev-tools/kunit/running_tips.rst :: nit Tests > Running tests manually > Pretty-printing results"
+          ]
+        },
+        {
+          "id": "q054",
+          "question": "When does a Kconfig menu entry become visible?",
+          "gold": "kbuild/kconfig-language.rst",
+          "rank": 10,
+          "got": [
+            "kbuild/kconfig-language.rst :: Kconfig Language > Menu structure",
+            "kbuild/kconfig-language.rst :: Kconfig Language > Menu attributes",
+            "kbuild/kconfig-language.rst :: Kconfig Language > Kconfig syntax"
+          ]
+        },
+        {
+          "id": "q055",
+          "question": "What is Energy Aware Scheduling trying to optimise?",
+          "gold": "scheduler/sched-energy.rst",
+          "rank": 6,
+          "got": [
+            "scheduler/sched-energy.rst :: Energy Aware Scheduling > 1. Introduction",
+            "scheduler/sched-energy.rst :: ies and requirements for EAS > 6.3 - Energy Model complexity",
+            "scheduler/sched-energy.rst ::  Aware Scheduling > 6. Dependencies and requirements for EAS"
+          ]
+        },
+        {
+          "id": "q081",
+          "question": "What does spin_lock_bh() block?",
+          "gold": "kernel-hacking/locking.rst",
+          "rank": 8,
+          "got": [
+            "kernel-hacking/locking.rst :: the Linux Kernel > Locking Between User Context and Softirqs",
+            "kernel-hacking/locking.rst ::  Locking Between Tasklets/Timers > Different Tasklets/Timers",
+            "kernel-hacking/locking.rst ::  Locking > Common Problems > Racing Timers: A Kernel Pastime"
+          ]
+        },
+        {
+          "id": "q099",
+          "question": "What is the minimum GCC version needed to build this kernel?",
+          "gold": "process/changes.rst",
+          "rank": 7,
+          "got": [
+            "admin-guide/quickly-build-trimmed-linux.rst :: tion for the step-by-step guide > Install build requirements",
+            "process/changes.rst :: nts to compile the Kernel > Intro > Kernel compilation > GCC",
+            "process/changes.rst :: to compile the Kernel > Intro > Current Minimal Requirements"
+          ]
+        },
+        {
+          "id": "q100",
+          "question": "What is the minimum Rust version for building Rust support in this kernel?",
+          "gold": "process/changes.rst",
+          "rank": 7,
+          "got": [
+            "rust/quick-start.rst :: Quick Start > Building",
+            "rust/quick-start.rst :: Quick Start",
+            "rust/quick-start.rst :: Quick Start > Requirements: Building > rustc"
+          ]
+        },
+        {
+          "id": "q104",
+          "question": "Should I attach patches to emails when sending them to kernel mailing lists?",
+          "gold": "process/email-clients.rst",
+          "rank": 6,
+          "got": [
+            "process/email-clients.rst :: Email clients info for Linux > General Preferences",
+            "process/5.Posting.rst :: Posting patches > Sending the patch",
+            "process/5.Posting.rst :: Posting patches > Sending the patch"
+          ]
+        },
+        {
+          "id": "q106",
+          "question": "What does setting transparent_hugepage defrag to 'always' do?",
+          "gold": "admin-guide/mm/transhuge.rst",
+          "rank": 12,
+          "got": [
+            "admin-guide/mm/transhuge.rst :: Transparent Hugepage Support > sysfs > Global THP controls",
+            "admin-guide/mm/transhuge.rst :: Transparent Hugepage Support > sysfs > Khugepaged controls",
+            "admin-guide/kernel-parameters.txt :: The kernel's command-line parameters > transparent_hugepage"
+          ]
+        },
+        {
+          "id": "q111",
+          "question": "What is the cgroup v2 equivalent of cgroup v1's memory.limit_in_bytes, and what happens when it is reached?",
+          "gold": "admin-guide/cgroup-v2.rst",
+          "rank": 13,
+          "got": [
+            "admin-guide/cgroup-v1/memory.rst ::  What happens when a cgroup hits memory.memsw.limit_in_bytes",
+            "admin-guide/cgroup-v1/memory.rst :: Memory Resource Controller > 3. User Interface",
+            "admin-guide/cgroup-v1/memory.rst :: Memory Resource Controller > 3. User Interface"
+          ]
+        },
+        {
+          "id": "q112",
+          "question": "What is the global default swappiness, and can a cgroup v1 memory group override it?",
+          "gold": "admin-guide/sysctl/vm.rst",
+          "rank": null,
+          "got": [
+            "admin-guide/cgroup-v1/memory.rst :: y Resource Controller > 5. Misc. interfaces > 5.3 swappiness",
+            "admin-guide/cgroup-v2.rst :: rol Group v2 > Controllers > Memory > Memory Interface Files",
+            "admin-guide/cgroup-v1/memory.rst :: e Controller > Benefits and Purpose of the memory controller"
+          ]
+        },
+        {
+          "id": "q113",
+          "question": "What is the minimum Clang version to build the kernel, and how do I build with a versioned LLVM like clang-14?",
+          "gold": "process/changes.rst",
+          "rank": 19,
+          "got": [
+            "kbuild/llvm.rst :: Building Linux with Clang/LLVM > Getting LLVM",
+            "kbuild/llvm.rst :: Building Linux with Clang/LLVM",
+            "process/changes.rst ::  Kernel > Intro > Kernel compilation > Clang/LLVM (optional)"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "hybrid_rerank",
+      "n": 113,
+      "recall@1": 0.6637,
+      "recall@3": 0.8496,
+      "recall@5": 0.8673,
+      "recall@10": 0.9381,
+      "recall@20": 0.9912,
+      "mrr": 0.7771,
+      "doc@5": 0.9823,
+      "p50_ms": 2263.5,
+      "p95_ms": 2487.5,
+      "recall@5_by_category": {
+        "boot-param": 1.0,
+        "build": 0.571,
+        "coding": 0.947,
+        "config": 1.0,
+        "factual": 0.957,
+        "internals": 1.0,
+        "multi-hop": 0.0,
+        "procedure": 0.818,
+        "process": 0.875,
+        "procfs": 1.0,
+        "sysctl": 1.0,
+        "sysfs": 0.889,
+        "tracing": 0.667,
+        "troubleshooting": 0.75
+      },
+      "misses@5": [
+        {
+          "id": "q013",
+          "question": "What should I use instead of one-element or zero-length trailing arrays in kernel structs?",
+          "gold": "process/deprecated.rst",
+          "rank": 6,
+          "got": [
+            "process/deprecated.rst :: ibutes, and Conventions > Zero-length and one-element arrays",
+            "process/deprecated.rst :: d Conventions > open-coded arithmetic in allocator arguments",
+            "process/deprecated.rst :: ibutes, and Conventions > Zero-length and one-element arrays"
+          ]
+        },
+        {
+          "id": "q018",
+          "question": "What severity levels does checkpatch.pl report?",
+          "gold": "process/submitting-patches.rst",
+          "rank": 6,
+          "got": [
+            "dev-tools/checkpatch.rst :: Checkpatch > Message Levels",
+            "dev-tools/checkpatch.rst :: Checkpatch",
+            "driver-api/media/maintainer-entry-profile.rst ::  Profile > Submit Checklist Addendum > Coding Style Addendum"
+          ]
+        },
+        {
+          "id": "q043",
+          "question": "Where do I read KUnit results when I run tests without kunit.py?",
+          "gold": "dev-tools/kunit/faq.rst",
+          "rank": 13,
+          "got": [
+            "dev-tools/kunit/run_manual.rst :: Run Tests without kunit_tool > Retrieve Test Results",
+            "dev-tools/kunit/run_wrapper.rst :: Running tests with kunit_tool > Parsing test results",
+            "dev-tools/kunit/start.rst :: Getting Started > Running Tests without the KUnit Wrapper"
+          ]
+        },
+        {
+          "id": "q048",
+          "question": "Why does ftrace sometimes show <...> instead of a task name?",
+          "gold": "trace/ftrace.rst",
+          "rank": 11,
+          "got": [
+            "trace/events-landlock.rst :: Landlock Trace Events > Event samples",
+            "trace/ftrace.rst :: ftrace - Function Tracer > Output format:",
+            "trace/ftrace.rst :: ftrace - Function Tracer > Introduction"
+          ]
+        },
+        {
+          "id": "q050",
+          "question": "How do I avoid computing tracepoint arguments when the tracepoint is disabled?",
+          "gold": "trace/tracepoints.rst",
+          "rank": 12,
+          "got": [
+            "trace/ftrace.rst :: ftrace - Function Tracer > Filter commands",
+            "admin-guide/LSM/landlock.rst :: ent > Tracepoints > Observability guarantees and limitations",
+            "trace/ftrace.rst :: ftrace - Function Tracer > trace_options"
+          ]
+        },
+        {
+          "id": "q054",
+          "question": "When does a Kconfig menu entry become visible?",
+          "gold": "kbuild/kconfig-language.rst",
+          "rank": 6,
+          "got": [
+            "kbuild/kconfig-language.rst :: Kconfig Language > Menu structure",
+            "kbuild/kconfig-language.rst :: Kconfig Language > Menu attributes",
+            "kbuild/kconfig-language.rst :: Kconfig Language > Menu attributes"
+          ]
+        },
+        {
+          "id": "q055",
+          "question": "What is Energy Aware Scheduling trying to optimise?",
+          "gold": "scheduler/sched-energy.rst",
+          "rank": 6,
+          "got": [
+            "scheduler/sched-energy.rst :: Energy Aware Scheduling > 1. Introduction",
+            "scheduler/sched-energy.rst :: Energy Aware Scheduling > 4. Energy-Aware task placement",
+            "scheduler/sched-energy.rst :: ndencies and requirements for EAS > 6.4 - Schedutil governor"
+          ]
+        },
+        {
+          "id": "q056",
+          "question": "How can I check whether a task is running under sched_ext?",
+          "gold": "scheduler/sched-ext.rst",
+          "rank": 9,
+          "got": [
+            "scheduler/sched-domains.rst :: Scheduler Domains",
+            "scheduler/sched-ext.rst :: Extensible Scheduler Class > The Basics > Task Lifecycle",
+            "scheduler/sched-ext.rst :: Extensible Scheduler Class > Module Parameters"
+          ]
+        },
+        {
+          "id": "q093",
+          "question": "My kernel is tainted with 'P'. What does that mean?",
+          "gold": "admin-guide/tainted-kernels.rst",
+          "rank": 6,
+          "got": [
+            "admin-guide/tainted-kernels.rst :: Tainted kernels",
+            "admin-guide/tainted-kernels.rst :: nted kernels > Tainted flag in bugs, oops or panics messages",
+            "admin-guide/reporting-issues.rst :: orting issues to the kernel maintainers > Check 'taint' flag"
+          ]
+        },
+        {
+          "id": "q099",
+          "question": "What is the minimum GCC version needed to build this kernel?",
+          "gold": "process/changes.rst",
+          "rank": 10,
+          "got": [
+            "process/changes.rst :: nts to compile the Kernel > Intro > Kernel compilation > GCC",
+            "process/changes.rst :: o compile the Kernel > Intro > Kernel compilation > Binutils",
+            "process/changes.rst :: ents to compile the Kernel > Intro > System utilities > FUSE"
+          ]
+        },
+        {
+          "id": "q100",
+          "question": "What is the minimum Rust version for building Rust support in this kernel?",
+          "gold": "process/changes.rst",
+          "rank": 12,
+          "got": [
+            "process/changes.rst :: le the Kernel > Intro > Kernel compilation > Rust (optional)",
+            "rust/arch-support.rst :: Arch Support",
+            "rust/quick-start.rst :: Quick Start > Configuration"
+          ]
+        },
+        {
+          "id": "q106",
+          "question": "What does setting transparent_hugepage defrag to 'always' do?",
+          "gold": "admin-guide/mm/transhuge.rst",
+          "rank": 8,
+          "got": [
+            "admin-guide/mm/transhuge.rst :: Transparent Hugepage Support > sysfs > Global THP controls",
+            "admin-guide/kernel-parameters.txt :: The kernel's command-line parameters > transparent_hugepage",
+            "admin-guide/mm/transhuge.rst :: Transparent Hugepage Support > Boot parameters"
+          ]
+        },
+        {
+          "id": "q111",
+          "question": "What is the cgroup v2 equivalent of cgroup v1's memory.limit_in_bytes, and what happens when it is reached?",
+          "gold": "admin-guide/cgroup-v2.rst",
+          "rank": 16,
+          "got": [
+            "admin-guide/cgroup-v1/memory.rst ::  What happens when a cgroup hits memory.memsw.limit_in_bytes",
+            "admin-guide/cgroup-v1/memory.rst :: Memory Resource Controller > 7. Soft limits (DEPRECATED)",
+            "admin-guide/cgroup-v2.rst ::  Rationales for v2 > Controller Issues and Remedies > Memory"
+          ]
+        },
+        {
+          "id": "q112",
+          "question": "What is the global default swappiness, and can a cgroup v1 memory group override it?",
+          "gold": "admin-guide/sysctl/vm.rst",
+          "rank": null,
+          "got": [
+            "admin-guide/cgroup-v1/memory.rst :: y Resource Controller > 5. Misc. interfaces > 5.3 swappiness",
+            "admin-guide/cgroup-v1/memory.rst ::  What happens when a cgroup hits memory.memsw.limit_in_bytes",
+            "admin-guide/cgroup-v1/memory.rst :: .4 Swap Extension > 2.4.1 why 'memory+swap' rather than swap"
+          ]
+        },
+        {
+          "id": "q113",
+          "question": "What is the minimum Clang version to build the kernel, and how do I build with a versioned LLVM like clang-14?",
+          "gold": "process/changes.rst",
+          "rank": 19,
+          "got": [
+            "dev-tools/kmsan.rst :: ernel Memory Sanitizer (KMSAN) > Usage > Building the kernel",
+            "process/changes.rst ::  Kernel > Intro > Kernel compilation > Clang/LLVM (optional)",
+            "kbuild/llvm.rst :: Building Linux with Clang/LLVM > The LLVM= argument"
+          ]
+        }
+      ],
+      "idk_threshold": {
+        "suggested": {
+          "threshold": 2.34,
+          "unanswerable_caught": 0.75,
+          "answerable_refused": 0.035
+        },
+        "answerable_top_score_p10": 3.385,
+        "unanswerable_top_score_p90": 3.188
+      }
+    }
+  ]
+}

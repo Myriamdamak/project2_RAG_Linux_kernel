@@ -1,0 +1,5932 @@
+{
+  "summary": {
+    "generator": "openai:gpt-5.4-mini",
+    "reasoning_effort": "none",
+    "mode": "hybrid_rerank",
+    "reranker": "ce:cross-encoder/ms-marco-MiniLM-L-6-v2",
+    "embedder": "st:BAAI/bge-small-en-v1.5",
+    "n": 125,
+    "errors": 0,
+    "citation_coverage": 0.973,
+    "invalid_citation_rate": 0.0,
+    "cites_gold": 0.902,
+    "retrieved_gold": 0.929,
+    "idk_recall": 0.833,
+    "idk_false_rate": 0.009,
+    "p50_ms": 2883.7,
+    "p95_ms": 4633.5,
+    "mean_cost_usd": 0.00131,
+    "correct": 0.92,
+    "partial": 0.035,
+    "wrong": 0.044,
+    "accuracy": 0.938,
+    "faithfulness": 0.979,
+    "citation_accuracy": 0.991,
+    "judge_cost_usd": 0.2132,
+    "judge_errors": 0,
+    "judged_answerable": 113,
+    "complete": true
+  },
+  "rows": [
+    {
+      "id": "q001",
+      "category": "troubleshooting",
+      "answerable": true,
+      "question": "My CEC timings go out of spec with cec-gpio when chronyd is running. What should I change?",
+      "answer": "Add a `maxslewrate 40000` line to `chronyd.conf`. This limits the clock frequency change to 1/25th and keeps the CEC timings within spec. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 0.5,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 4113.3,
+      "cost_usd": 0.000441,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 107,
+          "cached_input_tokens": 2048,
+          "output_tokens": 46,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "Add a `maxslewrate 40000` line to `chronyd.conf`.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "This limits the clock frequency change to 1/25th.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "This keeps the CEC timings within spec.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00081525
+      }
+    },
+    {
+      "id": "q002",
+      "category": "config",
+      "answerable": true,
+      "question": "Why can't early parameters like mem= see values set in an embedded bootconfig, and which option fixes it?",
+      "answer": "Early parameter handlers like `mem=` cannot see values from an embedded bootconfig because the embedded bootconfig is parsed at runtime only after `parse_early_param()` has already run. [1]  \n`CONFIG_CMDLINE_FROM_BOOTCONFIG` fixes this by rendering the embedded `kernel` subtree at build time and prepending it to `boot_command_line` during early architecture setup, so the keys are visible to `parse_early_param()`. [1][4]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 5993.6,
+      "cost_usd": 0.002141,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 106,
+          "cached_input_tokens": 0,
+          "output_tokens": 42,
+          "thinking_tokens": 0
+        },
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1873,
+          "cached_input_tokens": 0,
+          "output_tokens": 104,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "Early parameter handlers like `mem=` cannot see values from an embedded bootconfig because the embedded bootconfig is parsed at runtime only after `parse_early_param()` has already run.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "`CONFIG_CMDLINE_FROM_BOOTCONFIG` fixes this by rendering the embedded `kernel` subtree at build time and prepending it to `boot_command_line` during early architecture setup, so the keys are visible to `parse_early_param()`.",
+            "cited": [
+              1,
+              4
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.002046
+      }
+    },
+    {
+      "id": "q003",
+      "category": "config",
+      "answerable": true,
+      "question": "Which architectures support CONFIG_CMDLINE_FROM_BOOTCONFIG?",
+      "answer": "Currently only x86 selects `CONFIG_ARCH_SUPPORTS_CMDLINE_FROM_BOOTCONFIG`, so only x86 supports `CONFIG_CMDLINE_FROM_BOOTCONFIG` in the excerpts provided. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 3219.5,
+      "cost_usd": 0.0016,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1887,
+          "cached_input_tokens": 0,
+          "output_tokens": 41,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "Currently only x86 selects `CONFIG_ARCH_SUPPORTS_CMDLINE_FROM_BOOTCONFIG`, so only x86 supports `CONFIG_CMDLINE_FROM_BOOTCONFIG` in the excerpts provided.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00167625
+      }
+    },
+    {
+      "id": "q004",
+      "category": "procedure",
+      "answerable": true,
+      "question": "In cgroup v1, how do I limit a memory cgroup to 4 MB?",
+      "answer": "To limit a memory cgroup to 4 MB, write `4M` to its `memory.limit_in_bytes` file after creating and entering the cgroup, for example: [1]\n\n```sh\n# mkdir /sys/fs/cgroup/memory/0\n# echo $$ > /sys/fs/cgroup/memory/0/tasks\n# echo 4M > /sys/fs/cgroup/memory/0/memory.limit_in_bytes\n```\n\nThe documentation also shows that the limit can then be read back from `memory.limit_in_bytes`. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 3111.4,
+      "cost_usd": 0.00182,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1683,
+          "cached_input_tokens": 0,
+          "output_tokens": 124,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "To limit a memory cgroup to 4 MB in cgroup v1, write 4M to memory.limit_in_bytes after creating and entering the cgroup.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "The limit can be read back from memory.limit_in_bytes.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.001722
+      }
+    },
+    {
+      "id": "q005",
+      "category": "procedure",
+      "answerable": true,
+      "question": "How do I remove a cgroup v1 memory limit and make it unlimited again?",
+      "answer": "Write `-1` to the cgroup\u2019s `memory.limit_in_bytes` file to reset it to unlimited. [2]\n\n```sh\necho -1 > /sys/fs/cgroup/memory/0/memory.limit_in_bytes\n```",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 4176.5,
+      "cost_usd": 0.001923,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 101,
+          "cached_input_tokens": 0,
+          "output_tokens": 37,
+          "thinking_tokens": 0
+        },
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1887,
+          "cached_input_tokens": 0,
+          "output_tokens": 59,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "Write `-1` to the cgroup\u2019s `memory.limit_in_bytes` file to reset it to unlimited.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "The example command is `echo -1 > /sys/fs/cgroup/memory/0/memory.limit_in_bytes`.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.0018405
+      }
+    },
+    {
+      "id": "q006",
+      "category": "factual",
+      "answerable": true,
+      "question": "Which dmem cgroup file tells me the total capacity of a device memory region, and where does it exist?",
+      "answer": "`dmem.capacity` describes the maximum region capacity, and it only exists on the root cgroup. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 3874.3,
+      "cost_usd": 0.001697,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 107,
+          "cached_input_tokens": 0,
+          "output_tokens": 40,
+          "thinking_tokens": 0
+        },
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1712,
+          "cached_input_tokens": 0,
+          "output_tokens": 34,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "`dmem.capacity` describes the maximum region capacity.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "`dmem.capacity` only exists on the root cgroup.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00156525
+      }
+    },
+    {
+      "id": "q007",
+      "category": "factual",
+      "answerable": true,
+      "question": "What Unicode range does Linux reserve as the 'Linux Zone'?",
+      "answer": "Linux reserves the range U+F000 to U+F8FF as the \u201cLinux Zone.\u201d [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2847.6,
+      "cost_usd": 0.000346,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 95,
+          "cached_input_tokens": 2048,
+          "output_tokens": 27,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "Linux reserves the range U+F000 to U+F8FF as the \"Linux Zone\".",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.001821
+      }
+    },
+    {
+      "id": "q008",
+      "category": "procedure",
+      "answerable": true,
+      "question": "Can I move several PIDs at once by writing them to a cgroup v1 tasks file?",
+      "answer": "No. A cgroup v1 `tasks` file accepts only one PID per write; you can attach only one task at a time, and if you have several tasks you must write them one after another. [1][2][6]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2752.8,
+      "cost_usd": 0.001547,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1745,
+          "cached_input_tokens": 0,
+          "output_tokens": 53,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "A cgroup v1 tasks file accepts only one PID per write.",
+            "cited": [
+              1,
+              2,
+              6
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "You can attach only one task at a time to a cgroup v1 tasks file.",
+            "cited": [
+              1,
+              2,
+              6
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "If you have several tasks, you must write them one after another.",
+            "cited": [
+              1,
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00187275
+      }
+    },
+    {
+      "id": "q009",
+      "category": "procedure",
+      "answerable": true,
+      "question": "After building a trimmed kernel, what command installs it?",
+      "answer": "The command to install it is:\n```sh\ncommand -v installkernel && sudo make modules_install install\n``` \n[2][3][4]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2379.4,
+      "cost_usd": 0.000452,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 201,
+          "cached_input_tokens": 1920,
+          "output_tokens": 35,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "The command to install the trimmed kernel is `command -v installkernel && sudo make modules_install install`.",
+            "cited": [
+              2,
+              3,
+              4
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00178575
+      }
+    },
+    {
+      "id": "q010",
+      "category": "procedure",
+      "answerable": true,
+      "question": "How can I create a compressed cpio initrd image from a directory?",
+      "answer": "Create a directory with the desired initrd content, `cd` to that directory, and run: [1]\n\n```sh\nfind . | cpio --quiet -H newc -o | gzip -9 -n > /boot/imagefile.img\n```\n\nThe docs also show a similar script that uses `find . | cpio -o -H newc | gzip` to build a prebuilt cpio archive from a directory. [2]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2956.2,
+      "cost_usd": 0.00178,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1791,
+          "cached_input_tokens": 0,
+          "output_tokens": 97,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "Create a directory with the desired initrd content, `cd` to that directory, and run `find . | cpio --quiet -H newc -o | gzip -9 -n > /boot/imagefile.img` to make a compressed cpio initrd image.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "The docs also show a similar script using `find . | cpio -o -H newc | gzip` to build a prebuilt cpio archive from a directory.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.002016
+      }
+    },
+    {
+      "id": "q011",
+      "category": "factual",
+      "answerable": true,
+      "question": "What does the L flag do in binfmt_misc?",
+      "answer": "The ``L`` flag turns binfmt_misc into loader substitution: the kernel loads the matched binary itself as the main image and substitutes the registered interpreter for the loader named in the binary's ``PT_INTERP``. [1][3]\n\nIt is for ELF binaries of a native architecture, and it runs the binary as a fully native exec. [1][3]\n\nIt rejects the classic-dispatch flags ``T``, ``P``, ``O`` and ``C`` at registration. [5]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 3003.5,
+      "cost_usd": 0.00078,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 212,
+          "cached_input_tokens": 1920,
+          "output_tokens": 106,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "The L flag turns binfmt_misc into loader substitution: the kernel loads the matched binary itself as the main image and substitutes the registered interpreter for the loader named in the binary's PT_INTERP.",
+            "cited": [
+              1,
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "The L flag is for ELF binaries of a native architecture and runs the binary as a fully native exec.",
+            "cited": [
+              1,
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "The L flag rejects the classic-dispatch flags T, P, O, and C at registration.",
+            "cited": [
+              5
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00234075
+      }
+    },
+    {
+      "id": "q012",
+      "category": "factual",
+      "answerable": true,
+      "question": "What happens to processes in a cgroup v2 group once its memory usage goes over memory.high?",
+      "answer": "If a cgroup\u2019s usage goes over `memory.high`, the processes of the cgroup are throttled and put under heavy reclaim pressure. [3]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2543.2,
+      "cost_usd": 0.000422,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 148,
+          "cached_input_tokens": 2048,
+          "output_tokens": 35,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "If a cgroup\u2019s usage goes over `memory.high`, the processes of the cgroup are throttled and put under heavy reclaim pressure.",
+            "cited": [
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00188925
+      }
+    },
+    {
+      "id": "q013",
+      "category": "coding",
+      "answerable": true,
+      "question": "What should I use instead of one-element or zero-length trailing arrays in kernel structs?",
+      "answer": "Use **flexible array members** instead of one-element or zero-length trailing arrays in kernel structs. [1][3]\n\nFor example, declare the trailing member as `struct foo items[];` rather than `items(1)` or `items(0)`. [3]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": false,
+      "retrieved_gold": true,
+      "ms": 2824.8,
+      "cost_usd": 0.001655,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1805,
+          "cached_input_tokens": 0,
+          "output_tokens": 67,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "Use flexible array members instead of one-element or zero-length trailing arrays in kernel structs.",
+            "cited": [
+              1,
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "The trailing member should be declared as `struct foo items[];` rather than `items[1]` or `items[0]`.",
+            "cited": [
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "The flexible array member should be used together with the `struct_size()` and `flex_array_size()` helpers.",
+            "cited": [
+              6
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00196725
+      }
+    },
+    {
+      "id": "q014",
+      "category": "coding",
+      "answerable": true,
+      "question": "How should I write an allocation size like current_size + chunk_size * (count - 3) safely?",
+      "answer": "Use the overflow-safe helpers instead of open-coded arithmetic: `size_add(current_size, size_mul(chunk_size, size_sub(count, 3)))` inside the allocation call. [3]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 3137.3,
+      "cost_usd": 0.00169,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 2001,
+          "cached_input_tokens": 0,
+          "output_tokens": 42,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "Use the overflow-safe helpers instead of open-coded arithmetic.",
+            "cited": [
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "The safe form is `size_add(current_size, size_mul(chunk_size, size_sub(count, 3)))` inside the allocation call.",
+            "cited": [
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.0018855
+      }
+    },
+    {
+      "id": "q015",
+      "category": "procedure",
+      "answerable": true,
+      "question": "How can I list the versions of the build tools installed on my system to compare with the kernel's minimal requirements?",
+      "answer": "You can run `./scripts/ver_linux` to get a list of the programs on your system along with their versions for comparison against the minimal requirements. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 4142.1,
+      "cost_usd": 0.001298,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 107,
+          "cached_input_tokens": 0,
+          "output_tokens": 24,
+          "thinking_tokens": 0
+        },
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1258,
+          "cached_input_tokens": 0,
+          "output_tokens": 37,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "You can run `./scripts/ver_linux` to get a list of the programs on your system along with their versions for comparison against the minimal requirements.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00117975
+      }
+    },
+    {
+      "id": "q016",
+      "category": "coding",
+      "answerable": true,
+      "question": "Why shouldn't I print pointers with %p, and what should I use for code addresses?",
+      "answer": "`%p` hashes pointer values to prevent leaking kernel memory layout, so it should not be used when you need a raw address, and new uses of `%p` should not be added to the kernel. [2][3][5] For code/text addresses, use `%pS` instead, since it produces the symbol name rather than a raw pointer value. [2][5]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 4645.9,
+      "cost_usd": 0.002101,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 102,
+          "cached_input_tokens": 0,
+          "output_tokens": 45,
+          "thinking_tokens": 0
+        },
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1895,
+          "cached_input_tokens": 0,
+          "output_tokens": 89,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "%p hashes pointer values to prevent leaking kernel memory layout, so it should not be used when you need a raw address, and new uses of %p should not be added to the kernel.",
+            "cited": [
+              2,
+              3,
+              5
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "For code/text addresses, use %pS instead, since it produces the symbol name rather than a raw pointer value.",
+            "cited": [
+              2,
+              5
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00198
+      }
+    },
+    {
+      "id": "q017",
+      "category": "process",
+      "answerable": true,
+      "question": "Is sending pure coding-style cleanup patches a good way to start contributing?",
+      "answer": "No. Pure coding-style cleanup patches are seen as noise and are best avoided; the docs say they get a chilly reception and should not be made for their own sake [1]. In netdev, simple standalone clean-ups are also discouraged because their churn costs more than their value [6].",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2702.0,
+      "cost_usd": 0.001672,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1822,
+          "cached_input_tokens": 0,
+          "output_tokens": 68,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "Pure coding-style cleanup patches are seen as noise, get a chilly reception, and should be avoided when done for their own sake.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "In netdev, simple standalone clean-ups are discouraged because the churn they create costs more than their value.",
+            "cited": [
+              6
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.0018135
+      }
+    },
+    {
+      "id": "q018",
+      "category": "process",
+      "answerable": true,
+      "question": "What severity levels does checkpatch.pl report?",
+      "answer": "`checkpatch.pl` reports three severity levels: `ERROR`, `WARNING`, and `CHECK`. `[1][6]`",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 0.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2575.1,
+      "cost_usd": 0.001346,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1615,
+          "cached_input_tokens": 0,
+          "output_tokens": 30,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "checkpatch.pl reports three severity levels: ERROR, WARNING, and CHECK.",
+            "cited": [
+              1,
+              6
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.0014115
+      }
+    },
+    {
+      "id": "q019",
+      "category": "process",
+      "answerable": true,
+      "question": "If my patch moves code to another file, can I also clean that code up in the same patch?",
+      "answer": "No. When moving code from one file to another, you should not modify the moved code at all in the same patch that moves it. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2803.3,
+      "cost_usd": 0.000456,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 206,
+          "cached_input_tokens": 1920,
+          "output_tokens": 35,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "No, you should not modify moved code in the same patch that moves it.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "This is so reviewers and tools can see the move separately from the changes.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00193125
+      }
+    },
+    {
+      "id": "q020",
+      "category": "procedure",
+      "answerable": true,
+      "question": "How can I quickly check that a single file I changed while backporting still compiles?",
+      "answer": "Build just that file with `make path/to/file.o`, assuming you have the `.config` and build environment set up correctly. [1]\n\n```sh\nmake path/to/file.o\n```\n\nThis is only a quick sanity check; it does not catch linker errors, so you should still do a full build afterward. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2449.8,
+      "cost_usd": 0.001695,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1792,
+          "cached_input_tokens": 0,
+          "output_tokens": 78,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "Build just that file with `make path/to/file.o` if you have the `.config` and build environment set up correctly.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "This is a quick sanity check for a single file changed during backporting.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "Building a single file will not catch linker errors.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "You should still do a full build afterward.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00202425
+      }
+    },
+    {
+      "id": "q021",
+      "category": "sysfs",
+      "answerable": true,
+      "question": "How do I make my Dell laptop keyboard backlight turn off after 10 minutes of inactivity?",
+      "answer": "Write `10m` to `/sys/class/leds/dell::kbd_backlight/stop_timeout` to set the keyboard illumination to turn off after 10 minutes of inactivity. [2]\n\n```sh\necho 10m > /sys/class/leds/dell::kbd_backlight/stop_timeout\n```",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2833.7,
+      "cost_usd": 0.001331,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1325,
+          "cached_input_tokens": 0,
+          "output_tokens": 75,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "Writing `10m` to `/sys/class/leds/dell::kbd_backlight/stop_timeout` sets the keyboard backlight to turn off after 10 minutes of inactivity.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.001278
+      }
+    },
+    {
+      "id": "q022",
+      "category": "sysfs",
+      "answerable": true,
+      "question": "How do I reset all the ACPI interrupt counters under /sys/firmware/acpi/interrupts?",
+      "answer": "Reset all the ACPI interrupt counters by writing `0` to `sci` in `/sys/firmware/acpi/interrupts`, which clears all counters [1].\n\n```sh\necho 0 > sci\n```",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2930.4,
+      "cost_usd": 0.000532,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 166,
+          "cached_input_tokens": 2432,
+          "output_tokens": 50,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "Reset all the ACPI interrupt counters by writing 0 to sci in /sys/firmware/acpi/interrupts.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "Writing 0 to sci clears all counters.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.002301
+      }
+    },
+    {
+      "id": "q023",
+      "category": "sysfs",
+      "answerable": true,
+      "question": "How do I reset an hfi1 InfiniBand chip through sysfs, and when is it allowed?",
+      "answer": "Write `reset` to `/sys/class/infiniband/hfi1_X/chip_reset` to reset the chip if possible. [1]\n\nIt is only allowed if no user contexts are open that use chip resources. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 7145.2,
+      "cost_usd": 0.00209,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 106,
+          "cached_input_tokens": 0,
+          "output_tokens": 33,
+          "thinking_tokens": 0
+        },
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 2135,
+          "cached_input_tokens": 0,
+          "output_tokens": 58,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "Write \"reset\" to /sys/class/infiniband/hfi1_X/chip_reset to reset the chip if possible.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "Resetting through chip_reset is only allowed if no user contexts are open that use chip resources.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.0019845
+      }
+    },
+    {
+      "id": "q024",
+      "category": "sysfs",
+      "answerable": true,
+      "question": "How are duplicate DMI entry types named under /sys/firmware/dmi/entries?",
+      "answer": "Duplicate DMI entry types are named by appending an instance number to the type, as `T-0` through `T-(N-1)` for `N` entries of type `T`. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 3314.9,
+      "cost_usd": 0.001621,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1838,
+          "cached_input_tokens": 0,
+          "output_tokens": 54,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "Duplicate DMI entry types are named with an instance number appended, from T-0 through T-(N-1) for N entries of type T.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00160125
+      }
+    },
+    {
+      "id": "q025",
+      "category": "troubleshooting",
+      "answerable": true,
+      "question": "My USB NCM modem fails with default cdc_ncm settings. Is there a quirk I can test?",
+      "answer": "Yes: you can test the `ndp_to_end` quirk by writing `Y` to `/sys/class/net/<iface>/cdc_ncm/ndp_to_end` for temporary testing of a suspect device failing to work with the default driver settings. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2715.0,
+      "cost_usd": 0.001165,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1199,
+          "cached_input_tokens": 0,
+          "output_tokens": 59,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "You can test the `ndp_to_end` quirk by writing `Y` to `/sys/class/net/<iface>/cdc_ncm/ndp_to_end`.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "This is intended for temporary testing of a suspect device failing to work with the default driver settings.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00135975
+      }
+    },
+    {
+      "id": "q026",
+      "category": "sysfs",
+      "answerable": true,
+      "question": "What does writing a negative value to a USB device's power/autosuspend file do?",
+      "answer": "Writing a negative value to `power/autosuspend` prevents the device from being autosuspended, and if the device is already suspended, it will resume it. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2551.0,
+      "cost_usd": 0.001252,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1399,
+          "cached_input_tokens": 0,
+          "output_tokens": 45,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "Writing a negative value to `power/autosuspend` prevents the device from being autosuspended.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "If the device is already suspended, writing a negative value to `power/autosuspend` will resume it.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00143175
+      }
+    },
+    {
+      "id": "q027",
+      "category": "factual",
+      "answerable": true,
+      "question": "Until what date will ext4 timestamps work on filesystems with large inodes?",
+      "answer": "Ext4 timestamps on filesystems with large inodes should not overflow until May 2446. [2]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2817.2,
+      "cost_usd": 0.000357,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 103,
+          "cached_input_tokens": 2176,
+          "output_tokens": 26,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "Ext4 timestamps on filesystems with large inodes should not overflow until May 2446.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00192975
+      }
+    },
+    {
+      "id": "q028",
+      "category": "factual",
+      "answerable": true,
+      "question": "What is the name of the quota generic netlink interface?",
+      "answer": "The name of the quota generic netlink interface is `VFS_DQUOT`. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 3185.0,
+      "cost_usd": 0.001264,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1542,
+          "cached_input_tokens": 0,
+          "output_tokens": 24,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "The name of the quota generic netlink interface is VFS_DQUOT.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00134025
+      }
+    },
+    {
+      "id": "q029",
+      "category": "factual",
+      "answerable": true,
+      "question": "With ext4's sparse_super feature, which block groups keep backup superblocks?",
+      "answer": "With ext4\u2019s `sparse_super` feature, redundant copies of the superblock and group descriptors are kept only in block groups whose number is either 0 or a power of 3, 5, or 7. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2902.6,
+      "cost_usd": 0.000476,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 99,
+          "cached_input_tokens": 2176,
+          "output_tokens": 53,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "partial",
+        "claims": [
+          {
+            "claim": "With ext4\u2019s sparse_super feature, redundant copies of the superblock and group descriptors are kept only in block groups whose number is either 0 or a power of 3, 5, or 7.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.0020595
+      }
+    },
+    {
+      "id": "q030",
+      "category": "process",
+      "answerable": true,
+      "question": "Can I send only some patches of an XFS patchset to linux-xfs?",
+      "answer": "No. Any patchset changing XFS must be cc'd in its entirety to `linux-xfs`, and you should not send partial patchsets because that makes analysis of the broader context of the changes unnecessarily difficult. [1][2]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2798.6,
+      "cost_usd": 0.001504,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1657,
+          "cached_input_tokens": 0,
+          "output_tokens": 58,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "Any patchset changing XFS must be cc'd in its entirety to linux-xfs.",
+            "cited": [
+              1,
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "Partial patchsets should not be sent because they make analysis of the broader context of the changes unnecessarily difficult.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00165675
+      }
+    },
+    {
+      "id": "q031",
+      "category": "factual",
+      "answerable": true,
+      "question": "Which inode flag marks an ext4 directory as using a hashed btree?",
+      "answer": "The `EXT4_INDEX_FL` (`0x1000`) inode flag marks an ext4 directory as using a hashed btree (htree). [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2791.1,
+      "cost_usd": 0.00045,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 173,
+          "cached_input_tokens": 2048,
+          "output_tokens": 37,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "The EXT4_INDEX_FL (0x1000) inode flag marks an ext4 directory as using a hashed btree (htree).",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.001926
+      }
+    },
+    {
+      "id": "q032",
+      "category": "factual",
+      "answerable": true,
+      "question": "What naming convention should switch port netdevs follow?",
+      "answer": "Suggested naming convention is `swXpYsZ`, where `X` is the switch name or ID, `Y` is the port name or ID, and `Z` is the sub-port name or ID. For example, `sw1p1s0` would be sub-port 0 on port 1 on switch 1. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 0.5,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2285.2,
+      "cost_usd": 0.001643,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1734,
+          "cached_input_tokens": 0,
+          "output_tokens": 76,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "The suggested naming convention is `swXpYsZ`.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "In that convention, X is the switch name or ID, Y is the port name or ID, and Z is the sub-port name or ID.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "Example: `sw1p1s0` means sub-port 0 on port 1 on switch 1.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00193125
+      }
+    },
+    {
+      "id": "q033",
+      "category": "procedure",
+      "answerable": true,
+      "question": "How do I set the MAC address of a VF on an Intel E800-series (ice) NIC, and how long does it last?",
+      "answer": "To change the MAC address for a VF on an Intel E800-series (ice) NIC, use: [1]\n\n```bash\n# ip link set <ethX> vf 0 mac <address>\n```\n\nFor example: [1]\n\n```bash\n# ip link set <ethX> vf 0 mac 00:01:02:03:04:05\n```\n\nThis setting lasts until the PF is reloaded. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 4796.3,
+      "cost_usd": 0.002206,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 112,
+          "cached_input_tokens": 0,
+          "output_tokens": 37,
+          "thinking_tokens": 0
+        },
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1989,
+          "cached_input_tokens": 0,
+          "output_tokens": 103,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "To change the MAC address for a VF on an Intel E800-series (ice) NIC, use `ip link set <ethX> vf 0 mac <address>`.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "An example command is `ip link set <ethX> vf 0 mac 00:01:02:03:04:05`.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "The setting lasts until the PF is reloaded.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "Assigning a MAC address for a VF from the host disables subsequent requests to change the MAC address from within the VM.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00234375
+      }
+    },
+    {
+      "id": "q034",
+      "category": "factual",
+      "answerable": true,
+      "question": "What does PHY_INTERFACE_MODE_RGMII_ID mean for a PHY driver?",
+      "answer": "`PHY_INTERFACE_MODE_RGMII_ID` means the PHY should insert internal delays for both transmit and receive data lines from/to the PHY device. [1][2]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2828.7,
+      "cost_usd": 0.001695,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1996,
+          "cached_input_tokens": 0,
+          "output_tokens": 44,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "PHY_INTERFACE_MODE_RGMII_ID means the PHY should insert internal delays for both transmit and receive data lines from/to the PHY device.",
+            "cited": [
+              1,
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00174225
+      }
+    },
+    {
+      "id": "q035",
+      "category": "factual",
+      "answerable": true,
+      "question": "Which AF_PACKET fanout policy spreads packets round-robin across sockets?",
+      "answer": "`PACKET_FANOUT_LB` schedules packets to sockets by round-robin, so it is the AF_PACKET fanout policy that spreads packets round-robin across sockets [1].",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2753.5,
+      "cost_usd": 0.001703,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1983,
+          "cached_input_tokens": 0,
+          "output_tokens": 48,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "PACKET_FANOUT_LB schedules packets to sockets by round-robin, so it is the AF_PACKET fanout policy that spreads packets round-robin across sockets.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.0017535
+      }
+    },
+    {
+      "id": "q036",
+      "category": "factual",
+      "answerable": true,
+      "question": "When does RPS flow limit start dropping packets from large flows?",
+      "answer": "RPS flow limit starts dropping packets when a CPU\u2019s input packet queue exceeds half of `net.core.netdev_max_backlog`, and a new packet arrives for a flow whose packet count over the last 256 packets exceeds the configured ratio (default: half). [1] It does not drop packets before that queue-length threshold is reached. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2486.7,
+      "cost_usd": 0.001652,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1717,
+          "cached_input_tokens": 0,
+          "output_tokens": 81,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "RPS flow limit starts dropping packets when a CPU\u2019s input packet queue exceeds half of net.core.netdev_max_backlog.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "When that threshold is reached, the kernel counts packets per flow over the last 256 packets.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "If a flow exceeds the configured ratio, defaulting to half, then a new packet from that flow is dropped.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "Flow limit does not drop packets before the queue-length threshold is reached.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00206625
+      }
+    },
+    {
+      "id": "q037",
+      "category": "coding",
+      "answerable": true,
+      "question": "On architectures with memoryless nodes, how should a subsystem find the local memory node of a CPU?",
+      "answer": "A subsystem should use `numa_mem_id()` or `cpu_to_mem()` to locate the \u201clocal memory node\u201d for the calling or specified CPU. [2] These functions return the node from which default, local page allocations will be attempted, which is the nearest node with memory on architectures that do not hide memoryless nodes. [2]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2620.2,
+      "cost_usd": 0.001619,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1715,
+          "cached_input_tokens": 0,
+          "output_tokens": 74,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "A subsystem should use `numa_mem_id()` or `cpu_to_mem()` to locate the local memory node for the calling or specified CPU.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "These functions return the node from which default, local page allocations will be attempted.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "On architectures that do not hide memoryless nodes, this local memory node is the nearest node with memory.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00193425
+      }
+    },
+    {
+      "id": "q038",
+      "category": "coding",
+      "answerable": true,
+      "question": "On PREEMPT_RT, what should kernel_fpu_begin() use instead of local_bh_disable()?",
+      "answer": "On PREEMPT_RT, `kernel_fpu_begin()` should use `preempt_disable()` instead of `local_bh_disable()` [1].",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2662.9,
+      "cost_usd": 0.001528,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1834,
+          "cached_input_tokens": 0,
+          "output_tokens": 34,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "On PREEMPT_RT, kernel_fpu_begin() should use preempt_disable() instead of local_bh_disable().",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00158325
+      }
+    },
+    {
+      "id": "q039",
+      "category": "factual",
+      "answerable": true,
+      "question": "Does swiotlb_tbl_map_single() copy the original data into the bounce buffer?",
+      "answer": "Yes. `swiotlb_tbl_map_single()` \u201calways does a \u2018sync\u2019 operation (i.e., a CPU copy) to initialize the bounce buffer to match the contents of the original buffer.\u201d [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2397.7,
+      "cost_usd": 0.001307,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1455,
+          "cached_input_tokens": 0,
+          "output_tokens": 48,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "swiotlb_tbl_map_single() always does a CPU copy to initialize the bounce buffer from the original buffer.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00133575
+      }
+    },
+    {
+      "id": "q040",
+      "category": "factual",
+      "answerable": true,
+      "question": "Why must architectures that aren't fully DMA-coherent set ARCH_DMA_MINALIGN?",
+      "answer": "Architectures that aren\u2019t fully DMA-coherent must set `ARCH_DMA_MINALIGN` so the memory allocator ensures that `kmalloc`\u2019ed buffers do not share a cache line with other objects, which makes those buffers DMA-safe. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2909.7,
+      "cost_usd": 0.001575,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1776,
+          "cached_input_tokens": 0,
+          "output_tokens": 54,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "Architectures that aren\u2019t fully DMA-coherent must set ARCH_DMA_MINALIGN so the memory allocator ensures kmalloc'ed buffers do not share a cache line with other objects, making those buffers DMA-safe.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.0016545
+      }
+    },
+    {
+      "id": "q041",
+      "category": "factual",
+      "answerable": true,
+      "question": "How old must an object be before kmemleak reports it as a leak?",
+      "answer": "An object must be at least `MSECS_MIN_AGE` old before kmemleak reports it as a memory leak, and `MSECS_MIN_AGE` defaults to 1000 [2].",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2921.6,
+      "cost_usd": 0.000443,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 110,
+          "cached_input_tokens": 1920,
+          "output_tokens": 48,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "An object must be at least MSECS_MIN_AGE old before kmemleak reports it as a memory leak.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "MSECS_MIN_AGE defaults to 1000 milliseconds.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.0019155
+      }
+    },
+    {
+      "id": "q042",
+      "category": "coding",
+      "answerable": true,
+      "question": "How do I tell kmemleak that an object it reports is not actually a leak?",
+      "answer": "Use the `kmemleak_not_leak` function for objects known not to be leaks. [1] If the memory block is known not to contain other pointers and should no longer be scanned, `kmemleak_ignore` can also be used. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2975.8,
+      "cost_usd": 0.001411,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1521,
+          "cached_input_tokens": 0,
+          "output_tokens": 60,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "Use the `kmemleak_not_leak` function for objects known not to be leaks.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "If the memory block is known not to contain other pointers and will no longer be scanned, `kmemleak_ignore` can also be used.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.001611
+      }
+    },
+    {
+      "id": "q043",
+      "category": "procedure",
+      "answerable": true,
+      "question": "Where do I read KUnit results when I run tests without kunit.py?",
+      "answer": "You read KUnit results from the debugfs file:\n\n```bash\n/sys/kernel/debug/kunit/<test_suite>/results\n```\n\nThe test results are printed there as a KTAP document, and they are read out and parsed manually when not using `kunit.py`/`kunit_tool` [1][6].",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": false,
+      "retrieved_gold": false,
+      "ms": 2914.0,
+      "cost_usd": 0.001412,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1463,
+          "cached_input_tokens": 0,
+          "output_tokens": 70,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "KUnit results are read from /sys/kernel/debug/kunit/<test_suite>/results when not using kunit.py.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "The results are printed as a KTAP document.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "When not using kunit.py/kunit_tool, the results are read out and parsed manually.",
+            "cited": [
+              1,
+              6
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00168525
+      }
+    },
+    {
+      "id": "q044",
+      "category": "config",
+      "answerable": true,
+      "question": "Is it OK to enable CONFIG_KUNIT in a production kernel?",
+      "answer": "No. `CONFIG_KUNIT` should not be enabled in a production environment because enabling KUnit disables KASLR and tests may affect kernel state in ways not suitable for production [1].",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2975.6,
+      "cost_usd": 0.00143,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1655,
+          "cached_input_tokens": 0,
+          "output_tokens": 42,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "CONFIG_KUNIT should not be enabled in a production environment.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "Enabling KUnit disables KASLR.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "Tests may affect the state of the kernel in ways not suitable for production.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.0017115
+      }
+    },
+    {
+      "id": "q045",
+      "category": "coding",
+      "answerable": true,
+      "question": "Which cache-flush interface does the kernel call for whole address space operations like fork?",
+      "answer": "`flush_cache_dup_mm(struct mm_struct *mm)` is the cache-flush interface used for whole address space page table operations such as what happens during `fork`. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2677.9,
+      "cost_usd": 0.001661,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1975,
+          "cached_input_tokens": 0,
+          "output_tokens": 40,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "flush_cache_dup_mm(struct mm_struct *mm) is the cache-flush interface used for whole address space page table operations such as during fork.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00174
+      }
+    },
+    {
+      "id": "q046",
+      "category": "coding",
+      "answerable": true,
+      "question": "In hmm_range_fault_unlocked_timeout(), what does a timeout of 0 mean?",
+      "answer": "A timeout of `0` means retry indefinitely. [2]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2714.3,
+      "cost_usd": 0.001166,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1452,
+          "cached_input_tokens": 0,
+          "output_tokens": 17,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "A timeout of 0 means retry indefinitely.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.001203
+      }
+    },
+    {
+      "id": "q047",
+      "category": "tracing",
+      "answerable": true,
+      "question": "In the function graph tracer, what does setting max_graph_depth to 1 do?",
+      "answer": "Setting `max_graph_depth` to `1` shows only the first kernel function called from user space. [2]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2615.3,
+      "cost_usd": 0.000424,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 205,
+          "cached_input_tokens": 1920,
+          "output_tokens": 28,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "Setting `max_graph_depth` to `1` shows only the first kernel function that is called from user space.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00180225
+      }
+    },
+    {
+      "id": "q048",
+      "category": "tracing",
+      "answerable": true,
+      "question": "Why does ftrace sometimes show <...> instead of a task name?",
+      "answer": "ftrace shows the task name for the recorded PID, and the name can change if that PID later `execve()`s a different command; the trace uses the PID\u2019s latest command name rather than the original one. [1] It does not explain in these excerpts when `<...>` is shown instead of a task name, so that part is not covered.",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": false,
+      "retrieved_gold": false,
+      "ms": 3341.7,
+      "cost_usd": 0.001734,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1814,
+          "cached_input_tokens": 0,
+          "output_tokens": 83,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "wrong",
+        "claims": [
+          {
+            "claim": "ftrace shows the task name for the recorded PID, and the name can change if that PID later `execve()`s a different command; the trace uses the PID\u2019s latest command name rather than the original one.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "The excerpts do not explain when `<...>` is shown instead of a task name.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.001899
+      }
+    },
+    {
+      "id": "q049",
+      "category": "tracing",
+      "answerable": true,
+      "question": "How do I reset a hist trigger's hash table without setting the trigger up again?",
+      "answer": "Use the `clear` hist trigger parameter to clear the hash table while keeping the trigger\u2019s current paused/active state [1][3]. For example:  \n```sh\necho 'hist:key=common_stacktrace:vals=len:clear' >> /sys/kernel/tracing/events/net/netif_receive_skb/trigger\n```  \nThis clears the contents of a running hist trigger and leaves its current state unchanged [1][3].",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2882.8,
+      "cost_usd": 0.000693,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 147,
+          "cached_input_tokens": 2304,
+          "output_tokens": 91,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "Use the `clear` hist trigger parameter to clear the hash table while keeping the trigger\u2019s current paused/active state.",
+            "cited": [
+              1,
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "Example command: `echo 'hist:key=common_stacktrace:vals=len:clear' >> /sys/kernel/tracing/events/net/netif_receive_skb/trigger`",
+            "cited": [
+              1,
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "This clears the contents of a running hist trigger and leaves its current state unchanged.",
+            "cited": [
+              1,
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00253275
+      }
+    },
+    {
+      "id": "q050",
+      "category": "tracing",
+      "answerable": true,
+      "question": "How do I avoid computing tracepoint arguments when the tracepoint is disabled?",
+      "answer": "I don\u2019t know  \nThe excerpts say that when a trace event is disabled, the tracepoint is a no-op with zero overhead, but they do not explain how to avoid computing tracepoint arguments when the tracepoint is disabled. [2]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": false,
+      "retrieved_gold": false,
+      "ms": 3420.8,
+      "cost_usd": 0.001504,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1651,
+          "cached_input_tokens": 0,
+          "output_tokens": 59,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "wrong",
+        "claims": [
+          {
+            "claim": "I don\u2019t know",
+            "cited": [],
+            "supported_by_cited": false,
+            "supported_by_any_source": false
+          },
+          {
+            "claim": "The excerpts say that when a trace event is disabled, the tracepoint is a no-op with zero overhead",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "They do not explain how to avoid computing tracepoint arguments when the tracepoint is disabled",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": false,
+            "supported_by_any_source": false
+          }
+        ],
+        "cost_usd": 0.001758
+      }
+    },
+    {
+      "id": "q051",
+      "category": "build",
+      "answerable": true,
+      "question": "How do I build the kernel with clang-14 / ld.lld-14 instead of the unversioned LLVM tools?",
+      "answer": "Use the `LLVM` variable with the version suffix `-14`, for example: [1]\n\n```sh\nmake LLVM=-14\n```\n\nThis will use `clang-14`, `ld.lld-14`, and the other suffixed LLVM tools instead of the unsuffixed executables. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 3582.2,
+      "cost_usd": 0.001378,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1429,
+          "cached_input_tokens": 0,
+          "output_tokens": 68,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "Use the LLVM variable with the version suffix `-14`, for example `make LLVM=-14`.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "`make LLVM=-14` will use `clang-14`, `ld.lld-14`, and the other suffixed LLVM tools instead of the unsuffixed executables.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.001557
+      }
+    },
+    {
+      "id": "q052",
+      "category": "build",
+      "answerable": true,
+      "question": "How do I pass a comma inside an argument of a Kconfig $(shell ...) call?",
+      "answer": "Use a separate variable that expands to a comma, then reference it inside the argument, e.g.: [1]\n\n```kconfig\ncomma := ,\n$(shell, echo hello$(comma) world)\n```",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2935.7,
+      "cost_usd": 0.001616,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1849,
+          "cached_input_tokens": 0,
+          "output_tokens": 51,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "Use a separate variable that expands to a comma.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "Reference that variable inside the argument, e.g. `comma := ,` and `$(shell, echo hello$(comma) world)`.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.0018
+      }
+    },
+    {
+      "id": "q053",
+      "category": "build",
+      "answerable": true,
+      "question": "Does Kconfig resolve recursive dependencies between symbols?",
+      "answer": "No. Kconfig does not do recursive dependency resolution, and recursive dependencies are described as not currently possible because Kconfig must determine the possible values of all symbols but cannot do so when there is a circular relation between symbols. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2786.0,
+      "cost_usd": 0.001687,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1908,
+          "cached_input_tokens": 0,
+          "output_tokens": 57,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "Kconfig does not do recursive dependency resolution.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "Recursive dependencies are described as a circular relation between two or more Kconfig symbols.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "Kconfig cannot determine the possible values of all symbols when there is a circular relation between them.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00195675
+      }
+    },
+    {
+      "id": "q054",
+      "category": "build",
+      "answerable": true,
+      "question": "When does a Kconfig menu entry become visible?",
+      "answer": "A menu entry becomes visible when its expression evaluates to `m` or `y`. [6]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 3001.3,
+      "cost_usd": 0.000344,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 110,
+          "cached_input_tokens": 2048,
+          "output_tokens": 24,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "A menu entry becomes visible when its expression evaluates to `m` or `y`.",
+            "cited": [
+              6
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00050325
+      }
+    },
+    {
+      "id": "q055",
+      "category": "factual",
+      "answerable": true,
+      "question": "What is Energy Aware Scheduling trying to optimise?",
+      "answer": "Energy Aware Scheduling is trying to minimize energy while still getting the job done, i.e. optimize energy-efficiency without harming performance or throughput. [6][4]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2493.6,
+      "cost_usd": 0.00151,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1750,
+          "cached_input_tokens": 0,
+          "output_tokens": 44,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "Energy Aware Scheduling tries to minimize energy while still getting the job done.",
+            "cited": [
+              6
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "It aims to optimize energy-efficiency without harming performance or throughput.",
+            "cited": [
+              4,
+              6
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00165525
+      }
+    },
+    {
+      "id": "q056",
+      "category": "procedure",
+      "answerable": true,
+      "question": "How can I check whether a task is running under sched_ext?",
+      "answer": "A task is run by sched_ext only when the BPF scheduler is loaded and running [5]. If a task has policy `SCHED_EXT` but the BPF scheduler is not loaded yet, it is treated as `SCHED_NORMAL` and scheduled by the fair-class scheduler instead [5].",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": false,
+      "retrieved_gold": false,
+      "ms": 2975.5,
+      "cost_usd": 0.001743,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1904,
+          "cached_input_tokens": 0,
+          "output_tokens": 70,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "partial",
+        "claims": [
+          {
+            "claim": "A task is run by sched_ext only when the BPF scheduler is loaded and running.",
+            "cited": [
+              5
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "If a task has policy SCHED_EXT but the BPF scheduler is not loaded yet, it is treated as SCHED_NORMAL and scheduled by the fair-class scheduler instead.",
+            "cited": [
+              5
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00191025
+      }
+    },
+    {
+      "id": "q057",
+      "category": "sysfs",
+      "answerable": true,
+      "question": "How can user space stop a driver from runtime power-managing a device?",
+      "answer": "User space can prevent the driver from power-managing the device at run time by writing `\"on\"` to `/sys/devices/.../power/control`, which causes `pm_runtime_forbid()` to be called. [2][3]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2428.8,
+      "cost_usd": 0.001615,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1848,
+          "cached_input_tokens": 0,
+          "output_tokens": 51,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "User space can prevent the driver from power-managing the device at run time by writing \"on\" to /sys/devices/.../power/control",
+            "cited": [
+              2,
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "Writing \"on\" to /sys/devices/.../power/control causes pm_runtime_forbid() to be called",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00183225
+      }
+    },
+    {
+      "id": "q058",
+      "category": "internals",
+      "answerable": true,
+      "question": "Where is an rt-mutex owner's priority-inheritance waiter tree stored, and what lock protects it?",
+      "answer": "An rt-mutex owner\u2019s priority-inheritance waiter tree is stored in the task structure as the rbtree called `pi_waiters`. [1] It is protected by the `pi_lock` spin lock in the task structure, and interrupts must be disabled when taking it. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 4322.9,
+      "cost_usd": 0.001778,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 104,
+          "cached_input_tokens": 0,
+          "output_tokens": 36,
+          "thinking_tokens": 0
+        },
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1637,
+          "cached_input_tokens": 0,
+          "output_tokens": 69,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "An rt-mutex owner\u2019s priority-inheritance waiter tree is stored in the task structure as the rbtree called `pi_waiters`.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "It is protected by the `pi_lock` spin lock in the task structure.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "Interrupts must be disabled when taking `pi_lock`.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00182325
+      }
+    },
+    {
+      "id": "q059",
+      "category": "coding",
+      "answerable": true,
+      "question": "What happens if I unlock an hwspinlock that is already unlocked?",
+      "answer": "Doing so is considered a bug, and there is no protection against it; the docs say you should **never** unlock an hwspinlock that is already unlocked. [1][2]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 4506.0,
+      "cost_usd": 0.000457,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 153,
+          "cached_input_tokens": 2048,
+          "output_tokens": 42,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "Doing so is considered a bug",
+            "cited": [
+              1,
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "There is no protection against unlocking an already-unlocked hwspinlock",
+            "cited": [
+              1,
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "You should never unlock an hwspinlock that is already unlocked",
+            "cited": [
+              1,
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00216075
+      }
+    },
+    {
+      "id": "q060",
+      "category": "internals",
+      "answerable": true,
+      "question": "In a lockdep report like {-.-.}, what do the '-' and '.' characters mean?",
+      "answer": "`-` means the lock was acquired in IRQ context, and `.` means it was acquired while IRQs were disabled and not in IRQ context. [1][4]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 4360.1,
+      "cost_usd": 0.001841,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 103,
+          "cached_input_tokens": 0,
+          "output_tokens": 33,
+          "thinking_tokens": 0
+        },
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1883,
+          "cached_input_tokens": 0,
+          "output_tokens": 45,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "`-` means the lock was acquired in IRQ context",
+            "cited": [
+              1,
+              4
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "`.` means the lock was acquired while IRQs were disabled and not in IRQ context",
+            "cited": [
+              1,
+              4
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00177975
+      }
+    },
+    {
+      "id": "q061",
+      "category": "process",
+      "answerable": true,
+      "question": "What does a new Linux Security Module need before it is accepted into the kernel?",
+      "answer": "A new LSM is accepted into the kernel when its intent has been appropriately documented in `Documentation/admin-guide/LSM/`, including a description of what it tries to protect against and when one would expect to use it. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 3140.7,
+      "cost_usd": 0.001588,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1769,
+          "cached_input_tokens": 0,
+          "output_tokens": 58,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "A new Linux Security Module must have its intent documented in Documentation/admin-guide/LSM/ before it is accepted into the kernel.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "That documentation should describe what the module is trying to protect against and when it should be used.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.0017655
+      }
+    },
+    {
+      "id": "q062",
+      "category": "config",
+      "answerable": true,
+      "question": "With the CAAM trust source, which RNG generates trusted keys and how do I seed it from the CAAM hardware RNG?",
+      "answer": "With the CAAM trust source, the normal kernel random number generator is used to generate trusted keys [1]. To seed it from the CAAM hardware RNG, enable `CRYPTO_DEV_FSL_CAAM_RNG_API` and ensure the device is probed [1].",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 38035.8,
+      "cost_usd": 0.001922,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 109,
+          "cached_input_tokens": 0,
+          "output_tokens": 43,
+          "thinking_tokens": 0
+        },
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1805,
+          "cached_input_tokens": 0,
+          "output_tokens": 65,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "With the CAAM trust source, the normal kernel random number generator is used to generate trusted keys.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "To seed it from the CAAM hardware RNG, enable CRYPTO_DEV_FSL_CAAM_RNG_API and ensure the device is probed.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00181575
+      }
+    },
+    {
+      "id": "q063",
+      "category": "factual",
+      "answerable": true,
+      "question": "Why does IPE's policy talk about operations rather than individual syscalls or LSM hooks?",
+      "answer": "IPE\u2019s policy talks about operations because it is designed for sysadmins, not kernel developers, so instead of requiring them to know which specific syscalls or hooks need rules, it lets them express the higher-level goal they want to restrict, such as code execution. [1] This reduces the chance of bypasses caused by not knowing the underlying system, while IPE\u2019s maintainers can decide which syscalls map to those operations and under what conditions. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 3130.6,
+      "cost_usd": 0.001725,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1718,
+          "cached_input_tokens": 0,
+          "output_tokens": 97,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "IPE\u2019s policy talks about operations because it is designed for sysadmins, not kernel developers, so instead of requiring them to know which specific syscalls or hooks need rules, it lets them express the higher-level goal they want to restrict, such as code execution.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "This reduces the chance of bypasses caused by not knowing the underlying system.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "IPE\u2019s maintainers can decide which syscalls map to those operations and under what conditions.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00203625
+      }
+    },
+    {
+      "id": "q064",
+      "category": "factual",
+      "answerable": true,
+      "question": "How many bytes does the CDROMREADMODE2 ioctl read per block?",
+      "answer": "CDROMREADMODE2 reads 2336 bytes per block [1][4].",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2694.9,
+      "cost_usd": 0.000392,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 141,
+          "cached_input_tokens": 2560,
+          "output_tokens": 21,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "CDROMREADMODE2 reads 2336 bytes per block",
+            "cited": [
+              1,
+              4
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00054765
+      }
+    },
+    {
+      "id": "q065",
+      "category": "coding",
+      "answerable": true,
+      "question": "What is bpf_msg_apply_bytes() used for in a sockmap program?",
+      "answer": "`bpf_msg_apply_bytes()` tells the sockmap infrastructure how many bytes of the current `msg` the current verdict should apply to. It is used when a single `sendmsg()` or `sendfile()` contains multiple logical messages, or when the program only needs to inspect the first `bytes` of a message and wants to avoid repeated verdict processing overhead. [1][2]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 0.5,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2895.7,
+      "cost_usd": 0.001707,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1748,
+          "cached_input_tokens": 0,
+          "output_tokens": 88,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "`bpf_msg_apply_bytes()` tells the sockmap infrastructure how many bytes of the current message the current verdict should apply to.",
+            "cited": [
+              1,
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "It is used when a single `sendmsg()` or `sendfile()` contains multiple logical messages.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "It is used when the program only needs to inspect the first bytes of a message and wants to avoid repeated verdict processing overhead.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.001926
+      }
+    },
+    {
+      "id": "q066",
+      "category": "sysfs",
+      "answerable": true,
+      "question": "What does /sys/firmware/acpi/platform_profile show when different drivers are set to different profiles?",
+      "answer": "When different drivers are set to different profiles, `/sys/firmware/acpi/platform_profile` shows `custom` to indicate that the profiles are not the same. [1][4]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2566.3,
+      "cost_usd": 0.001396,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1573,
+          "cached_input_tokens": 0,
+          "output_tokens": 48,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "When different drivers are set to different profiles, `/sys/firmware/acpi/platform_profile` shows `custom` to indicate that the profiles are not the same.",
+            "cited": [
+              1,
+              4
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00055875
+      }
+    },
+    {
+      "id": "q067",
+      "category": "factual",
+      "answerable": true,
+      "question": "What error do I get if I try to become an exclusive CEC follower when another process already is one?",
+      "answer": "You get `EBUSY` if someone else is already the exclusive follower and you try to become one. [2][4]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2883.7,
+      "cost_usd": 0.000421,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 170,
+          "cached_input_tokens": 2048,
+          "output_tokens": 31,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "You get `EBUSY` if someone else is already the exclusive follower and you try to become one.",
+            "cited": [
+              2,
+              4
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00185925
+      }
+    },
+    {
+      "id": "q068",
+      "category": "coding",
+      "answerable": true,
+      "question": "How can a V4L2 driver tell whether a file handle is the only one open on its device node?",
+      "answer": "A driver can call :c:func:`v4l2_fh_is_singular` on the :c:type:`v4l2_fh` to check whether it is the only open file handle; it returns 1 if so, else 0 [1].  \nIf the driver has a :c:type:`struct file`, it can instead call :c:func:`v4l2_fh_is_singular_file`, which does the same check using ``filp->private_data`` [1].",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 3469.8,
+      "cost_usd": 0.000779,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 192,
+          "cached_input_tokens": 1920,
+          "output_tokens": 109,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "A driver can call v4l2_fh_is_singular on a v4l2_fh to check whether it is the only open file handle; it returns 1 if so, else 0.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "If the driver has a struct file, it can call v4l2_fh_is_singular_file, which does the same check using filp->private_data.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00221625
+      }
+    },
+    {
+      "id": "q069",
+      "category": "internals",
+      "answerable": true,
+      "question": "In ublk, what happens when a thread issues a command for a (qid, tag) pair it is not the daemon of?",
+      "answer": "If any other thread attempts to issue a command against a ``(qid,tag)`` pair for which the thread is not the daemon, the command will fail. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2924.6,
+      "cost_usd": 0.000434,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 146,
+          "cached_input_tokens": 1920,
+          "output_tokens": 40,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "If any other thread attempts to issue a command against a (qid,tag) pair for which it is not the daemon, the command will fail.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "Only the thread that issued UBLK_U_IO_FETCH_REQ for a given (qid,tag) becomes that I/O's daemon.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "Daemons can only be reset through recovery.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00214125
+      }
+    },
+    {
+      "id": "q070",
+      "category": "coding",
+      "answerable": true,
+      "question": "How do I delete a KVM memory slot with KVM_SET_USER_MEMORY_REGION? Can I resize one?",
+      "answer": "Delete the slot by passing `0` for `memory_size` in `KVM_SET_USER_MEMORY_REGION`. [1][2] You may move an existing slot or modify its flags, but you may not resize it. [1][2]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 4018.9,
+      "cost_usd": 0.000817,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 106,
+          "cached_input_tokens": 0,
+          "output_tokens": 40,
+          "thinking_tokens": 0
+        },
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 214,
+          "cached_input_tokens": 2048,
+          "output_tokens": 54,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "Delete the slot by passing `0` for `memory_size` in `KVM_SET_USER_MEMORY_REGION`.",
+            "cited": [
+              1,
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "An existing memory slot may be moved in guest physical memory space or have its flags modified.",
+            "cited": [
+              1,
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "An existing memory slot may not be resized.",
+            "cited": [
+              1,
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00217125
+      }
+    },
+    {
+      "id": "q071",
+      "category": "factual",
+      "answerable": true,
+      "question": "Why should the low 21 bits of guest_phys_addr and userspace_addr match in a KVM memory slot?",
+      "answer": "It is recommended that the lower 21 bits of `guest_phys_addr` and `userspace_addr` be identical because this allows large pages in the guest to be backed by large pages in the host. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 4241.3,
+      "cost_usd": 0.000744,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 107,
+          "cached_input_tokens": 0,
+          "output_tokens": 47,
+          "thinking_tokens": 0
+        },
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 110,
+          "cached_input_tokens": 2048,
+          "output_tokens": 48,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "It is recommended that the lower 21 bits of guest_phys_addr and userspace_addr be identical because this allows large pages in the guest to be backed by large pages in the host.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00183975
+      }
+    },
+    {
+      "id": "q072",
+      "category": "factual",
+      "answerable": true,
+      "question": "On arm64 with SVE, what happens to the SVE registers across a system call?",
+      "answer": "On syscall, `V0..V31` are preserved, so bits `[127:0]` of `Z0..Z31` are preserved, but all other bits of `Z0..Z31`, and all of `P0..P15` and `FFR`, become zero on return from a syscall. [1] The SVE registers are not used to pass arguments to or receive results from any syscall. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2983.7,
+      "cost_usd": 0.001846,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1855,
+          "cached_input_tokens": 0,
+          "output_tokens": 101,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "On syscall, V0..V31 are preserved, so bits [127:0] of Z0..Z31 are preserved, but all other bits of Z0..Z31, and all of P0..P15 and FFR, become zero on return from a syscall.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "The SVE registers are not used to pass arguments to or receive results from any syscall.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.0019725
+      }
+    },
+    {
+      "id": "q073",
+      "category": "internals",
+      "answerable": true,
+      "question": "How does RISC-V dynamic ftrace patch function entries atomically without stop_machine()?",
+      "answer": "RISC-V dynamic ftrace pre-initializes each patchable function entry at boot so the first instruction is `AUIPC` and the second is `NOP`, which means runtime patching only has to update one instruction instead of two. [1] Because that single instruction is naturally aligned, Ziccif guarantees an atomic update, so this avoids `stop_machine()` and works with full kernel preemption. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 3040.2,
+      "cost_usd": 0.001904,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1969,
+          "cached_input_tokens": 0,
+          "output_tokens": 95,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "RISC-V dynamic ftrace pre-initializes each patchable function entry at boot so the first instruction is AUIPC and the second is NOP",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "Runtime patching only has to update one instruction instead of two",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "Because that single instruction is naturally aligned, Ziccif guarantees an atomic update",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "This avoids stop_machine() and works with full kernel preemption",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00103815
+      }
+    },
+    {
+      "id": "q074",
+      "category": "build",
+      "answerable": true,
+      "question": "Where must the Kconfig option guarding a Rust #[test] suite be defined?",
+      "answer": "It must be defined in `rust/kernel/Kconfig.test` [1].",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2717.9,
+      "cost_usd": 0.001425,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1750,
+          "cached_input_tokens": 0,
+          "output_tokens": 25,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "The Kconfig option guarding a Rust #[test] suite must be defined in `rust/kernel/Kconfig.test`.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.0015225
+      }
+    },
+    {
+      "id": "q075",
+      "category": "config",
+      "answerable": true,
+      "question": "What is the EHCI log2_irq_thresh module parameter and what are its limits?",
+      "answer": "`log2_irq_thresh` is the EHCI module parameter that sets the log2 of the default interrupt delay, in microframes, and it controls how often the EHCI controller can issue interrupts. [1] Its default value is 0, which means 1 microframe (125 usec), and its maximum value is 6, which means 2^6 = 64 microframes. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2873.8,
+      "cost_usd": 0.000629,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 119,
+          "cached_input_tokens": 1920,
+          "output_tokens": 88,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "log2_irq_thresh is the EHCI module parameter that sets the log2 of the default interrupt delay in microframes and controls how often the EHCI controller can issue interrupts.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "Its default value is 0, which means 1 microframe (125 usec).",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "Its maximum value is 6, which means 2^6 = 64 microframes.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.002196
+      }
+    },
+    {
+      "id": "q076",
+      "category": "troubleshooting",
+      "answerable": true,
+      "question": "What should I do if the EHCI driver misbehaves with my USB 2.0 devices?",
+      "answer": "If the EHCI driver misbehaves, remove its module and let the companion controller driver take over at lower speed for the devices that were previously handled by EHCI [5]. You should have a companion controller driver such as `ohci-hcd` or `uhci-hcd` available for this fallback [5].",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2968.5,
+      "cost_usd": 0.000538,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 111,
+          "cached_input_tokens": 1920,
+          "output_tokens": 69,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "If the EHCI driver misbehaves, remove its module and let the companion controller driver take over at lower speed for the devices previously handled by EHCI.",
+            "cited": [
+              5
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "A companion controller driver such as ohci-hcd or uhci-hcd should be available for this fallback.",
+            "cited": [
+              5
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00203325
+      }
+    },
+    {
+      "id": "q077",
+      "category": "coding",
+      "answerable": true,
+      "question": "In a cpufreq driver, what happens if get_intermediate() returns 0?",
+      "answer": "If `get_intermediate()` returns `0`, the core will directly call `->target_index()` instead of switching to an intermediate frequency. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2702.1,
+      "cost_usd": 0.00145,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1724,
+          "cached_input_tokens": 0,
+          "output_tokens": 35,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "If get_intermediate() returns 0, the core will directly call ->target_index() instead of switching to an intermediate frequency.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.0014775
+      }
+    },
+    {
+      "id": "q078",
+      "category": "factual",
+      "answerable": true,
+      "question": "Which BIT token id does nova use to locate the Falcon data in the VBIOS?",
+      "answer": "nova uses the Falcon data token id `0x70` to locate the Falcon data in the VBIOS. [1][2]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 3196.5,
+      "cost_usd": 0.000436,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 197,
+          "cached_input_tokens": 1920,
+          "output_tokens": 32,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "nova uses the Falcon data token id `0x70` to locate the Falcon data in the VBIOS.",
+            "cited": [
+              1,
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.0017895
+      }
+    },
+    {
+      "id": "q079",
+      "category": "internals",
+      "answerable": true,
+      "question": "Which section flags mark livepatch relocation sections?",
+      "answer": "Livepatch relocation sections must be marked with `SHF_RELA_LIVEPATCH` and also with `SHF_ALLOC`. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": false,
+      "retrieved_gold": true,
+      "ms": 2581.6,
+      "cost_usd": 0.000377,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 106,
+          "cached_input_tokens": 2048,
+          "output_tokens": 32,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "Livepatch relocation sections must be marked with SHF_RELA_LIVEPATCH and SHF_ALLOC.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00048
+      }
+    },
+    {
+      "id": "q080",
+      "category": "coding",
+      "answerable": true,
+      "question": "If every operation on my cache happens in user context, what kind of lock should protect it?",
+      "answer": "If every operation on the cache happens in user context, you can use a simple mutex to protect it. [3]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": false,
+      "retrieved_gold": true,
+      "ms": 2743.4,
+      "cost_usd": 0.001565,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1883,
+          "cached_input_tokens": 0,
+          "output_tokens": 34,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "If every operation on the cache happens in user context, you can use a simple mutex to protect it.",
+            "cited": [
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.0015795
+      }
+    },
+    {
+      "id": "q081",
+      "category": "coding",
+      "answerable": true,
+      "question": "What does spin_lock_bh() block?",
+      "answer": "`spin_lock_bh()` disables softirqs on the current CPU, so it blocks softirq execution there. [1][3] On PREEMPT_RT kernels, the `_bh()` suffix still disables softirq handlers. [6]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 3079.5,
+      "cost_usd": 0.001429,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1551,
+          "cached_input_tokens": 0,
+          "output_tokens": 59,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "spin_lock_bh() disables softirqs on the current CPU, blocking softirq execution there.",
+            "cited": [
+              1,
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "On PREEMPT_RT kernels, the _bh() suffix still disables softirq handlers.",
+            "cited": [
+              6
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00152025
+      }
+    },
+    {
+      "id": "q082",
+      "category": "factual",
+      "answerable": true,
+      "question": "Is a clock source allowed to stop counting?",
+      "answer": "Yes. A clock source \u201cwill ideally NEVER stop ticking as long as the system is running,\u201d but it \u201cmay stop during system suspend\u201d [1].",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2580.9,
+      "cost_usd": 0.001608,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1898,
+          "cached_input_tokens": 0,
+          "output_tokens": 41,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "A clock source will ideally never stop ticking as long as the system is running.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "A clock source may stop during system suspend.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00170775
+      }
+    },
+    {
+      "id": "q083",
+      "category": "sysctl",
+      "answerable": true,
+      "question": "What does vm.swappiness control, what range does it take, and what is its default?",
+      "answer": "`vm.swappiness` controls the rough relative IO cost of swapping versus filesystem paging, with lower values meaning more expensive swap IO and higher values meaning cheaper swap IO. [1] It takes a value between 0 and 200, and the default is 60. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 4179.3,
+      "cost_usd": 0.00179,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 103,
+          "cached_input_tokens": 0,
+          "output_tokens": 25,
+          "thinking_tokens": 0
+        },
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1768,
+          "cached_input_tokens": 0,
+          "output_tokens": 61,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "`vm.swappiness` controls the rough relative IO cost of swapping versus filesystem paging, with lower values meaning more expensive swap IO and higher values meaning cheaper swap IO.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "`vm.swappiness` takes a value between 0 and 200.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "The default value of `vm.swappiness` is 60.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.001926
+      }
+    },
+    {
+      "id": "q084",
+      "category": "sysctl",
+      "answerable": true,
+      "question": "How do I free the page cache and slab objects without rebooting?",
+      "answer": "Write `3` to `/proc/sys/vm/drop_caches` to free both slab objects and pagecache without rebooting. [1]\n\n```sh\necho 3 > /proc/sys/vm/drop_caches\n```",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 3581.8,
+      "cost_usd": 0.001195,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1294,
+          "cached_input_tokens": 0,
+          "output_tokens": 50,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "Writing 3 to /proc/sys/vm/drop_caches frees both slab objects and pagecache without rebooting.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "The command is echo 3 > /proc/sys/vm/drop_caches.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.001347
+      }
+    },
+    {
+      "id": "q085",
+      "category": "sysctl",
+      "answerable": true,
+      "question": "How do I enable all magic SysRq functions at runtime?",
+      "answer": "Set `/proc/sys/kernel/sysrq` to `1`, which enables all functions of SysRq at runtime. [1]\n\n```sh\necho 1 >/proc/sys/kernel/sysrq\n```",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2837.4,
+      "cost_usd": 0.001704,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1978,
+          "cached_input_tokens": 0,
+          "output_tokens": 49,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "Setting `/proc/sys/kernel/sysrq` to `1` enables all SysRq functions at runtime.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "The command `echo 1 >/proc/sys/kernel/sysrq` writes that value.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.0018375
+      }
+    },
+    {
+      "id": "q086",
+      "category": "sysctl",
+      "answerable": true,
+      "question": "Which SysRq bitmask value allows only reboot and poweroff?",
+      "answer": "`128` (`0x80`) allows reboot/poweroff [1].",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2558.4,
+      "cost_usd": 0.001526,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1879,
+          "cached_input_tokens": 0,
+          "output_tokens": 26,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "128 (0x80) allows reboot/poweroff",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00155775
+      }
+    },
+    {
+      "id": "q087",
+      "category": "coding",
+      "answerable": true,
+      "question": "How wide is an indentation level in kernel coding style?",
+      "answer": "Tabs are 8 characters, and thus indentations are also 8 characters. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2268.7,
+      "cost_usd": 0.000351,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 125,
+          "cached_input_tokens": 2048,
+          "output_tokens": 23,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "Tabs are 8 characters, and thus indentations are also 8 characters.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00048375
+      }
+    },
+    {
+      "id": "q088",
+      "category": "coding",
+      "answerable": true,
+      "question": "What is the preferred maximum line length in kernel code?",
+      "answer": "The preferred limit on the length of a single line is 80 columns. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 3070.6,
+      "cost_usd": 0.00148,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1841,
+          "cached_input_tokens": 0,
+          "output_tokens": 22,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "The preferred limit on the length of a single line is 80 columns.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00153675
+      }
+    },
+    {
+      "id": "q089",
+      "category": "process",
+      "answerable": true,
+      "question": "How do I reference the commit that introduced the bug my patch fixes?",
+      "answer": "Use a `Fixes:` tag with at least the first 12 characters of the SHA-1 ID and the one-line summary of the commit that introduced the bug [2][5]. For example: \n```text\nFixes: 54a4f0239f2e (\"KVM: MMU: make kvm_mmu_zap_page() return the number of pages it actually freed\")\n``` \nThe docs also say to provide both the commit ID and the title when citing commits in the changelog text if possible [1].",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2907.2,
+      "cost_usd": 0.000745,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 98,
+          "cached_input_tokens": 2048,
+          "output_tokens": 115,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "Use a `Fixes:` tag with at least the first 12 characters of the SHA-1 ID and the one-line summary of the commit that introduced the bug.",
+            "cited": [
+              2,
+              5
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "The docs also say to provide both the commit ID and the title when citing commits in the changelog text if possible.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "Example: `Fixes: 54a4f0239f2e (\"KVM: MMU: make kvm_mmu_zap_page() return the number of pages it actually freed\")`",
+            "cited": [],
+            "supported_by_cited": false,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00245925
+      }
+    },
+    {
+      "id": "q090",
+      "category": "process",
+      "answerable": true,
+      "question": "What rules must a patch meet to be accepted into a -stable kernel?",
+      "answer": "A patch must already exist in Linux mainline (or be an equivalent fix), be obviously correct and tested, be no bigger than 100 lines with context, and follow `Documentation/process/submitting-patches.rst` rules. [1] It must also either fix a real user-facing bug or add a device ID; examples of acceptable fixes include oopses, hangs, data corruption, real security issues, hardware quirks, and build errors, while trivial changes and purely theoretical problems are not accepted unless exploitability is explained. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2814.6,
+      "cost_usd": 0.00181,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1693,
+          "cached_input_tokens": 0,
+          "output_tokens": 120,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "A patch must already exist in Linux mainline (or be an equivalent fix) to be accepted into -stable.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "A patch must be obviously correct and tested.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "A patch cannot be bigger than 100 lines with context.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "A patch must follow Documentation/process/submitting-patches.rst rules.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "A patch must either fix a real bug that bothers people or just add a device ID.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "Acceptable fixes include oopses, hangs, data corruption, real security issues, hardware quirks, and build errors.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "Trivial changes and purely theoretical problems are not accepted unless exploitability is explained.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.002526
+      }
+    },
+    {
+      "id": "q091",
+      "category": "procfs",
+      "answerable": true,
+      "question": "What values can /proc/<pid>/oom_score_adj take, and how do I stop the OOM killer from picking a process?",
+      "answer": "`/proc/<pid>/oom_score_adj` accepts values from `-1000` (`OOM_SCORE_ADJ_MIN`) to `+1000` (`OOM_SCORE_ADJ_MAX`). [1] The lowest value, `-1000`, is equivalent to disabling oom killing entirely for that task because it will always report a badness score of 0. [1]\n\nTo stop the OOM killer from picking a process, set `/proc/<pid>/oom_score_adj` to `-1000`. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 3942.3,
+      "cost_usd": 0.002119,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 111,
+          "cached_input_tokens": 0,
+          "output_tokens": 55,
+          "thinking_tokens": 0
+        },
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1688,
+          "cached_input_tokens": 0,
+          "output_tokens": 116,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "`/proc/<pid>/oom_score_adj` accepts values from `-1000` to `+1000`.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "Setting `/proc/<pid>/oom_score_adj` to `-1000` is equivalent to disabling OOM killing entirely for that task because it will always report a badness score of 0.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "To stop the OOM killer from picking a process, set `/proc/<pid>/oom_score_adj` to `-1000`.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.0019605
+      }
+    },
+    {
+      "id": "q092",
+      "category": "coding",
+      "answerable": true,
+      "question": "What log level number corresponds to KERN_ERR and which helper prints at that level?",
+      "answer": "`KERN_ERR` corresponds to log level number `3`, and the helper is `pr_err()` [2].",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 4583.9,
+      "cost_usd": 0.001834,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 101,
+          "cached_input_tokens": 0,
+          "output_tokens": 22,
+          "thinking_tokens": 0
+        },
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 2009,
+          "cached_input_tokens": 0,
+          "output_tokens": 34,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "KERN_ERR corresponds to log level number 3",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "pr_err() is the helper that prints at KERN_ERR level",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.0018435
+      }
+    },
+    {
+      "id": "q093",
+      "category": "troubleshooting",
+      "answerable": true,
+      "question": "My kernel is tainted with 'P'. What does that mean?",
+      "answer": "`P` means a proprietary module has been loaded; modules without a `MODULE_LICENSE` or with one not recognized by `insmod` as GPL compatible are assumed to be proprietary. [4]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": false,
+      "retrieved_gold": true,
+      "ms": 3033.3,
+      "cost_usd": 0.001711,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1982,
+          "cached_input_tokens": 0,
+          "output_tokens": 50,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "`P` means a proprietary module has been loaded",
+            "cited": [
+              4
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "Modules without a `MODULE_LICENSE` or with a `MODULE_LICENSE` not recognized by `insmod` as GPL compatible are assumed to be proprietary",
+            "cited": [
+              4
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.001869
+      }
+    },
+    {
+      "id": "q094",
+      "category": "procedure",
+      "answerable": true,
+      "question": "How do I mount the cgroup v2 hierarchy?",
+      "answer": "You can mount the cgroup v2 unified hierarchy with:  \n```sh\n# mount -t cgroup2 none $MOUNT_POINT\n```  \n[2]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2518.1,
+      "cost_usd": 0.001678,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 2009,
+          "cached_input_tokens": 0,
+          "output_tokens": 38,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "You can mount the cgroup v2 unified hierarchy with `mount -t cgroup2 none $MOUNT_POINT`.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00171225
+      }
+    },
+    {
+      "id": "q095",
+      "category": "coding",
+      "answerable": true,
+      "question": "Which GFP flags should I use when allocating memory from an interrupt handler?",
+      "answer": "If the allocation is performed from an atomic context, e.g. an interrupt handler, use ``GFP_NOWAIT``. [3] If you think that accessing memory reserves is justified and the kernel will be stressed unless allocation succeeds, you may use ``GFP_ATOMIC``. [3]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2793.7,
+      "cost_usd": 0.00171,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1896,
+          "cached_input_tokens": 0,
+          "output_tokens": 64,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "If the allocation is performed from an interrupt handler or other atomic context, use GFP_NOWAIT.",
+            "cited": [
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "GFP_NOWAIT prevents direct reclaim and may fail under memory pressure, so a fallback is needed.",
+            "cited": [
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "GFP_ATOMIC may be used if accessing memory reserves is justified and allocation must succeed despite stress on the kernel.",
+            "cited": [
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00204675
+      }
+    },
+    {
+      "id": "q096",
+      "category": "config",
+      "answerable": true,
+      "question": "How do I set a parameter for a module that is built into the kernel?",
+      "answer": "For modules built into the kernel, you must specify the module parameter on the kernel command line. [2] For example, parameters can be written as `module_name.parameter=value` on boot, and the kernel command line is where built-in module parameters need to be set. [2]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2689.8,
+      "cost_usd": 0.001377,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1464,
+          "cached_input_tokens": 0,
+          "output_tokens": 62,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "For modules built into the kernel, you must specify the module parameter on the kernel command line.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "Parameters can be written as `module_name.parameter=value` on boot.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "The kernel command line is where built-in module parameters need to be set.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.001644
+      }
+    },
+    {
+      "id": "q097",
+      "category": "config",
+      "answerable": true,
+      "question": "Is log_buf_len the same parameter as log-buf-len?",
+      "answer": "Yes: hyphens and underscores are equivalent in kernel parameter names, so `log_buf_len` can also be entered as `log-buf-len`. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2813.6,
+      "cost_usd": 0.001453,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1668,
+          "cached_input_tokens": 0,
+          "output_tokens": 45,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "Hyphens and underscores are equivalent in kernel parameter names.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "`log_buf_len` can also be entered as `log-buf-len`.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.0015945
+      }
+    },
+    {
+      "id": "q098",
+      "category": "config",
+      "answerable": true,
+      "question": "How can I change a loaded module's parameter at runtime?",
+      "answer": "You can change some loaded module parameters at runtime by writing the new value to the parameter file under `/sys/module/${modulename}/parameters/` [1][2]. For example:  \n```sh\necho -n ${value} > /sys/module/${modulename}/parameters/${parm}\n```  \nThe module-specific documentation notes that some parameters are runtime changeable, and the sysfs directory contains individual parameter files that can be changed at runtime [1][4].",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2968.4,
+      "cost_usd": 0.001299,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1132,
+          "cached_input_tokens": 0,
+          "output_tokens": 100,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "You can change some loaded module parameters at runtime by writing the new value to the parameter file under /sys/module/${modulename}/parameters/",
+            "cited": [
+              1,
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "The command example is echo -n ${value} > /sys/module/${modulename}/parameters/${parm}",
+            "cited": [
+              1,
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "Some module parameters are runtime changeable and accessible as individual files in /sys/module/<MODULENAME>/parameters",
+            "cited": [
+              1,
+              4
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00158475
+      }
+    },
+    {
+      "id": "q099",
+      "category": "build",
+      "answerable": true,
+      "question": "What is the minimum GCC version needed to build this kernel?",
+      "answer": "I don\u2019t know  \nThe excerpt only says that the gcc version requirements may vary depending on the type of CPU, but it does not give a minimum GCC version. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": false,
+      "retrieved_gold": false,
+      "ms": 2817.4,
+      "cost_usd": 0.000897,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 920,
+          "cached_input_tokens": 0,
+          "output_tokens": 46,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "wrong",
+        "claims": [
+          {
+            "claim": "I don\u2019t know",
+            "cited": [],
+            "supported_by_cited": false,
+            "supported_by_any_source": false
+          },
+          {
+            "claim": "The excerpt only says that the gcc version requirements may vary depending on the type of CPU in your computer, but it does not give a minimum GCC version.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00104775
+      }
+    },
+    {
+      "id": "q100",
+      "category": "build",
+      "answerable": true,
+      "question": "What is the minimum Rust version for building Rust support in this kernel?",
+      "answer": "I don't know  \nThe excerpts say only that a \u201crecent version\u201d of the Rust compiler is required, but they do not give a minimum Rust version.",
+      "idk": true,
+      "idk_gated": false,
+      "citation_coverage": 0.0,
+      "invalid_citations": [],
+      "cites_gold": false,
+      "retrieved_gold": false,
+      "ms": 2768.1,
+      "cost_usd": 0.001091,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1209,
+          "cached_input_tokens": 0,
+          "output_tokens": 41,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "wrong",
+        "claims": [
+          {
+            "claim": "I don't know",
+            "cited": [],
+            "supported_by_cited": true,
+            "supported_by_any_source": false
+          },
+          {
+            "claim": "The excerpts say only that a \u201crecent version\u201d of the Rust compiler is required, but they do not give a minimum Rust version.",
+            "cited": [],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.0012555
+      }
+    },
+    {
+      "id": "q101",
+      "category": "config",
+      "answerable": true,
+      "question": "How do I make CPUs 1, 6, 7 and 8 adaptive-ticks (tickless) CPUs?",
+      "answer": "Use the `nohz_full=` boot parameter with the CPU list `1,6-8`, for example: [1]\n\n```text\nnohz_full=1,6-8\n```\n\nThis makes CPUs 1, 6, 7, and 8 adaptive-ticks CPUs. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 4915.1,
+      "cost_usd": 0.000909,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 109,
+          "cached_input_tokens": 0,
+          "output_tokens": 56,
+          "thinking_tokens": 0
+        },
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 167,
+          "cached_input_tokens": 1920,
+          "output_tokens": 68,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "Use the `nohz_full=` boot parameter with the CPU list `1,6-8`.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "This makes CPUs 1, 6, 7, and 8 adaptive-ticks CPUs.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.001935
+      }
+    },
+    {
+      "id": "q102",
+      "category": "config",
+      "answerable": true,
+      "question": "What does crashkernel=64M@16M mean for kdump?",
+      "answer": "`crashkernel=64M@16M` tells the system kernel to reserve 64 MB of memory starting at physical address 0x01000000 (16MB) for the dump-capture kernel. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2553.2,
+      "cost_usd": 0.00172,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1957,
+          "cached_input_tokens": 0,
+          "output_tokens": 56,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "`crashkernel=64M@16M` tells the system kernel to reserve 64 MB of memory starting at physical address 0x01000000 (16MB) for the dump-capture kernel.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00177225
+      }
+    },
+    {
+      "id": "q103",
+      "category": "sysfs",
+      "answerable": true,
+      "question": "How can I see which compression algorithms zram supports and which one is active?",
+      "answer": "You can check `/sys/block/zram0/comp_algorithm`; it shows the supported compression algorithms and the currently selected one in square brackets. For example, `lzo [lz4]` means `lz4` is active, and you can change it with `echo lzo > /sys/block/zram0/comp_algorithm` if the device is not yet initialized. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 0.5,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 4534.7,
+      "cost_usd": 0.002071,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 100,
+          "cached_input_tokens": 0,
+          "output_tokens": 45,
+          "thinking_tokens": 0
+        },
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1857,
+          "cached_input_tokens": 0,
+          "output_tokens": 89,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "You can check `/sys/block/zram0/comp_algorithm` to see the supported compression algorithms and the currently selected one.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "The currently selected compression algorithm is shown in square brackets in the output.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "You can change the selected compression algorithm with `echo lzo > /sys/block/zram0/comp_algorithm` if the device is not yet initialized.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "`lzo [lz4]` means `lz4` is active.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.0022005
+      }
+    },
+    {
+      "id": "q104",
+      "category": "process",
+      "answerable": true,
+      "question": "Should I attach patches to emails when sending them to kernel mailing lists?",
+      "answer": "No. Patches should be submitted by e-mail inline, and you should not attach them as MIME attachments; attachments are generally frowned upon because they make quoting and reviewing harder. [3][4]\n\n```text\nSend patches inline in the body of the email.\nDo not attach the patch as a MIME attachment.\n```",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2609.3,
+      "cost_usd": 0.001772,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1918,
+          "cached_input_tokens": 0,
+          "output_tokens": 74,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "Patches should be submitted by e-mail inline.",
+            "cited": [
+              3,
+              4
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "You should not attach patches as MIME attachments.",
+            "cited": [
+              3,
+              4
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "Attachments are generally frowned upon because they make quoting and reviewing harder.",
+            "cited": [
+              3,
+              4
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00192825
+      }
+    },
+    {
+      "id": "q105",
+      "category": "tracing",
+      "answerable": true,
+      "question": "How do I enable the function tracer with ftrace?",
+      "answer": "Enable `kernel.ftrace_enabled` and then select the `function` tracer through debugfs, for example: [1][5]\n\n```sh\nsysctl kernel.ftrace_enabled=1\necho function > current_tracer\necho 1 > tracing_on\n```",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2912.9,
+      "cost_usd": 0.001755,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1956,
+          "cached_input_tokens": 0,
+          "output_tokens": 64,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "Enable `kernel.ftrace_enabled` and then select the `function` tracer through debugfs",
+            "cited": [
+              1,
+              5
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "The command to enable the function tracer is `echo function > current_tracer`",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "The example uses `sysctl kernel.ftrace_enabled=1` before selecting the tracer",
+            "cited": [
+              1,
+              5
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "The example uses `echo 1 > tracing_on` after selecting the tracer",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00222675
+      }
+    },
+    {
+      "id": "q106",
+      "category": "sysfs",
+      "answerable": true,
+      "question": "What does setting transparent_hugepage defrag to 'always' do?",
+      "answer": "Setting `transparent_hugepage/defrag` to `always` selects the `always` defragmentation mode for transparent hugepages [1]. The excerpt says this control can be set with `echo always >/sys/kernel/mm/transparent_hugepage/defrag`, but it does not further define the exact behavior of `always` beyond listing it as one of the available modes [1].",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": false,
+      "retrieved_gold": false,
+      "ms": 2993.7,
+      "cost_usd": 0.001743,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1814,
+          "cached_input_tokens": 0,
+          "output_tokens": 85,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "wrong",
+        "claims": [
+          {
+            "claim": "Setting `transparent_hugepage/defrag` to `always` selects the `always` defragmentation mode for transparent hugepages.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "The excerpt does not further define the exact behavior of `always` beyond listing it as one of the available modes.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": false,
+            "supported_by_any_source": false
+          }
+        ],
+        "cost_usd": 0.001848
+      }
+    },
+    {
+      "id": "q107",
+      "category": "tracing",
+      "answerable": true,
+      "question": "How can I tell whether my kernel supports dynamic debug?",
+      "answer": "If `/proc/dynamic_debug/control` exists, your kernel has dynamic debug. [2]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2638.8,
+      "cost_usd": 0.00122,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1489,
+          "cached_input_tokens": 0,
+          "output_tokens": 23,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "If `/proc/dynamic_debug/control` exists, your kernel has dynamic debug.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "You need root access (sudo su) to use dynamic debug.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.0014565
+      }
+    },
+    {
+      "id": "q108",
+      "category": "boot-param",
+      "answerable": true,
+      "question": "Which boot parameter makes the kernel run a different program instead of /sbin/init?",
+      "answer": "`init=` makes the kernel run a specified binary instead of `/sbin/init` as the init process. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2750.4,
+      "cost_usd": 0.000927,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1062,
+          "cached_input_tokens": 0,
+          "output_tokens": 29,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "`init=` makes the kernel run a specified binary instead of `/sbin/init` as the init process.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00101025
+      }
+    },
+    {
+      "id": "q109",
+      "category": "boot-param",
+      "answerable": true,
+      "question": "What does the nosmp boot parameter do?",
+      "answer": "`nosmp` tells an SMP kernel to act as a UP kernel and disables the IO APIC; it is a legacy form of `maxcpus=0`. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2691.4,
+      "cost_usd": 0.001467,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1710,
+          "cached_input_tokens": 0,
+          "output_tokens": 41,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "`nosmp` tells an SMP kernel to act as a UP kernel and disables the IO APIC.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "`nosmp` is a legacy form of `maxcpus=0`.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.0016875
+      }
+    },
+    {
+      "id": "q110",
+      "category": "boot-param",
+      "answerable": true,
+      "question": "What does adding 'quiet' to the kernel command line do?",
+      "answer": "Adding `quiet` to the kernel command line disables most log messages. [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 2459.6,
+      "cost_usd": 0.001256,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1513,
+          "cached_input_tokens": 0,
+          "output_tokens": 27,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "Adding `quiet` to the kernel command line disables most log messages.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00129075
+      }
+    },
+    {
+      "id": "q111",
+      "category": "multi-hop",
+      "answerable": true,
+      "question": "What is the cgroup v2 equivalent of cgroup v1's memory.limit_in_bytes, and what happens when it is reached?",
+      "answer": "The cgroup v2 equivalent of cgroup v1\u2019s `memory.limit_in_bytes` is `memory.max`. [3]  \nWhen `memory.max` is reached, the kernel will first prevent new charges, then reclaim and OOM kill until the new limit is met, or the task writing to `memory.max` is killed. [3]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": false,
+      "retrieved_gold": false,
+      "ms": 5341.6,
+      "cost_usd": 0.001892,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 111,
+          "cached_input_tokens": 0,
+          "output_tokens": 40,
+          "thinking_tokens": 0
+        },
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1686,
+          "cached_input_tokens": 0,
+          "output_tokens": 81,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "The cgroup v2 equivalent of cgroup v1's `memory.limit_in_bytes` is `memory.max`.",
+            "cited": [
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "When `memory.max` is reached, the kernel will first prevent new charges, then reclaim and OOM kill until the new limit is met, or the task writing to `memory.max` is killed.",
+            "cited": [
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00177825
+      }
+    },
+    {
+      "id": "q112",
+      "category": "multi-hop",
+      "answerable": true,
+      "question": "What is the global default swappiness, and can a cgroup v1 memory group override it?",
+      "answer": "The excerpts say the root cgroup\u2019s swappiness corresponds to the global swappiness setting, but they do not give the numeric global default value. [1]  \nYes, a cgroup v1 memory group can override it, because `swappiness` \u201coverrides /proc/sys/vm/swappiness for the particular group.\u201d [1]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 3967.2,
+      "cost_usd": 0.001798,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 104,
+          "cached_input_tokens": 0,
+          "output_tokens": 33,
+          "thinking_tokens": 0
+        },
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1622,
+          "cached_input_tokens": 0,
+          "output_tokens": 79,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "partial",
+        "claims": [
+          {
+            "claim": "The excerpts say the root cgroup\u2019s swappiness corresponds to the global swappiness setting.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "They do not give the numeric global default value.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "A cgroup v1 memory group can override the global swappiness setting for that group.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00173025
+      }
+    },
+    {
+      "id": "q113",
+      "category": "multi-hop",
+      "answerable": true,
+      "question": "What is the minimum Clang version to build the kernel, and how do I build with a versioned LLVM like clang-14?",
+      "answer": "You need a fresh Clang **14.0.6+** to build a kernel with KMSAN [1].  \n\nTo build with a versioned LLVM such as `clang-14`, use the `LLVM` variable with the version suffix, for example:  \n```bash\nmake LLVM=-14\n```  \nThis uses `clang-14`, `ld.lld-14`, etc. [3]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": true,
+      "retrieved_gold": true,
+      "ms": 4216.4,
+      "cost_usd": 0.001826,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 111,
+          "cached_input_tokens": 0,
+          "output_tokens": 38,
+          "thinking_tokens": 0
+        },
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1532,
+          "cached_input_tokens": 0,
+          "output_tokens": 94,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "partial",
+        "claims": [
+          {
+            "claim": "You need a fresh Clang 14.0.6+ to build a kernel with KMSAN.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "To build with a versioned LLVM such as clang-14, use the LLVM variable with a version suffix, for example `make LLVM=-14`.",
+            "cited": [
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "`make LLVM=-14` uses `clang-14`, `ld.lld-14`, etc.",
+            "cited": [
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.00183675
+      }
+    },
+    {
+      "id": "q114",
+      "category": "unanswerable",
+      "answerable": false,
+      "question": "What is the capital of Tunisia?",
+      "answer": "I don't know\nNothing in the documentation index matched this question.",
+      "idk": true,
+      "idk_gated": true,
+      "citation_coverage": 0.0,
+      "invalid_citations": [],
+      "cites_gold": null,
+      "retrieved_gold": null,
+      "ms": 1577.8,
+      "cost_usd": 0,
+      "usage": [],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "I don't know",
+            "cited": [],
+            "supported_by_cited": false,
+            "supported_by_any_source": false
+          },
+          {
+            "claim": "Nothing in the documentation index matched this question.",
+            "cited": [],
+            "supported_by_cited": false,
+            "supported_by_any_source": false
+          }
+        ],
+        "cost_usd": 0.00143475
+      }
+    },
+    {
+      "id": "q115",
+      "category": "unanswerable",
+      "answerable": false,
+      "question": "How do I connect to Wi-Fi with nmcli?",
+      "answer": "I don't know\nNothing in the documentation index matched this question.",
+      "idk": true,
+      "idk_gated": true,
+      "citation_coverage": 0.0,
+      "invalid_citations": [],
+      "cites_gold": null,
+      "retrieved_gold": null,
+      "ms": 2009.6,
+      "cost_usd": 0,
+      "usage": [],
+      "judge": {
+        "correctness": "correct",
+        "claims": [],
+        "cost_usd": 0.0015555
+      }
+    },
+    {
+      "id": "q116",
+      "category": "unanswerable",
+      "answerable": false,
+      "question": "How much does a Red Hat Enterprise Linux subscription cost?",
+      "answer": "I don't know\nNothing in the documentation index matched this question.",
+      "idk": true,
+      "idk_gated": true,
+      "citation_coverage": 0.0,
+      "invalid_citations": [],
+      "cites_gold": null,
+      "retrieved_gold": null,
+      "ms": 1952.8,
+      "cost_usd": 0,
+      "usage": [],
+      "judge": {
+        "correctness": "correct",
+        "claims": [],
+        "cost_usd": 0.0010935
+      }
+    },
+    {
+      "id": "q117",
+      "category": "unanswerable",
+      "answerable": false,
+      "question": "Who will maintain the kernel after Linus Torvalds retires?",
+      "answer": "I don't know  \nThe excerpts describe a process for finding replacement maintainers if the current repository maintainer becomes unwilling or unable to continue, but they do not name who will maintain the kernel after Linus Torvalds retires. [1]",
+      "idk": true,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": null,
+      "retrieved_gold": null,
+      "ms": 2542.9,
+      "cost_usd": 0.001768,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 2003,
+          "cached_input_tokens": 0,
+          "output_tokens": 59,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "I don't know.",
+            "cited": [],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "The excerpts describe a process for finding replacement maintainers if the current repository maintainer becomes unwilling or unable to continue.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "The excerpts do not name who will maintain the kernel after Linus Torvalds retires.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.001995
+      }
+    },
+    {
+      "id": "q118",
+      "category": "unanswerable",
+      "answerable": false,
+      "question": "What new features were added in Linux 8.0?",
+      "answer": "I don't know  \nThe excerpts do not mention Linux 8.0 or any features added in that version.",
+      "idk": true,
+      "idk_gated": false,
+      "citation_coverage": 0.0,
+      "invalid_citations": [],
+      "cites_gold": null,
+      "retrieved_gold": null,
+      "ms": 2760.6,
+      "cost_usd": 0.00154,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1862,
+          "cached_input_tokens": 0,
+          "output_tokens": 32,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "wrong",
+        "claims": [
+          {
+            "claim": "The answer says it does not know what new features were added in Linux 8.0.",
+            "cited": [],
+            "supported_by_cited": false,
+            "supported_by_any_source": false
+          },
+          {
+            "claim": "The answer says the excerpts do not mention Linux 8.0 or any features added in that version.",
+            "cited": [],
+            "supported_by_cited": false,
+            "supported_by_any_source": false
+          }
+        ],
+        "cost_usd": 0.0017505
+      }
+    },
+    {
+      "id": "q119",
+      "category": "unanswerable",
+      "answerable": false,
+      "question": "How do I change the GRUB boot menu theme?",
+      "answer": "I don't know\nThe excerpts only describe adding kernel command-line parameters in GRUB, not how to change the GRUB boot menu theme.",
+      "idk": true,
+      "idk_gated": false,
+      "citation_coverage": 0.0,
+      "invalid_citations": [],
+      "cites_gold": null,
+      "retrieved_gold": null,
+      "ms": 3138.0,
+      "cost_usd": 0.00177,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 2168,
+          "cached_input_tokens": 0,
+          "output_tokens": 32,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "I don't know",
+            "cited": [],
+            "supported_by_cited": false,
+            "supported_by_any_source": false
+          },
+          {
+            "claim": "The excerpts only describe adding kernel command-line parameters in GRUB, not how to change the GRUB boot menu theme.",
+            "cited": [],
+            "supported_by_cited": false,
+            "supported_by_any_source": false
+          }
+        ],
+        "cost_usd": 0.0019275
+      }
+    },
+    {
+      "id": "q120",
+      "category": "unanswerable",
+      "answerable": false,
+      "question": "What is the default value of vm.swap_boost_factor?",
+      "answer": "The default value is 15,000 [1].",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": null,
+      "retrieved_gold": null,
+      "ms": 3027.6,
+      "cost_usd": 0.00124,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1527,
+          "cached_input_tokens": 0,
+          "output_tokens": 21,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "wrong",
+        "claims": [
+          {
+            "claim": "The default value of vm.swap_boost_factor is 15,000.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": false,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.0012975
+      }
+    },
+    {
+      "id": "q121",
+      "category": "unanswerable",
+      "answerable": false,
+      "question": "What does the CONFIG_QUANTUM_SCHED option do?",
+      "answer": "I don't know  \nThe excerpts do not mention `CONFIG_QUANTUM_SCHED`.",
+      "idk": true,
+      "idk_gated": false,
+      "citation_coverage": 0.0,
+      "invalid_citations": [],
+      "cites_gold": null,
+      "retrieved_gold": null,
+      "ms": 2660.6,
+      "cost_usd": 0.001438,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1756,
+          "cached_input_tokens": 0,
+          "output_tokens": 27,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "wrong",
+        "claims": [
+          {
+            "claim": "I don't know",
+            "cited": [],
+            "supported_by_cited": false,
+            "supported_by_any_source": false
+          },
+          {
+            "claim": "The excerpts do not mention `CONFIG_QUANTUM_SCHED`.",
+            "cited": [],
+            "supported_by_cited": false,
+            "supported_by_any_source": false
+          }
+        ],
+        "cost_usd": 0.00158025
+      }
+    },
+    {
+      "id": "q122",
+      "category": "unanswerable",
+      "answerable": false,
+      "question": "How do I install the NVIDIA proprietary driver on Fedora?",
+      "answer": "I don\u2019t know  \nThe excerpts do not describe how to install the NVIDIA proprietary driver on Fedora; they only mention that such software can install 3rd-party kernel modules and should be removed or disabled when reporting issues. [2]",
+      "idk": false,
+      "idk_gated": false,
+      "citation_coverage": 1.0,
+      "invalid_citations": [],
+      "cites_gold": null,
+      "retrieved_gold": null,
+      "ms": 2839.4,
+      "cost_usd": 0.001507,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1667,
+          "cached_input_tokens": 0,
+          "output_tokens": 57,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "I don\u2019t know how to install the NVIDIA proprietary driver on Fedora.",
+            "cited": [],
+            "supported_by_cited": false,
+            "supported_by_any_source": false
+          },
+          {
+            "claim": "The excerpts do not describe how to install the NVIDIA proprietary driver on Fedora.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "The excerpts only mention that such software can install third-party kernel modules and should be removed or disabled when reporting issues.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          }
+        ],
+        "cost_usd": 0.001785
+      }
+    },
+    {
+      "id": "q123",
+      "category": "unanswerable",
+      "answerable": false,
+      "question": "Which Linux distribution has the best gaming performance?",
+      "answer": "I don't know\nThe excerpts do not compare Linux distributions for gaming performance.",
+      "idk": true,
+      "idk_gated": false,
+      "citation_coverage": 0.0,
+      "invalid_citations": [],
+      "cites_gold": null,
+      "retrieved_gold": null,
+      "ms": 2810.0,
+      "cost_usd": 0.001061,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1264,
+          "cached_input_tokens": 0,
+          "output_tokens": 25,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "correct",
+        "claims": [
+          {
+            "claim": "I don't know",
+            "cited": [],
+            "supported_by_cited": true,
+            "supported_by_any_source": true
+          },
+          {
+            "claim": "The excerpts do not compare Linux distributions for gaming performance.",
+            "cited": [],
+            "supported_by_cited": true,
+            "supported_by_any_source": false
+          }
+        ],
+        "cost_usd": 0.001203
+      }
+    },
+    {
+      "id": "q124",
+      "category": "unanswerable",
+      "answerable": false,
+      "question": "How do I write a kernel driver for Windows 11?",
+      "answer": "I don't know  \nThe excerpts only describe Linux kernel drivers for I2C, SPI, ALSA, and PCMCIA, and do not cover Windows 11 kernel drivers.",
+      "idk": true,
+      "idk_gated": false,
+      "citation_coverage": 0.0,
+      "invalid_citations": [],
+      "cites_gold": null,
+      "retrieved_gold": null,
+      "ms": 3277.7,
+      "cost_usd": 0.00145,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1658,
+          "cached_input_tokens": 0,
+          "output_tokens": 46,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "wrong",
+        "claims": [
+          {
+            "claim": "I don't know",
+            "cited": [],
+            "supported_by_cited": false,
+            "supported_by_any_source": false
+          },
+          {
+            "claim": "The excerpts only describe Linux kernel drivers for I2C, SPI, ALSA, and PCMCIA, and do not cover Windows 11 kernel drivers.",
+            "cited": [],
+            "supported_by_cited": false,
+            "supported_by_any_source": false
+          }
+        ],
+        "cost_usd": 0.001602
+      }
+    },
+    {
+      "id": "q125",
+      "category": "unanswerable",
+      "answerable": false,
+      "question": "What was the stock price of Intel when the kernel added Rust support?",
+      "answer": "I don't know\nThe excerpts do not mention Intel\u2019s stock price when Rust support was added.",
+      "idk": true,
+      "idk_gated": false,
+      "citation_coverage": 0.0,
+      "invalid_citations": [],
+      "cites_gold": null,
+      "retrieved_gold": null,
+      "ms": 2674.8,
+      "cost_usd": 0.00098,
+      "usage": [
+        {
+          "model": "gpt-5.4-mini",
+          "input_tokens": 1133,
+          "cached_input_tokens": 0,
+          "output_tokens": 29,
+          "thinking_tokens": 0
+        }
+      ],
+      "judge": {
+        "correctness": "wrong",
+        "claims": [
+          {
+            "claim": "The answer says it does not know the stock price of Intel when Rust support was added.",
+            "cited": [],
+            "supported_by_cited": false,
+            "supported_by_any_source": false
+          },
+          {
+            "claim": "The excerpts do not mention Intel\u2019s stock price when Rust support was added.",
+            "cited": [],
+            "supported_by_cited": false,
+            "supported_by_any_source": false
+          }
+        ],
+        "cost_usd": 0.0012
+      }
+    }
+  ]
+}
