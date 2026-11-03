@@ -61,6 +61,9 @@ def health():
     ix = lib().retriever.index
     return jsonify(ok=True, chunks=len(ix.chunks), embedder=ix.meta["embedder"],
                    reranker=settings.reranker, generator=lib().generator.model,
+                   answer_cache={"enabled": settings.answer_cache,
+                                 "ttl_seconds": settings.answer_cache_ttl,
+                                 "max_entries": settings.answer_cache_size},
                    kernel=ix.chunks[0].version if ix.chunks else None)
 
 
@@ -119,6 +122,8 @@ def stats():
         verdicts[f["verdict"]] = verdicts.get(f["verdict"], 0) + 1
     return jsonify(
         requests=len(reqs),
+        cache_hits=sum(bool(r.get("cached")) for r in reqs),
+        cache_hit_rate=round(sum(bool(r.get("cached")) for r in reqs) / len(reqs), 3) if reqs else 0.,
         p50_ms=round(float(np.percentile(lat, 50)), 1),
         p95_ms=round(float(np.percentile(lat, 95)), 1),
         mean_cost_usd=round(float(np.mean(cost)), 6) if cost else 0.0,

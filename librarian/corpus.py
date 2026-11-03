@@ -241,8 +241,17 @@ def parse_kernel_params(text: str, path: str) -> Document:
 def iter_files(root: Path):
     excluded = set(settings.excluded)
     for p in sorted(root.rglob("*")):
-        if not p.is_file():
+        # The corpus checkout can contain Unix symlinks that Windows cannot
+        # resolve (e.g. Documentation/Changes); they are not source documents.
+        if p.is_symlink():
             continue
+        try:
+            if not p.is_file():
+                continue
+        except OSError as exc:
+            if getattr(exc, "winerror", None) == 1920:
+                continue  # Linux link represented as an unreadable Windows reparse point
+            raise
         rel = p.relative_to(root).as_posix()
         if rel.split("/")[0] in excluded or p.name.startswith("."):
             continue

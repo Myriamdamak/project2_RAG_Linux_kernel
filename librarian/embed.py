@@ -16,8 +16,11 @@ Backends
 from __future__ import annotations
 
 import pickle
+from pathlib import Path
 
 import numpy as np
+
+from .config import ROOT, settings
 
 # Asymmetric models expect an instruction on the query side only.
 QUERY_PREFIX = {
@@ -38,7 +41,11 @@ class STEmbedder:
     def __init__(self, model: str, batch: int = 64):
         from sentence_transformers import SentenceTransformer
         self.name = model
-        self.model = SentenceTransformer(model, device=None)
+        source = model
+        if settings.embed_model_path and model == settings.embedder.removeprefix("st:"):
+            local = Path(settings.embed_model_path)
+            source = str(local if local.is_absolute() else ROOT / local)
+        self.model = SentenceTransformer(source, device=None)
         self.batch = batch
 
     def fit(self, texts):

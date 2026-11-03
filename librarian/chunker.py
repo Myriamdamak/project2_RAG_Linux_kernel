@@ -2,7 +2,7 @@
 
 Two strategies, so the choice can be measured rather than assumed:
 
-``section`` (default)
+``structure`` (default; ``section`` is a compatibility alias)
     Never crosses a section boundary. Inside a section, text is split into
     *blocks* (paragraphs, whole literal/code blocks, whole tables, whole list
     items) and blocks are packed greedily up to ``chunk_tokens``. Overlap is
@@ -79,15 +79,21 @@ def split_blocks(text: str) -> list[str]:
 
 def _split_oversized(block: str, limit: int) -> list[str]:
     """A single block bigger than the limit (huge table, long code listing)
-    is cut at line boundaries. This is the one place structure is broken."""
-    out, cur, size = [], [], 0
+    is cut at line boundaries, then whitespace for oversized individual lines.
+    This is the one place structure is broken."""
+    out, cur = [], []
     for line in block.splitlines():
-        t = approx_tokens(line) + 1
-        if cur and size + t > limit:
+        if cur and approx_tokens("\n".join(cur + [line])) > limit:
             out.append("\n".join(cur))
-            cur, size = [], 0
+            cur = []
+        while approx_tokens(line) > limit:
+            end = limit * 4
+            boundary = line.rfind(" ", 0, end + 1)
+            if boundary > end // 2:
+                end = boundary
+            out.append(line[:end])
+            line = line[end:].lstrip(" ")
         cur.append(line)
-        size += t
     if cur:
         out.append("\n".join(cur))
     return out
@@ -105,6 +111,8 @@ def _make_chunk(doc: Document, heading_path: list[str], anchor: str, body: str, 
 
 
 def chunk_section_aware(doc: Document, size: int, overlap: int, min_words: int) -> list[Chunk]:
+    if size <= 0 or not 0 <= overlap < size:
+        raise ValueError("Require size > 0 and 0 <= overlap < size")
     chunks: list[Chunk] = []
     n = 0
     for sec in doc.sections:
@@ -112,21 +120,18 @@ def chunk_section_aware(doc: Document, size: int, overlap: int, min_words: int) 
         for b in split_blocks(sec.text):
             blocks.extend(_split_oversized(b, size) if approx_tokens(b) > size else [b])
         cur: list[str] = []
-        cur_tok = 0
         for b in blocks:
-            bt = approx_tokens(b)
-            if cur and cur_tok + bt > size:
+            if cur and approx_tokens("\n\n".join(cur + [b])) > size:
                 chunks.append(_make_chunk(doc, sec.heading_path, sec.anchor, "\n\n".join(cur), n)); n += 1
                 # overlap: carry trailing whole blocks while they fit
-                carry, ct = [], 0
+                carry = []
                 for prev in reversed(cur):
-                    pt = approx_tokens(prev)
-                    if ct + pt > overlap:
+                    if (approx_tokens("\n\n".join([prev] + carry)) > overlap
+                            or approx_tokens("\n\n".join([prev] + carry + [b])) > size):
                         break
-                    carry.insert(0, prev); ct += pt
-                cur, cur_tok = carry, ct
+                    carry.insert(0, prev)
+                cur = carry
             cur.append(b)
-            cur_tok += bt
         if cur:
             chunks.append(_make_chunk(doc, sec.heading_path, sec.anchor, "\n\n".join(cur), n)); n += 1
     return [c for c in chunks if len(c.text.split()) >= min_words]
@@ -149,9 +154,13 @@ def chunk_fixed(doc: Document, size: int, overlap: int, min_words: int) -> list[
 def chunk_documents(docs: list[Document], strategy: str | None = None,
                     size: int | None = None, overlap: int | None = None) -> list[Chunk]:
     strategy = strategy or settings.chunker
-    size = size or settings.chunk_tokens
+    size = settings.chunk_tokens if size is None else size
     overlap = settings.chunk_overlap if overlap is None else overlap
-    fn = chunk_section_aware if strategy == "section" else chunk_fixed
+    if strategy not in {"structure", "section", "fixed"}:
+        raise ValueError(f"Unknown chunking strategy: {strategy}")
+    if size <= 0 or not 0 <= overlap < size:
+        raise ValueError("Require size > 0 and 0 <= overlap < size")
+    fn = chunk_section_aware if strategy in {"structure", "section"} else chunk_fixed
     out: list[Chunk] = []
     for d in docs:
         out.extend(fn(d, size, overlap, settings.min_chunk_words))
