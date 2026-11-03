@@ -10,6 +10,9 @@ import json
 import re
 import time
 from collections import OrderedDict
+from copy import deepcopy
+from dataclasses import asdict
+import threading
 
 from .config import cost_usd, settings
 from .generate import IDK, get_generator, parse_citations
@@ -29,18 +32,72 @@ class Librarian:
     def __init__(self, retriever: Retriever | None = None, generator=None):
         self.retriever = retriever or Retriever()
         self.generator = generator or get_generator()
-        self._cache: OrderedDict[str, dict] = OrderedDict()
+        self._cache: OrderedDict[str, tuple[float, dict]] = OrderedDict()
+        self._cache_lock = threading.RLock()
+        self._inflight: dict[str, threading.Event] = {}
+
+    def clear_cache(self):
+        """Clear stored answers (active requests may subsequently fill entries)."""
+        with self._cache_lock:
+            self._cache.clear()
+
+    def _cache_key(self, question, filters, mode, k):
+        # Technical identifiers can be case sensitive (%p vs %P, config names).
+        # Include the response policy and index generation to avoid stale answers.
+        identity = {
+            "question": question, "filters": filters or {}, "mode": mode,
+            "k": k or settings.top_k, "generator": self.generator.model,
+            "settings": asdict(settings), "index": self.retriever.index.meta,
+        }
+        return hashlib.sha256(json.dumps(identity, sort_keys=True).encode()).hexdigest()
 
     def ask(self, question: str, filters: dict | None = None, mode: str = "hybrid_rerank",
             k: int | None = None) -> dict:
         t0 = time.perf_counter()
         question = question.strip()
-        key = hashlib.sha1(json.dumps([question.lower(), filters, mode, k]).encode()).hexdigest()
-        if settings.answer_cache and key in self._cache:
-            out = dict(self._cache[key])
-            out.update(cached=True, cost_usd=0.0,
-                       timings_ms={"total": (time.perf_counter() - t0) * 1000})
+        if not settings.answer_cache:
+            return self._ask_uncached(question, filters, mode, k, t0)
+        if settings.answer_cache_ttl <= 0 or settings.answer_cache_size <= 0:
+            raise ValueError("Answer cache TTL and size must be positive")
+        key = self._cache_key(question, filters, mode, k)
+        waited = False
+        while True:
+            with self._cache_lock:
+                entry = self._cache.get(key)
+                now = time.monotonic()
+                if entry and now - entry[0] < settings.answer_cache_ttl:
+                    self._cache.move_to_end(key)
+                    out = deepcopy(entry[1])
+                    out.update(cached=True, cost_usd=0.0, usage=[],
+                               cache_age_s=round(now - entry[0], 3),
+                               cache_coalesced=waited,
+                               timings_ms={"total": (time.perf_counter() - t0) * 1000})
+                    return out
+                if entry:
+                    del self._cache[key]
+                event = self._inflight.get(key)
+                if event is None:
+                    event = threading.Event()
+                    self._inflight[key] = event
+                    break
+            # Coalesce duplicate concurrent misses without blocking other keys.
+            event.wait()
+            waited = True
+        try:
+            out = self._ask_uncached(question, filters, mode, k, t0)
+            with self._cache_lock:
+                self._cache[key] = (time.monotonic(), deepcopy(out))
+                self._cache.move_to_end(key)
+                while len(self._cache) > settings.answer_cache_size:
+                    self._cache.popitem(last=False)
             return out
+        finally:
+            # Failures are never cached, and waiters are always released.
+            with self._cache_lock:
+                self._inflight.pop(key, None)
+                event.set()
+
+    def _ask_uncached(self, question, filters, mode, k, t0):
 
         usage_all: list[tuple[str, dict]] = []
         timings: dict[str, float] = {}
@@ -90,8 +147,4 @@ class Librarian:
             "cost_usd": round(sum(cost_usd(m, u) for m, u in usage_all), 6),
             "generator": self.generator.model, "cached": False,
         }
-        if settings.answer_cache:
-            self._cache[key] = out
-            if len(self._cache) > 1000:
-                self._cache.popitem(last=False)
         return out

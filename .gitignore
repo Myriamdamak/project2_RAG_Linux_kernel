@@ -6,7 +6,12 @@ __pycache__/
 *.py[cod]
 
 # Test, lint, and coverage caches
-tests/
+tests/*
+!tests/test_structure_qdrant.py
+!tests/test_load_test.py
+!tests/test_optimization.py
+!tests/test_answer_cache.py
+.pytest_tmp_structure*/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/

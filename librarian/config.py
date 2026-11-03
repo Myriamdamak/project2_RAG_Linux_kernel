@@ -56,16 +56,26 @@ class Settings:
     exclude_dirs: str = "translations,sphinx,sphinx-static,sphinx-includes,images"
 
     # --- chunking (both are decisions to test, see eval/chunk_sweep.py) ----
-    chunker: str = "section"          # "section" (structure-aware) | "fixed"
+    chunker: str = "structure"        # "structure" | "section" (alias) | "fixed"
     chunk_tokens: int = 350           # target size, approx tokens
     chunk_overlap: int = 50           # approx tokens carried into next chunk
     min_chunk_words: int = 5          # drop toctree-only / empty sections
+
+    qdrant_url: str = os.environ.get("QDRANT_URL", "")
+    qdrant_collection: str = "kernel_documentation"
+    qdrant_batch: int = 256
+    qdrant_hnsw_m: int = 16
+    qdrant_hnsw_ef_construct: int = 100
+    qdrant_hnsw_ef: int = 256      # higher values favor recall over latency
+    qdrant_full_scan_threshold: int = 1000  # KB; scan small filtered sets
+    qdrant_indexing_threshold: int = 2000   # KB; index smaller segments too
 
     # --- embeddings --------------------------------------------------------
     # "st:<hf model>"  sentence-transformers (default, needs HuggingFace)
     # "lsa"            TF-IDF + SVD, fully offline (fallback / baseline)
     embedder: str = "st:BAAI/bge-small-en-v1.5"
     embed_batch: int = 64
+    embed_model_path: str = ""        # optional local copy of the configured ST model
 
     # --- retrieval ---------------------------------------------------------
     candidates: int = 50              # per retriever, before fusion
@@ -89,13 +99,15 @@ class Settings:
 
     # --- generation --------------------------------------------------------
     # "openai:<model id>" | "extractive" (offline, no API key needed)
-    generator: str = "openai:gpt-5.4-mini"
+    generator: str = "openai:gpt-5.4-nano"  # validated cost optimization; see optimisation.md
     rewrite_model: str = "gpt-5.4-mini"
     reasoning_effort: str = "none"    # model-specific; empty omits the parameter
     max_answer_tokens: int = 1600     # includes reasoning tokens when enabled
     max_rewrite_tokens: int = 800
     openai_base_url: str = "https://api.openai.com/v1"
     answer_cache: bool = False        # Week 8: cache repeated questions
+    answer_cache_ttl: float = 3600.0  # seconds; per-process exact-answer cache
+    answer_cache_size: int = 1000     # least-recently-used entries
 
     # --- service -----------------------------------------------------------
     host: str = "0.0.0.0"
@@ -116,6 +128,9 @@ class Settings:
 PRICES = {
     "gpt-5.4-mini": {"in": 0.75, "out": 4.50, "cached_in": 0.075},
     "gpt-5.4-mini-2026-03-17": {"in": 0.75, "out": 4.50, "cached_in": 0.075},
+    # https://developers.openai.com/api/docs/models/gpt-5.4-nano (2026-11-03)
+    "gpt-5.4-nano": {"in": 0.20, "out": 1.25, "cached_in": 0.02},
+    "gpt-5.4-nano-2026-03-17": {"in": 0.20, "out": 1.25, "cached_in": 0.02},
 }
 
 

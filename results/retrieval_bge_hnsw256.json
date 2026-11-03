@@ -1,0 +1,617 @@
+{
+  "index": {
+    "built_at": "2026-11-03T13:50:08",
+    "embedder": "st:BAAI/bge-small-en-v1.5",
+    "chunker": "structure",
+    "vector_store": "qdrant",
+    "qdrant_collection": "kernel_documentation",
+    "qdrant_generation": "a341a175f5aa429c95aa796beab5e5c7",
+    "chunk_tokens": 350,
+    "chunk_overlap": 50,
+    "n_docs": 4569,
+    "n_chunks": 41646,
+    "dims": 384,
+    "seconds": {
+      "chunk": 78.28720021247864,
+      "bm25": 11.968225717544556,
+      "embed": 873.643138885498
+    },
+    "bytes": {
+      "bm25.idf.npy": 495200,
+      "bm25.npz": 9504908,
+      "bm25.vocab.json": 2690733,
+      "chunks.jsonl": 53178259,
+      "download_bge.py": 832,
+      "vectors.npy": 31984256,
+      "verify_upload.py": 1323
+    }
+  },
+  "rows": [
+    {
+      "mode": "vector",
+      "n": 113,
+      "recall@1": 0.5929,
+      "recall@3": 0.823,
+      "recall@5": 0.885,
+      "recall@10": 0.9027,
+      "recall@20": 0.9381,
+      "mrr": 0.7189,
+      "doc@5": 0.9558,
+      "p50_ms": 121.0,
+      "p95_ms": 169.9,
+      "recall@5_by_category": {
+        "boot-param": 1.0,
+        "build": 0.857,
+        "coding": 0.895,
+        "config": 0.9,
+        "factual": 1.0,
+        "internals": 1.0,
+        "multi-hop": 0.0,
+        "procedure": 0.818,
+        "process": 0.75,
+        "procfs": 1.0,
+        "sysctl": 1.0,
+        "sysfs": 0.889,
+        "tracing": 1.0,
+        "troubleshooting": 0.75
+      },
+      "misses@5": [
+        {
+          "id": "q003",
+          "question": "Which architectures support CONFIG_CMDLINE_FROM_BOOTCONFIG?",
+          "gold": "admin-guide/bootconfig.rst",
+          "rank": null,
+          "got": [
+            "arch/powerpc/booting.rst :: DeviceTree Booting > Entry point",
+            "features/locking/cmpxchg-local/arch-support.txt :: features/locking/cmpxchg-local/arch-support.txt",
+            "features/io/dma-contiguous/arch-support.txt :: features/io/dma-contiguous/arch-support.txt"
+          ]
+        },
+        {
+          "id": "q017",
+          "question": "Is sending pure coding-style cleanup patches a good way to start contributing?",
+          "gold": "process/4.Coding.rst",
+          "rank": null,
+          "got": [
+            "process/5.Posting.rst :: Posting patches > When to post",
+            "process/6.Followthrough.rst :: Followthrough",
+            "process/6.Followthrough.rst :: Followthrough > Working with reviewers"
+          ]
+        },
+        {
+          "id": "q018",
+          "question": "What severity levels does checkpatch.pl report?",
+          "gold": "process/submitting-patches.rst",
+          "rank": null,
+          "got": [
+            "dev-tools/checkpatch.rst :: Checkpatch > Message Levels",
+            "dev-tools/checkpatch.rst :: Checkpatch",
+            "driver-api/media/maintainer-entry-profile.rst ::  Profile > Submit Checklist Addendum > Coding Style Addendum"
+          ]
+        },
+        {
+          "id": "q025",
+          "question": "My USB NCM modem fails with default cdc_ncm settings. Is there a quirk I can test?",
+          "gold": "ABI/testing/sysfs-class-net-cdc_ncm",
+          "rank": null,
+          "got": [
+            "usb/acm.rst :: Linux ACM driver v0.16 > 1. Usage",
+            "usb/gadget-testing.rst :: Gadget Testing > 10. NCM function > Testing the NCM function",
+            "usb/gadget-testing.rst :: ng > 10. NCM function > Function-specific configfs interface"
+          ]
+        },
+        {
+          "id": "q043",
+          "question": "Where do I read KUnit results when I run tests without kunit.py?",
+          "gold": "dev-tools/kunit/faq.rst",
+          "rank": null,
+          "got": [
+            "dev-tools/kunit/run_manual.rst :: Run Tests without kunit_tool > Retrieve Test Results",
+            "dev-tools/kunit/run_manual.rst :: Run Tests without kunit_tool > debugfs",
+            "dev-tools/kunit/run_manual.rst :: Run Tests without kunit_tool > Configure the Kernel"
+          ]
+        },
+        {
+          "id": "q054",
+          "question": "When does a Kconfig menu entry become visible?",
+          "gold": "kbuild/kconfig-language.rst",
+          "rank": 19,
+          "got": [
+            "kbuild/kconfig-language.rst :: Kconfig Language > Menu structure",
+            "kbuild/kconfig-language.rst :: Kconfig Language > Menu attributes",
+            "kbuild/kconfig-language.rst :: Kconfig Language > Kconfig syntax"
+          ]
+        },
+        {
+          "id": "q056",
+          "question": "How can I check whether a task is running under sched_ext?",
+          "gold": "scheduler/sched-ext.rst",
+          "rank": 8,
+          "got": [
+            "scheduler/sched-ext.rst :: Extensible Scheduler Class > Switching to and from sched_ext",
+            "scheduler/sched-ext.rst :: Extensible Scheduler Class > The Basics > Task Lifecycle",
+            "scheduler/sched-domains.rst :: Scheduler Domains"
+          ]
+        },
+        {
+          "id": "q081",
+          "question": "What does spin_lock_bh() block?",
+          "gold": "kernel-hacking/locking.rst",
+          "rank": null,
+          "got": [
+            "kernel-hacking/locking.rst :: the Linux Kernel > Locking Between User Context and Softirqs",
+            "kernel-hacking/locking.rst ::  Locking Between Tasklets/Timers > Different Tasklets/Timers",
+            "kernel-hacking/locking.rst :: To Locking > Common Problems > Deadlock: Simple and Advanced"
+          ]
+        },
+        {
+          "id": "q092",
+          "question": "What log level number corresponds to KERN_ERR and which helper prints at that level?",
+          "gold": "core-api/printk-basics.rst",
+          "rank": null,
+          "got": [
+            "admin-guide/kernel-parameters.txt :: The kernel's command-line parameters > loglevel",
+            "core-api/printk-index.rst :: Printk Index > User Interface",
+            "core-api/printk-basics.rst :: Message logging with printk"
+          ]
+        },
+        {
+          "id": "q106",
+          "question": "What does setting transparent_hugepage defrag to 'always' do?",
+          "gold": "admin-guide/mm/transhuge.rst",
+          "rank": 9,
+          "got": [
+            "admin-guide/mm/transhuge.rst :: Transparent Hugepage Support > sysfs > Global THP controls",
+            "admin-guide/kernel-parameters.txt :: The kernel's command-line parameters > transparent_hugepage",
+            "admin-guide/mm/transhuge.rst :: Transparent Hugepage Support > sysfs > Khugepaged controls"
+          ]
+        },
+        {
+          "id": "q111",
+          "question": "What is the cgroup v2 equivalent of cgroup v1's memory.limit_in_bytes, and what happens when it is reached?",
+          "gold": "admin-guide/cgroup-v2.rst",
+          "rank": 12,
+          "got": [
+            "admin-guide/cgroup-v1/memory.rst ::  What happens when a cgroup hits memory.memsw.limit_in_bytes",
+            "admin-guide/cgroup-v1/memory.rst :: Memory Resource Controller > 7. Soft limits (DEPRECATED)",
+            "admin-guide/cgroup-v1/memory.rst :: Memory Resource Controller > 3. User Interface"
+          ]
+        },
+        {
+          "id": "q112",
+          "question": "What is the global default swappiness, and can a cgroup v1 memory group override it?",
+          "gold": "admin-guide/sysctl/vm.rst",
+          "rank": 15,
+          "got": [
+            "admin-guide/cgroup-v1/memory.rst :: y Resource Controller > 5. Misc. interfaces > 5.3 swappiness",
+            "admin-guide/cgroup-v2.rst :: rol Group v2 > Controllers > Memory > Memory Interface Files",
+            "admin-guide/cgroup-v1/memory.rst ::  What happens when a cgroup hits memory.memsw.limit_in_bytes"
+          ]
+        },
+        {
+          "id": "q113",
+          "question": "What is the minimum Clang version to build the kernel, and how do I build with a versioned LLVM like clang-14?",
+          "gold": "process/changes.rst",
+          "rank": 15,
+          "got": [
+            "process/changes.rst ::  Kernel > Intro > Kernel compilation > Clang/LLVM (optional)",
+            "kbuild/llvm.rst :: Building Linux with Clang/LLVM > About",
+            "kbuild/llvm.rst :: Building Linux with Clang/LLVM > Getting LLVM"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "hybrid",
+      "n": 113,
+      "recall@1": 0.6283,
+      "recall@3": 0.8053,
+      "recall@5": 0.8407,
+      "recall@10": 0.9469,
+      "recall@20": 0.9912,
+      "mrr": 0.745,
+      "doc@5": 0.9735,
+      "p50_ms": 116.2,
+      "p95_ms": 176.8,
+      "recall@5_by_category": {
+        "boot-param": 1.0,
+        "build": 0.571,
+        "coding": 0.789,
+        "config": 1.0,
+        "factual": 0.913,
+        "internals": 1.0,
+        "multi-hop": 0.0,
+        "procedure": 0.909,
+        "process": 0.75,
+        "procfs": 1.0,
+        "sysctl": 1.0,
+        "sysfs": 0.889,
+        "tracing": 0.833,
+        "troubleshooting": 0.75
+      },
+      "misses@5": [
+        {
+          "id": "q011",
+          "question": "What does the L flag do in binfmt_misc?",
+          "gold": "admin-guide/binfmt-misc.rst",
+          "rank": 6,
+          "got": [
+            "admin-guide/binfmt-misc.rst :: ernel Support for miscellaneous Binary Formats (binfmt_misc)",
+            "admin-guide/binfmt-misc.rst :: ernel Support for miscellaneous Binary Formats (binfmt_misc)",
+            "admin-guide/binfmt-misc.rst :: ernel Support for miscellaneous Binary Formats (binfmt_misc)"
+          ]
+        },
+        {
+          "id": "q013",
+          "question": "What should I use instead of one-element or zero-length trailing arrays in kernel structs?",
+          "gold": "process/deprecated.rst",
+          "rank": 7,
+          "got": [
+            "process/deprecated.rst :: ibutes, and Conventions > Zero-length and one-element arrays",
+            "process/deprecated.rst :: ibutes, and Conventions > Zero-length and one-element arrays",
+            "process/deprecated.rst :: ibutes, and Conventions > Zero-length and one-element arrays"
+          ]
+        },
+        {
+          "id": "q016",
+          "question": "Why shouldn't I print pointers with %p, and what should I use for code addresses?",
+          "gold": "process/deprecated.rst",
+          "rank": 15,
+          "got": [
+            "core-api/printk-formats.rst :: ntk format specifiers right > Pointer types > Plain Pointers",
+            "core-api/printk-formats.rst :: rmat specifiers right > Pointer types > Unmodified Addresses",
+            "core-api/printk-formats.rst :: ntk format specifiers right > Pointer types > IPv6 addresses"
+          ]
+        },
+        {
+          "id": "q018",
+          "question": "What severity levels does checkpatch.pl report?",
+          "gold": "process/submitting-patches.rst",
+          "rank": 20,
+          "got": [
+            "dev-tools/checkpatch.rst :: Checkpatch > Message Levels",
+            "dev-tools/checkpatch.rst :: Checkpatch",
+            "dev-tools/checkpatch.rst :: Checkpatch > Options"
+          ]
+        },
+        {
+          "id": "q025",
+          "question": "My USB NCM modem fails with default cdc_ncm settings. Is there a quirk I can test?",
+          "gold": "ABI/testing/sysfs-class-net-cdc_ncm",
+          "rank": 6,
+          "got": [
+            "networking/cdc_mbim.rst :: r CDC MBIM Mobile Broadband modems > Command Line Parameters",
+            "usb/acm.rst :: Linux ACM driver v0.16 > 1. Usage",
+            "ABI/testing/sysfs-class-net-cdc_ncm :: c_ncm > /sys/class/net/<iface>/cdc_ncm/bmNtbFormatsSupported"
+          ]
+        },
+        {
+          "id": "q043",
+          "question": "Where do I read KUnit results when I run tests without kunit.py?",
+          "gold": "dev-tools/kunit/faq.rst",
+          "rank": 9,
+          "got": [
+            "dev-tools/kunit/run_manual.rst :: Run Tests without kunit_tool > Retrieve Test Results",
+            "dev-tools/kunit/architecture.rst :: KUnit Architecture > kunit_tool (Command-line Test Harness)",
+            "dev-tools/kunit/run_wrapper.rst :: Running tests with kunit_tool > Parsing test results"
+          ]
+        },
+        {
+          "id": "q048",
+          "question": "Why does ftrace sometimes show <...> instead of a task name?",
+          "gold": "trace/ftrace.rst",
+          "rank": 7,
+          "got": [
+            "trace/ftrace.rst :: ftrace - Function Tracer > Output format:",
+            "trace/ftrace.rst :: ftrace - Function Tracer > The File System",
+            "trace/ftrace.rst :: ftrace - Function Tracer > trace_options"
+          ]
+        },
+        {
+          "id": "q054",
+          "question": "When does a Kconfig menu entry become visible?",
+          "gold": "kbuild/kconfig-language.rst",
+          "rank": 10,
+          "got": [
+            "kbuild/kconfig-language.rst :: Kconfig Language > Menu structure",
+            "kbuild/kconfig-language.rst :: Kconfig Language > Menu attributes",
+            "kbuild/kconfig-language.rst :: Kconfig Language > Kconfig syntax"
+          ]
+        },
+        {
+          "id": "q055",
+          "question": "What is Energy Aware Scheduling trying to optimise?",
+          "gold": "scheduler/sched-energy.rst",
+          "rank": 6,
+          "got": [
+            "scheduler/sched-energy.rst :: Energy Aware Scheduling > 1. Introduction",
+            "scheduler/sched-energy.rst :: ies and requirements for EAS > 6.3 - Energy Model complexity",
+            "scheduler/sched-energy.rst ::  Aware Scheduling > 6. Dependencies and requirements for EAS"
+          ]
+        },
+        {
+          "id": "q081",
+          "question": "What does spin_lock_bh() block?",
+          "gold": "kernel-hacking/locking.rst",
+          "rank": 8,
+          "got": [
+            "kernel-hacking/locking.rst :: the Linux Kernel > Locking Between User Context and Softirqs",
+            "kernel-hacking/locking.rst ::  Locking Between Tasklets/Timers > Different Tasklets/Timers",
+            "kernel-hacking/locking.rst ::  Locking > Common Problems > Racing Timers: A Kernel Pastime"
+          ]
+        },
+        {
+          "id": "q092",
+          "question": "What log level number corresponds to KERN_ERR and which helper prints at that level?",
+          "gold": "core-api/printk-basics.rst",
+          "rank": 8,
+          "got": [
+            "admin-guide/kernel-parameters.txt :: The kernel's command-line parameters > loglevel",
+            "core-api/printk-basics.rst :: Message logging with printk",
+            "core-api/printk-index.rst :: Printk Index > User Interface"
+          ]
+        },
+        {
+          "id": "q099",
+          "question": "What is the minimum GCC version needed to build this kernel?",
+          "gold": "process/changes.rst",
+          "rank": 7,
+          "got": [
+            "admin-guide/quickly-build-trimmed-linux.rst :: tion for the step-by-step guide > Install build requirements",
+            "process/changes.rst :: nts to compile the Kernel > Intro > Kernel compilation > GCC",
+            "admin-guide/verify-bugs-and-bisect-regressions.rst :: s for building your own kernels > Install build requirements"
+          ]
+        },
+        {
+          "id": "q100",
+          "question": "What is the minimum Rust version for building Rust support in this kernel?",
+          "gold": "process/changes.rst",
+          "rank": 7,
+          "got": [
+            "rust/quick-start.rst :: Quick Start > Building",
+            "rust/quick-start.rst :: Quick Start",
+            "rust/quick-start.rst :: Quick Start > Requirements: Building > rustc"
+          ]
+        },
+        {
+          "id": "q104",
+          "question": "Should I attach patches to emails when sending them to kernel mailing lists?",
+          "gold": "process/email-clients.rst",
+          "rank": 6,
+          "got": [
+            "process/email-clients.rst :: Email clients info for Linux > General Preferences",
+            "process/5.Posting.rst :: Posting patches > Sending the patch",
+            "process/5.Posting.rst :: Posting patches > Sending the patch"
+          ]
+        },
+        {
+          "id": "q106",
+          "question": "What does setting transparent_hugepage defrag to 'always' do?",
+          "gold": "admin-guide/mm/transhuge.rst",
+          "rank": 12,
+          "got": [
+            "admin-guide/mm/transhuge.rst :: Transparent Hugepage Support > sysfs > Global THP controls",
+            "admin-guide/mm/transhuge.rst :: Transparent Hugepage Support > sysfs > Khugepaged controls",
+            "admin-guide/kernel-parameters.txt :: The kernel's command-line parameters > transparent_hugepage"
+          ]
+        },
+        {
+          "id": "q111",
+          "question": "What is the cgroup v2 equivalent of cgroup v1's memory.limit_in_bytes, and what happens when it is reached?",
+          "gold": "admin-guide/cgroup-v2.rst",
+          "rank": 16,
+          "got": [
+            "admin-guide/cgroup-v1/memory.rst ::  What happens when a cgroup hits memory.memsw.limit_in_bytes",
+            "admin-guide/cgroup-v1/memory.rst :: Memory Resource Controller > 3. User Interface",
+            "admin-guide/cgroup-v1/memory.rst :: Memory Resource Controller > 7. Soft limits (DEPRECATED)"
+          ]
+        },
+        {
+          "id": "q112",
+          "question": "What is the global default swappiness, and can a cgroup v1 memory group override it?",
+          "gold": "admin-guide/sysctl/vm.rst",
+          "rank": null,
+          "got": [
+            "admin-guide/cgroup-v1/memory.rst :: y Resource Controller > 5. Misc. interfaces > 5.3 swappiness",
+            "admin-guide/cgroup-v2.rst :: rol Group v2 > Controllers > Memory > Memory Interface Files",
+            "admin-guide/cgroup-v1/memory.rst :: e Controller > Benefits and Purpose of the memory controller"
+          ]
+        },
+        {
+          "id": "q113",
+          "question": "What is the minimum Clang version to build the kernel, and how do I build with a versioned LLVM like clang-14?",
+          "gold": "process/changes.rst",
+          "rank": 19,
+          "got": [
+            "kbuild/llvm.rst :: Building Linux with Clang/LLVM > Getting LLVM",
+            "kbuild/llvm.rst :: Building Linux with Clang/LLVM",
+            "process/changes.rst ::  Kernel > Intro > Kernel compilation > Clang/LLVM (optional)"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "hybrid_rerank",
+      "n": 113,
+      "recall@1": 0.6549,
+      "recall@3": 0.8407,
+      "recall@5": 0.885,
+      "recall@10": 0.9381,
+      "recall@20": 0.9912,
+      "mrr": 0.7714,
+      "doc@5": 0.9823,
+      "p50_ms": 2568.2,
+      "p95_ms": 3376.7,
+      "recall@5_by_category": {
+        "boot-param": 1.0,
+        "build": 0.714,
+        "coding": 0.895,
+        "config": 1.0,
+        "factual": 1.0,
+        "internals": 1.0,
+        "multi-hop": 0.0,
+        "procedure": 0.818,
+        "process": 0.875,
+        "procfs": 1.0,
+        "sysctl": 1.0,
+        "sysfs": 0.889,
+        "tracing": 0.833,
+        "troubleshooting": 0.75
+      },
+      "misses@5": [
+        {
+          "id": "q013",
+          "question": "What should I use instead of one-element or zero-length trailing arrays in kernel structs?",
+          "gold": "process/deprecated.rst",
+          "rank": 6,
+          "got": [
+            "process/deprecated.rst :: ibutes, and Conventions > Zero-length and one-element arrays",
+            "process/deprecated.rst :: d Conventions > open-coded arithmetic in allocator arguments",
+            "process/deprecated.rst :: ibutes, and Conventions > Zero-length and one-element arrays"
+          ]
+        },
+        {
+          "id": "q018",
+          "question": "What severity levels does checkpatch.pl report?",
+          "gold": "process/submitting-patches.rst",
+          "rank": 6,
+          "got": [
+            "dev-tools/checkpatch.rst :: Checkpatch > Message Levels",
+            "dev-tools/checkpatch.rst :: Checkpatch",
+            "driver-api/media/maintainer-entry-profile.rst ::  Profile > Submit Checklist Addendum > Coding Style Addendum"
+          ]
+        },
+        {
+          "id": "q043",
+          "question": "Where do I read KUnit results when I run tests without kunit.py?",
+          "gold": "dev-tools/kunit/faq.rst",
+          "rank": 14,
+          "got": [
+            "dev-tools/kunit/run_manual.rst :: Run Tests without kunit_tool > Retrieve Test Results",
+            "dev-tools/kunit/run_wrapper.rst :: Running tests with kunit_tool > Parsing test results",
+            "dev-tools/kunit/start.rst :: Getting Started > Running Tests without the KUnit Wrapper"
+          ]
+        },
+        {
+          "id": "q050",
+          "question": "How do I avoid computing tracepoint arguments when the tracepoint is disabled?",
+          "gold": "trace/tracepoints.rst",
+          "rank": 11,
+          "got": [
+            "trace/ftrace.rst :: ftrace - Function Tracer > Filter commands",
+            "admin-guide/LSM/landlock.rst :: ent > Tracepoints > Observability guarantees and limitations",
+            "trace/ftrace.rst :: ftrace - Function Tracer > preemptoff"
+          ]
+        },
+        {
+          "id": "q056",
+          "question": "How can I check whether a task is running under sched_ext?",
+          "gold": "scheduler/sched-ext.rst",
+          "rank": 13,
+          "got": [
+            "scheduler/sched-domains.rst :: Scheduler Domains",
+            "scheduler/sched-ext.rst :: Extensible Scheduler Class > Switching to and from sched_ext",
+            "scheduler/sched-ext.rst :: Extensible Scheduler Class > The Basics > Task Lifecycle"
+          ]
+        },
+        {
+          "id": "q092",
+          "question": "What log level number corresponds to KERN_ERR and which helper prints at that level?",
+          "gold": "core-api/printk-basics.rst",
+          "rank": 7,
+          "got": [
+            "core-api/printk-index.rst :: Printk Index > User Interface",
+            "core-api/printk-basics.rst :: Message logging with printk",
+            "core-api/printk-basics.rst :: Message logging with printk"
+          ]
+        },
+        {
+          "id": "q093",
+          "question": "My kernel is tainted with 'P'. What does that mean?",
+          "gold": "admin-guide/tainted-kernels.rst",
+          "rank": 6,
+          "got": [
+            "admin-guide/tainted-kernels.rst :: Tainted kernels",
+            "admin-guide/tainted-kernels.rst :: nted kernels > Tainted flag in bugs, oops or panics messages",
+            "admin-guide/reporting-issues.rst :: orting issues to the kernel maintainers > Check 'taint' flag"
+          ]
+        },
+        {
+          "id": "q099",
+          "question": "What is the minimum GCC version needed to build this kernel?",
+          "gold": "process/changes.rst",
+          "rank": 9,
+          "got": [
+            "process/changes.rst :: nts to compile the Kernel > Intro > Kernel compilation > GCC",
+            "process/changes.rst :: o compile the Kernel > Intro > Kernel compilation > Binutils",
+            "process/changes.rst :: ents to compile the Kernel > Intro > System utilities > FUSE"
+          ]
+        },
+        {
+          "id": "q100",
+          "question": "What is the minimum Rust version for building Rust support in this kernel?",
+          "gold": "process/changes.rst",
+          "rank": 12,
+          "got": [
+            "process/changes.rst :: le the Kernel > Intro > Kernel compilation > Rust (optional)",
+            "rust/arch-support.rst :: Arch Support",
+            "rust/quick-start.rst :: Quick Start > Configuration"
+          ]
+        },
+        {
+          "id": "q106",
+          "question": "What does setting transparent_hugepage defrag to 'always' do?",
+          "gold": "admin-guide/mm/transhuge.rst",
+          "rank": 8,
+          "got": [
+            "admin-guide/mm/transhuge.rst :: Transparent Hugepage Support > sysfs > Global THP controls",
+            "admin-guide/kernel-parameters.txt :: The kernel's command-line parameters > transparent_hugepage",
+            "admin-guide/mm/transhuge.rst :: Transparent Hugepage Support > Boot parameters"
+          ]
+        },
+        {
+          "id": "q111",
+          "question": "What is the cgroup v2 equivalent of cgroup v1's memory.limit_in_bytes, and what happens when it is reached?",
+          "gold": "admin-guide/cgroup-v2.rst",
+          "rank": 14,
+          "got": [
+            "admin-guide/cgroup-v1/memory.rst ::  What happens when a cgroup hits memory.memsw.limit_in_bytes",
+            "admin-guide/cgroup-v1/memory.rst :: Memory Resource Controller > 7. Soft limits (DEPRECATED)",
+            "admin-guide/cgroup-v2.rst :: rol Group v2 > Controllers > Memory > Memory Interface Files"
+          ]
+        },
+        {
+          "id": "q112",
+          "question": "What is the global default swappiness, and can a cgroup v1 memory group override it?",
+          "gold": "admin-guide/sysctl/vm.rst",
+          "rank": null,
+          "got": [
+            "admin-guide/cgroup-v1/memory.rst :: y Resource Controller > 5. Misc. interfaces > 5.3 swappiness",
+            "admin-guide/cgroup-v1/memory.rst ::  What happens when a cgroup hits memory.memsw.limit_in_bytes",
+            "admin-guide/cgroup-v1/memory.rst :: .4 Swap Extension > 2.4.1 why 'memory+swap' rather than swap"
+          ]
+        },
+        {
+          "id": "q113",
+          "question": "What is the minimum Clang version to build the kernel, and how do I build with a versioned LLVM like clang-14?",
+          "gold": "process/changes.rst",
+          "rank": 19,
+          "got": [
+            "dev-tools/kmsan.rst :: ernel Memory Sanitizer (KMSAN) > Usage > Building the kernel",
+            "process/changes.rst ::  Kernel > Intro > Kernel compilation > Clang/LLVM (optional)",
+            "kbuild/llvm.rst :: Building Linux with Clang/LLVM > The LLVM= argument"
+          ]
+        }
+      ],
+      "idk_threshold": {
+        "suggested": {
+          "threshold": 2.34,
+          "unanswerable_caught": 0.75,
+          "answerable_refused": 0.035
+        },
+        "answerable_top_score_p10": 3.174,
+        "unanswerable_top_score_p90": 3.362
+      }
+    }
+  ]
+}

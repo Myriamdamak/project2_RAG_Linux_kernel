@@ -1,0 +1,1082 @@
+{
+  "method": "same sequential HTTP workload, cache off then on, both initially empty",
+  "manifest": {
+    "questions": [
+      "How do I enable the magic SysRq key at runtime?",
+      "My CEC timings go out of spec with cec-gpio when chronyd is running. What should I change?",
+      "After building a trimmed kernel, what command installs it?",
+      "Can I move several PIDs at once by writing them to a cgroup v1 tasks file?",
+      "How can I create a compressed cpio initrd image from a directory?",
+      "How do I remove a cgroup v1 memory limit and make it unlimited again?",
+      "In cgroup v1, how do I limit a memory cgroup to 4 MB?",
+      "What Unicode range does Linux reserve as the 'Linux Zone'?",
+      "What is the difference between cgroup v1 and v2 memory.high?",
+      "Which architectures support CONFIG_CMDLINE_FROM_BOOTCONFIG?"
+    ],
+    "prior_logged_counts": {
+      "How do I enable the magic SysRq key at runtime?": 3,
+      "My CEC timings go out of spec with cec-gpio when chronyd is running. What should I change?": 2,
+      "After building a trimmed kernel, what command installs it?": 1,
+      "Can I move several PIDs at once by writing them to a cgroup v1 tasks file?": 1,
+      "How can I create a compressed cpio initrd image from a directory?": 1,
+      "How do I remove a cgroup v1 memory limit and make it unlimited again?": 1,
+      "In cgroup v1, how do I limit a memory cgroup to 4 MB?": 1,
+      "What Unicode range does Linux reserve as the 'Linux Zone'?": 1,
+      "What is the difference between cgroup v1 and v2 memory.high?": 1,
+      "Which architectures support CONFIG_CMDLINE_FROM_BOOTCONFIG?": 1
+    },
+    "passes": 5,
+    "concurrency": 1,
+    "settings": {
+      "corpus_dir": "C:\\Users\\21653\\Desktop\\Medtech\\courses\\final\\AI\\librarian\\librarian\\corpus\\linux\\Documentation",
+      "index_dir": "index_qdrant",
+      "log_dir": "C:\\Users\\21653\\Desktop\\Medtech\\courses\\final\\AI\\librarian\\librarian\\logs",
+      "exclude_dirs": "translations,sphinx,sphinx-static,sphinx-includes,images",
+      "chunker": "structure",
+      "chunk_tokens": 350,
+      "chunk_overlap": 50,
+      "min_chunk_words": 5,
+      "qdrant_url": "https://0d0ae701-01de-4533-8b5b-ae23d69e825e.eu-central-1-0.aws.cloud.qdrant.io:6333",
+      "qdrant_collection": "kernel_documentation",
+      "qdrant_batch": 256,
+      "qdrant_hnsw_m": 16,
+      "qdrant_hnsw_ef_construct": 100,
+      "qdrant_hnsw_ef": 256,
+      "qdrant_full_scan_threshold": 1000,
+      "qdrant_indexing_threshold": 2000,
+      "embedder": "st:BAAI/bge-small-en-v1.5",
+      "embed_batch": 64,
+      "embed_model_path": "index_qdrant/bge_model",
+      "candidates": 50,
+      "rrf_k": 60,
+      "bm25_weight": 1.0,
+      "vector_weight": 1.0,
+      "top_k": 6,
+      "reranker": "ce:cross-encoder/ms-marco-MiniLM-L-6-v2",
+      "rerank_pool": 30,
+      "idk_threshold": -6.0,
+      "skip_rerank_when_confident": false,
+      "rewrite": "auto",
+      "generator": "openai:gpt-5.4-nano",
+      "rewrite_model": "gpt-5.4-mini",
+      "reasoning_effort": "none",
+      "max_answer_tokens": 1600,
+      "max_rewrite_tokens": 800,
+      "openai_base_url": "https://api.openai.com/v1",
+      "answer_cache": false,
+      "answer_cache_ttl": 3600.0,
+      "answer_cache_size": 1000,
+      "host": "0.0.0.0",
+      "port": 8000,
+      "excluded": [
+        "translations",
+        "sphinx",
+        "sphinx-static",
+        "sphinx-includes",
+        "images"
+      ]
+    },
+    "index": {
+      "built_at": "2026-11-03T13:50:08",
+      "embedder": "st:BAAI/bge-small-en-v1.5",
+      "chunker": "structure",
+      "vector_store": "qdrant",
+      "qdrant_collection": "kernel_documentation",
+      "qdrant_generation": "a341a175f5aa429c95aa796beab5e5c7",
+      "chunk_tokens": 350,
+      "chunk_overlap": 50,
+      "n_docs": 4569,
+      "n_chunks": 41646,
+      "dims": 384,
+      "seconds": {
+        "chunk": 78.28720021247864,
+        "bm25": 11.968225717544556,
+        "embed": 873.643138885498
+      },
+      "bytes": {
+        "bm25.idf.npy": 495200,
+        "bm25.npz": 9504908,
+        "bm25.vocab.json": 2690733,
+        "chunks.jsonl": 53178259,
+        "download_bge.py": 832,
+        "vectors.npy": 31984256,
+        "verify_upload.py": 1323
+      }
+    }
+  },
+  "selection": "most frequent logged questions; QA questions fill missing slots",
+  "scope": "loopback HTTP + complete nano pipeline; excludes model startup; includes candidate cold fills",
+  "complete": true,
+  "error": null,
+  "before": {
+    "n": 50,
+    "p50_ms": 4424.8820000793785,
+    "p95_ms": 7395.2527900226405,
+    "mean_cost_usd": 0.0004154,
+    "cache_hits": 0,
+    "cache_hit_rate": 0.0,
+    "hits": {
+      "n": 0,
+      "p50_ms": null,
+      "p95_ms": null
+    },
+    "misses": {
+      "n": 50,
+      "p50_ms": 4424.8820000793785,
+      "p95_ms": 7395.2527900226405
+    },
+    "repeated_requests": {
+      "n": 40,
+      "p50_ms": 4382.0698000490665,
+      "p95_ms": 6341.241850098591
+    }
+  },
+  "after": {
+    "n": 50,
+    "p50_ms": 12.488199979998171,
+    "p95_ms": 4745.945744914933,
+    "mean_cost_usd": 8.816000000000001e-05,
+    "cache_hits": 40,
+    "cache_hit_rate": 0.8,
+    "hits": {
+      "n": 40,
+      "p50_ms": 12.125749955885112,
+      "p95_ms": 35.17360484693199
+    },
+    "misses": {
+      "n": 10,
+      "p50_ms": 4478.363700094633,
+      "p95_ms": 5781.205589976161
+    },
+    "repeated_requests": {
+      "n": 40,
+      "p50_ms": 12.125749955885112,
+      "p95_ms": 35.17360484693199
+    }
+  },
+  "cached_content_unchanged": true,
+  "comparison": {
+    "mixed_p50_reduction_fraction": 0.9971777326537128,
+    "mixed_p95_reduction_fraction": 0.35824428458781554,
+    "repeat_p95_reduction_fraction": 0.9944531992820326,
+    "cost_reduction_fraction": 0.7877708233028407
+  },
+  "rows": {
+    "before": [
+      {
+        "question_index": 0,
+        "pass": 0,
+        "http_ms": 5496.670499909669,
+        "pipeline_ms": 5490.5,
+        "cost_usd": 0.000515,
+        "cached": false,
+        "content_signature": "90f00b5cccede2d67b2f3f488a0dbff267805416319a15a7c8e0196f9723ac6a"
+      },
+      {
+        "question_index": 1,
+        "pass": 0,
+        "http_ms": 5154.599699890241,
+        "pipeline_ms": 5093.4,
+        "cost_usd": 0.000552,
+        "cached": false,
+        "content_signature": "7d0ee6e4e0ce1142fed10112211da451170c8b4d6e0bf49cfc7d3588e3e8a751"
+      },
+      {
+        "question_index": 2,
+        "pass": 0,
+        "http_ms": 3331.745200091973,
+        "pipeline_ms": 3248.9,
+        "cost_usd": 0.000478,
+        "cached": false,
+        "content_signature": "0724dcb6dfc6eda24ea741156a2054e527954ac905d09485a61e4ccbc53bee8f"
+      },
+      {
+        "question_index": 3,
+        "pass": 0,
+        "http_ms": 3620.860500028357,
+        "pipeline_ms": 3548.8,
+        "cost_usd": 0.000413,
+        "cached": false,
+        "content_signature": "ac3f36e63603dcf8381b0855d827263d2300ec56706da31a22ba69a219c8886a"
+      },
+      {
+        "question_index": 4,
+        "pass": 0,
+        "http_ms": 4502.799400128424,
+        "pipeline_ms": 4468.7,
+        "cost_usd": 0.000458,
+        "cached": false,
+        "content_signature": "8e7ee76e5307f4c6715b78ae425790317de228e89458f0d7e2a2667579727d2b"
+      },
+      {
+        "question_index": 5,
+        "pass": 0,
+        "http_ms": 9500.804399838671,
+        "pipeline_ms": 9418.6,
+        "cost_usd": 0.000748,
+        "cached": false,
+        "content_signature": "d06574047986a75b3cb1717f0dd8c7cfb923771e1931de1dd8aec6137a3c0e6e"
+      },
+      {
+        "question_index": 6,
+        "pass": 0,
+        "http_ms": 4083.963100099936,
+        "pipeline_ms": 4004.8,
+        "cost_usd": 0.000434,
+        "cached": false,
+        "content_signature": "18d3ef79235934fad8cb60d7deaabf305d8ba2d41cd3be933dfeb9ccba1189ee"
+      },
+      {
+        "question_index": 7,
+        "pass": 0,
+        "http_ms": 4918.781799962744,
+        "pipeline_ms": 4843.4,
+        "cost_usd": 0.000466,
+        "cached": false,
+        "content_signature": "9ace42e7c76b780f09904b43d73d70594024dddd244fcad783253958b17905c1"
+      },
+      {
+        "question_index": 8,
+        "pass": 0,
+        "http_ms": 7170.638399897143,
+        "pipeline_ms": 7082.5,
+        "cost_usd": 0.000856,
+        "cached": false,
+        "content_signature": "f06a4bd7dda4c191fd2a7c7f2fb0fa4b3f5c82086cb4d4509373878c445ed8a5"
+      },
+      {
+        "question_index": 9,
+        "pass": 0,
+        "http_ms": 3749.135799938813,
+        "pipeline_ms": 3673.2,
+        "cost_usd": 0.000422,
+        "cached": false,
+        "content_signature": "0c9251e476efd0feb2e8e9ad82d8c640380bf4463bee75b98cff3200a778b13b"
+      },
+      {
+        "question_index": 0,
+        "pass": 1,
+        "http_ms": 4687.703399918973,
+        "pipeline_ms": 4600.8,
+        "cost_usd": 0.000579,
+        "cached": false,
+        "content_signature": "bfa8b87d05eddd58cabdd6119beca2f12733635630feac0bbf6203b829e63633"
+      },
+      {
+        "question_index": 1,
+        "pass": 1,
+        "http_ms": 4514.080699998885,
+        "pipeline_ms": 4434.9,
+        "cost_usd": 0.000245,
+        "cached": false,
+        "content_signature": "6194b9d6861528eaabd969b7b669aa0df272b8f0250846f8d9bc88a56f199cd0"
+      },
+      {
+        "question_index": 2,
+        "pass": 1,
+        "http_ms": 3221.4037000667304,
+        "pipeline_ms": 3144.4,
+        "cost_usd": 0.000158,
+        "cached": false,
+        "content_signature": "7f4373a86a00cc45d779d40ca5709c42155fccda6a946a7adf6ad4bd0b998838"
+      },
+      {
+        "question_index": 3,
+        "pass": 1,
+        "http_ms": 3538.0658998619765,
+        "pipeline_ms": 3468.4,
+        "cost_usd": 0.00042,
+        "cached": false,
+        "content_signature": "c1c7c08aa4b3641bb8be838f89e124bdf76c25fc1cf107897c864f45979e373f"
+      },
+      {
+        "question_index": 4,
+        "pass": 1,
+        "http_ms": 4333.979699993506,
+        "pipeline_ms": 4261.3,
+        "cost_usd": 0.000462,
+        "cached": false,
+        "content_signature": "5775184905ef5932417d988277b9a2c512cbc7dddf9ccd0f5389daca48c4e325"
+      },
+      {
+        "question_index": 5,
+        "pass": 1,
+        "http_ms": 5988.781999796629,
+        "pipeline_ms": 5909.2,
+        "cost_usd": 0.000805,
+        "cached": false,
+        "content_signature": "9067c2c0470248d999df2f679dbdd74c0b67be457ce038df6da890d4f08cc8c2"
+      },
+      {
+        "question_index": 6,
+        "pass": 1,
+        "http_ms": 4979.562699794769,
+        "pipeline_ms": 4905.2,
+        "cost_usd": 0.000467,
+        "cached": false,
+        "content_signature": "89853051a339330258f76f9fa0205d66d0b7dc3f9cc3438c6aa3cdc116986b28"
+      },
+      {
+        "question_index": 7,
+        "pass": 1,
+        "http_ms": 3908.8284999597818,
+        "pipeline_ms": 3829.8,
+        "cost_usd": 0.000172,
+        "cached": false,
+        "content_signature": "3bf99371a9408a3653d494b1fcc7d71975a34ace04e9050417d1a1ed1ee8771c"
+      },
+      {
+        "question_index": 8,
+        "pass": 1,
+        "http_ms": 6235.282700043172,
+        "pipeline_ms": 6157.5,
+        "cost_usd": 0.000544,
+        "cached": false,
+        "content_signature": "ed97d62d25870afa9fa374b194fe3e1f05f91e83f8d169f049d86459fc3f5e62"
+      },
+      {
+        "question_index": 9,
+        "pass": 1,
+        "http_ms": 3652.875700034201,
+        "pipeline_ms": 3574.0,
+        "cost_usd": 0.000124,
+        "cached": false,
+        "content_signature": "1cdf43c4a29520167c1bbcb0479bf12aa17e5c7a4a7082791cd830efd8629602"
+      },
+      {
+        "question_index": 0,
+        "pass": 2,
+        "http_ms": 4476.021999958903,
+        "pipeline_ms": 4397.8,
+        "cost_usd": 0.000492,
+        "cached": false,
+        "content_signature": "987b5ae512caa662adf2ade749dd36b2d8bd36bdfbc92c3d62f803d18602614f"
+      },
+      {
+        "question_index": 1,
+        "pass": 2,
+        "http_ms": 4719.692499842495,
+        "pipeline_ms": 4640.3,
+        "cost_usd": 0.000255,
+        "cached": false,
+        "content_signature": "02bb3e358ab11ae62c2f3ddb31baf55451ed0f893f18ccd62f5b5c0766599432"
+      },
+      {
+        "question_index": 2,
+        "pass": 2,
+        "http_ms": 3323.7660999875516,
+        "pipeline_ms": 3246.1,
+        "cost_usd": 0.000476,
+        "cached": false,
+        "content_signature": "9bdb6e3ad181fb4e4bbeb47dd26f9adf1adccd7d97615540cc6ca08433d6826c"
+      },
+      {
+        "question_index": 3,
+        "pass": 2,
+        "http_ms": 4120.045399991795,
+        "pipeline_ms": 4050.0,
+        "cost_usd": 0.000445,
+        "cached": false,
+        "content_signature": "acf5d01aaa7b82634cae6855079a10f01aac0b1e205b6a757a5a50c03805aed0"
+      },
+      {
+        "question_index": 4,
+        "pass": 2,
+        "http_ms": 4035.0152000319213,
+        "pipeline_ms": 3960.5,
+        "cost_usd": 0.000467,
+        "cached": false,
+        "content_signature": "ff64a948a8521c818e8319110a8e9f2be3588caa7bf3fcba16a95a2d90d7b909"
+      },
+      {
+        "question_index": 5,
+        "pass": 2,
+        "http_ms": 5410.950700053945,
+        "pipeline_ms": 5350.0,
+        "cost_usd": 0.000468,
+        "cached": false,
+        "content_signature": "d9adc21dccce8bd051fdf5fb26e8833b3cc2d5759629d34cef911d5cb2f94584"
+      },
+      {
+        "question_index": 6,
+        "pass": 2,
+        "http_ms": 4704.609700012952,
+        "pipeline_ms": 4616.8,
+        "cost_usd": 0.000465,
+        "cached": false,
+        "content_signature": "04816684852aa1450070692d7ec77aa37c6e7f8275b4df289046c54218e8390a"
+      },
+      {
+        "question_index": 7,
+        "pass": 2,
+        "http_ms": 4710.20850003697,
+        "pipeline_ms": 4636.8,
+        "cost_usd": 0.000159,
+        "cached": false,
+        "content_signature": "bb9f8dac14ddb3ad5ca62720739ffd499eeeb0c785c0604c6dde3bc05ef74342"
+      },
+      {
+        "question_index": 8,
+        "pass": 2,
+        "http_ms": 5713.0087001714855,
+        "pipeline_ms": 5636.2,
+        "cost_usd": 0.000429,
+        "cached": false,
+        "content_signature": "d37032774295528225731695506849de9ec11d0aa530da6870bac618d243188e"
+      },
+      {
+        "question_index": 9,
+        "pass": 2,
+        "http_ms": 3897.360499948263,
+        "pipeline_ms": 3820.7,
+        "cost_usd": 0.0001,
+        "cached": false,
+        "content_signature": "819722c8b5126f29fcbd4cdb285d97f86853dc7c7d7d518dfd9fa40ee2c356f3"
+      },
+      {
+        "question_index": 0,
+        "pass": 3,
+        "http_ms": 4181.799000129104,
+        "pipeline_ms": 4097.9,
+        "cost_usd": 0.000514,
+        "cached": false,
+        "content_signature": "9e613aba44248a538eeb06e8c7cf16af746e78570b05f5d4c226832ef076e5a6"
+      },
+      {
+        "question_index": 1,
+        "pass": 3,
+        "http_ms": 4380.432799924165,
+        "pipeline_ms": 4298.7,
+        "cost_usd": 0.000256,
+        "cached": false,
+        "content_signature": "4e1e796c49f5f08cd518b68c830b7b2cf5e5fbce083fc68be2f4633634e5e86b"
+      },
+      {
+        "question_index": 2,
+        "pass": 3,
+        "http_ms": 3490.3034002054483,
+        "pipeline_ms": 3417.2,
+        "cost_usd": 0.000156,
+        "cached": false,
+        "content_signature": "0724dcb6dfc6eda24ea741156a2054e527954ac905d09485a61e4ccbc53bee8f"
+      },
+      {
+        "question_index": 3,
+        "pass": 3,
+        "http_ms": 4229.877900099382,
+        "pipeline_ms": 4162.4,
+        "cost_usd": 0.000427,
+        "cached": false,
+        "content_signature": "5945a602fc1fb7a4b605c81ca8c704ba893b7e36f5ca2640ebdcf4c0c5950c5b"
+      },
+      {
+        "question_index": 4,
+        "pass": 3,
+        "http_ms": 4274.299900047481,
+        "pipeline_ms": 4199.6,
+        "cost_usd": 0.000458,
+        "cached": false,
+        "content_signature": "739ece4e2511b68d17c259f43209f67bfb77556d6b710504eeeb29c3ec90ae74"
+      },
+      {
+        "question_index": 5,
+        "pass": 3,
+        "http_ms": 7579.028200125322,
+        "pipeline_ms": 7502.8,
+        "cost_usd": 0.000425,
+        "cached": false,
+        "content_signature": "a4002e1b2f2091dbcb9835f5738ebf8636fdab3dabd1f67b9f86d69e536c01d6"
+      },
+      {
+        "question_index": 6,
+        "pass": 3,
+        "http_ms": 4717.932799831033,
+        "pipeline_ms": 4642.6,
+        "cost_usd": 0.000454,
+        "cached": false,
+        "content_signature": "7c5e599ef3eb7c2bb515bebc569ea9bf84e4441f80cce60b890f54b64fd2d37c"
+      },
+      {
+        "question_index": 7,
+        "pass": 3,
+        "http_ms": 3947.250199969858,
+        "pipeline_ms": 3871.2,
+        "cost_usd": 0.00015,
+        "cached": false,
+        "content_signature": "0d8efeb0a255945446babdec3e6639e5ac1866c98db49925da8d70e40196cde8"
+      },
+      {
+        "question_index": 8,
+        "pass": 3,
+        "http_ms": 6049.148699967191,
+        "pipeline_ms": 5969.5,
+        "cost_usd": 0.000501,
+        "cached": false,
+        "content_signature": "1e90c6f08ceca2b3f19acb0e1ee068e746cffd6ce46e2fb54dd8b54140a030c4"
+      },
+      {
+        "question_index": 9,
+        "pass": 3,
+        "http_ms": 3680.835299892351,
+        "pipeline_ms": 3597.2,
+        "cost_usd": 0.000104,
+        "cached": false,
+        "content_signature": "3e00562c2a66fb7bc72cf0dd778d4dec36bb1825db2c1e097a1508a94b0ba627"
+      },
+      {
+        "question_index": 0,
+        "pass": 4,
+        "http_ms": 4466.057199984789,
+        "pipeline_ms": 4386.4,
+        "cost_usd": 0.000529,
+        "cached": false,
+        "content_signature": "eef0390b95e5e9f90ec960f326909ad676a4c888c59c2c9601c7c8182a25c376"
+      },
+      {
+        "question_index": 1,
+        "pass": 4,
+        "http_ms": 4119.446999859065,
+        "pipeline_ms": 4037.6,
+        "cost_usd": 0.000552,
+        "cached": false,
+        "content_signature": "c262ee7197e42a0d831b136969d5ae06e65e0e644ee4ac89517d11f075f12ed5"
+      },
+      {
+        "question_index": 2,
+        "pass": 4,
+        "http_ms": 3457.479599863291,
+        "pipeline_ms": 3369.9,
+        "cost_usd": 0.000162,
+        "cached": false,
+        "content_signature": "394842bde514299ba32fb0fce6336f095216796d8a392787f390d75c95c79af7"
+      },
+      {
+        "question_index": 3,
+        "pass": 4,
+        "http_ms": 5270.712000085041,
+        "pipeline_ms": 5204.2,
+        "cost_usd": 0.00041,
+        "cached": false,
+        "content_signature": "0fa86906de30ab249014372c54d7b505068b9b2f2b3af300075f670749090320"
+      },
+      {
+        "question_index": 4,
+        "pass": 4,
+        "http_ms": 4119.553699856624,
+        "pipeline_ms": 4043.2,
+        "cost_usd": 0.000469,
+        "cached": false,
+        "content_signature": "63a8bb6631ddab591d648ae80d33e57cb35f9b94b8fda392313aba668cc93d82"
+      },
+      {
+        "question_index": 5,
+        "pass": 4,
+        "http_ms": 9007.3706000112,
+        "pipeline_ms": 8928.5,
+        "cost_usd": 0.000769,
+        "cached": false,
+        "content_signature": "6122841ef0bc7b0aa1bc3d8ff470c0569e9e68a7c33fff238aabf3f1098dec57"
+      },
+      {
+        "question_index": 6,
+        "pass": 4,
+        "http_ms": 4928.306099958718,
+        "pipeline_ms": 4850.9,
+        "cost_usd": 0.00051,
+        "cached": false,
+        "content_signature": "b325f8b02cb92d3158872559c980b2465bae99bc4342e2774e33e43a82bdbb6e"
+      },
+      {
+        "question_index": 7,
+        "pass": 4,
+        "http_ms": 4383.706800173968,
+        "pipeline_ms": 4308.1,
+        "cost_usd": 0.000165,
+        "cached": false,
+        "content_signature": "e5bec29a6ad608bad00201af0baa3651d56f44914f5b07ab7af440c13ad95151"
+      },
+      {
+        "question_index": 8,
+        "pass": 4,
+        "http_ms": 6276.095200097188,
+        "pipeline_ms": 6201.7,
+        "cost_usd": 0.000584,
+        "cached": false,
+        "content_signature": "f235465e8f70579f50a76df9de90dc5ddffc4ae2cd518e9e654ed370e4adabdf"
+      },
+      {
+        "question_index": 9,
+        "pass": 4,
+        "http_ms": 3585.7265999075025,
+        "pipeline_ms": 3508.2,
+        "cost_usd": 0.000101,
+        "cached": false,
+        "content_signature": "e1889086d3e9f15020e25636fe6c115b100af8df851f0ea31bf9c083d023dd90"
+      }
+    ],
+    "after": [
+      {
+        "question_index": 0,
+        "pass": 0,
+        "http_ms": 4875.564599875361,
+        "pipeline_ms": 4793.8,
+        "cost_usd": 0.000486,
+        "cached": false,
+        "content_signature": "6d2a3571a76f9679c2be6d0f1db91fbb19f0e3340eda2d806bce02de9c5110e0"
+      },
+      {
+        "question_index": 1,
+        "pass": 0,
+        "http_ms": 4501.987100113183,
+        "pipeline_ms": 4419.5,
+        "cost_usd": 0.000252,
+        "cached": false,
+        "content_signature": "c87526cfb6313f15eeb60636bca41701526e51a77ceed6294e198a46b5f8bd1a"
+      },
+      {
+        "question_index": 2,
+        "pass": 0,
+        "http_ms": 3903.1214001588523,
+        "pipeline_ms": 3829.6,
+        "cost_usd": 0.000155,
+        "cached": false,
+        "content_signature": "3bf750f80431b2831276c1e29e4cfeee4925ea440cf883b8974e63c63f41233d"
+      },
+      {
+        "question_index": 3,
+        "pass": 0,
+        "http_ms": 3616.6415999177843,
+        "pipeline_ms": 3546.7,
+        "cost_usd": 0.00041,
+        "cached": false,
+        "content_signature": "ee11c845ca0cf2abdb1d6ccd93d39d27cd16d67182576fd56eba5bafb3022411"
+      },
+      {
+        "question_index": 4,
+        "pass": 0,
+        "http_ms": 4454.740300076082,
+        "pipeline_ms": 4375.8,
+        "cost_usd": 0.000458,
+        "cached": false,
+        "content_signature": "c3fe0648ccbb96963c08bf910ad8253c3b8d66cbaf5f499533c9613dc16a9206"
+      },
+      {
+        "question_index": 5,
+        "pass": 0,
+        "http_ms": 5167.316599981859,
+        "pipeline_ms": 5091.1,
+        "cost_usd": 0.000718,
+        "cached": false,
+        "content_signature": "79ccb191e7c68f6f3c0828fbb926bee783cc2384e0f23f5f88ee329062f9eead"
+      },
+      {
+        "question_index": 6,
+        "pass": 0,
+        "http_ms": 4038.922999985516,
+        "pipeline_ms": 3962.5,
+        "cost_usd": 0.000468,
+        "cached": false,
+        "content_signature": "f33e509b0f3e93a9d2211a830bb35c7a6831fae7ad10a1e47c84d4c96398a1d1"
+      },
+      {
+        "question_index": 7,
+        "pass": 0,
+        "http_ms": 3593.155900016427,
+        "pipeline_ms": 3508.1,
+        "cost_usd": 0.000144,
+        "cached": false,
+        "content_signature": "9ace42e7c76b780f09904b43d73d70594024dddd244fcad783253958b17905c1"
+      },
+      {
+        "question_index": 8,
+        "pass": 0,
+        "http_ms": 6283.4783999715,
+        "pipeline_ms": 6198.9,
+        "cost_usd": 0.000893,
+        "cached": false,
+        "content_signature": "59651e13a31e74853d515ac4ca1bef0a58e8898b8e185e6b33f7ff4f51ea723a"
+      },
+      {
+        "question_index": 9,
+        "pass": 0,
+        "http_ms": 4587.522699963301,
+        "pipeline_ms": 4505.3,
+        "cost_usd": 0.000424,
+        "cached": false,
+        "content_signature": "6d7f67d32361ec67b18b7491feeacb8f18b61bb0955d42b79cf59420ce2ac4c1"
+      },
+      {
+        "question_index": 0,
+        "pass": 1,
+        "http_ms": 82.35160005278885,
+        "pipeline_ms": 0.8597001433372498,
+        "cost_usd": 0.0,
+        "cached": true,
+        "content_signature": "6d2a3571a76f9679c2be6d0f1db91fbb19f0e3340eda2d806bce02de9c5110e0"
+      },
+      {
+        "question_index": 1,
+        "pass": 1,
+        "http_ms": 14.98929993249476,
+        "pipeline_ms": 0.6950001697987318,
+        "cost_usd": 0.0,
+        "cached": true,
+        "content_signature": "c87526cfb6313f15eeb60636bca41701526e51a77ceed6294e198a46b5f8bd1a"
+      },
+      {
+        "question_index": 2,
+        "pass": 1,
+        "http_ms": 14.125700108706951,
+        "pipeline_ms": 0.595899997279048,
+        "cost_usd": 0.0,
+        "cached": true,
+        "content_signature": "3bf750f80431b2831276c1e29e4cfeee4925ea440cf883b8974e63c63f41233d"
+      },
+      {
+        "question_index": 3,
+        "pass": 1,
+        "http_ms": 12.460199883207679,
+        "pipeline_ms": 0.5197001155465841,
+        "cost_usd": 0.0,
+        "cached": true,
+        "content_signature": "ee11c845ca0cf2abdb1d6ccd93d39d27cd16d67182576fd56eba5bafb3022411"
+      },
+      {
+        "question_index": 4,
+        "pass": 1,
+        "http_ms": 12.652900069952011,
+        "pipeline_ms": 0.5288999527692795,
+        "cost_usd": 0.0,
+        "cached": true,
+        "content_signature": "c3fe0648ccbb96963c08bf910ad8253c3b8d66cbaf5f499533c9613dc16a9206"
+      },
+      {
+        "question_index": 5,
+        "pass": 1,
+        "http_ms": 31.502699945122004,
+        "pipeline_ms": 0.5805001128464937,
+        "cost_usd": 0.0,
+        "cached": true,
+        "content_signature": "79ccb191e7c68f6f3c0828fbb926bee783cc2384e0f23f5f88ee329062f9eead"
+      },
+      {
+        "question_index": 6,
+        "pass": 1,
+        "http_ms": 11.780199827626348,
+        "pipeline_ms": 0.5895998328924179,
+        "cost_usd": 0.0,
+        "cached": true,
+        "content_signature": "f33e509b0f3e93a9d2211a830bb35c7a6831fae7ad10a1e47c84d4c96398a1d1"
+      },
+      {
+        "question_index": 7,
+        "pass": 1,
+        "http_ms": 11.674599954858422,
+        "pipeline_ms": 0.682600075379014,
+        "cost_usd": 0.0,
+        "cached": true,
+        "content_signature": "9ace42e7c76b780f09904b43d73d70594024dddd244fcad783253958b17905c1"
+      },
+      {
+        "question_index": 8,
+        "pass": 1,
+        "http_ms": 11.254600016400218,
+        "pipeline_ms": 0.514900078997016,
+        "cost_usd": 0.0,
+        "cached": true,
+        "content_signature": "59651e13a31e74853d515ac4ca1bef0a58e8898b8e185e6b33f7ff4f51ea723a"
+      },
+      {
+        "question_index": 9,
+        "pass": 1,
+        "http_ms": 12.0514000300318,
+        "pipeline_ms": 0.6152000278234482,
+        "cost_usd": 0.0,
+        "cached": true,
+        "content_signature": "6d7f67d32361ec67b18b7491feeacb8f18b61bb0955d42b79cf59420ce2ac4c1"
+      },
+      {
+        "question_index": 0,
+        "pass": 2,
+        "http_ms": 12.127700028941035,
+        "pipeline_ms": 0.6019999273121357,
+        "cost_usd": 0.0,
+        "cached": true,
+        "content_signature": "6d2a3571a76f9679c2be6d0f1db91fbb19f0e3340eda2d806bce02de9c5110e0"
+      },
+      {
+        "question_index": 1,
+        "pass": 2,
+        "http_ms": 12.482400052249432,
+        "pipeline_ms": 0.6758000236004591,
+        "cost_usd": 0.0,
+        "cached": true,
+        "content_signature": "c87526cfb6313f15eeb60636bca41701526e51a77ceed6294e198a46b5f8bd1a"
+      },
+      {
+        "question_index": 2,
+        "pass": 2,
+        "http_ms": 36.917899968102574,
+        "pipeline_ms": 2.3017001803964376,
+        "cost_usd": 0.0,
+        "cached": true,
+        "content_signature": "3bf750f80431b2831276c1e29e4cfeee4925ea440cf883b8974e63c63f41233d"
+      },
+      {
+        "question_index": 3,
+        "pass": 2,
+        "http_ms": 13.838999904692173,
+        "pipeline_ms": 0.845000147819519,
+        "cost_usd": 0.0,
+        "cached": true,
+        "content_signature": "ee11c845ca0cf2abdb1d6ccd93d39d27cd16d67182576fd56eba5bafb3022411"
+      },
+      {
+        "question_index": 4,
+        "pass": 2,
+        "http_ms": 11.271900031715631,
+        "pipeline_ms": 1.0415001306682825,
+        "cost_usd": 0.0,
+        "cached": true,
+        "content_signature": "c3fe0648ccbb96963c08bf910ad8253c3b8d66cbaf5f499533c9613dc16a9206"
+      },
+      {
+        "question_index": 5,
+        "pass": 2,
+        "http_ms": 12.10050005465746,
+        "pipeline_ms": 0.6206999532878399,
+        "cost_usd": 0.0,
+        "cached": true,
+        "content_signature": "79ccb191e7c68f6f3c0828fbb926bee783cc2384e0f23f5f88ee329062f9eead"
+      },
+      {
+        "question_index": 6,
+        "pass": 2,
+        "http_ms": 10.719400132074952,
+        "pipeline_ms": 0.5009002052247524,
+        "cost_usd": 0.0,
+        "cached": true,
+        "content_signature": "f33e509b0f3e93a9d2211a830bb35c7a6831fae7ad10a1e47c84d4c96398a1d1"
+      },
+      {
+        "question_index": 7,
+        "pass": 2,
+        "http_ms": 11.10020000487566,
+        "pipeline_ms": 0.498700188472867,
+        "cost_usd": 0.0,
+        "cached": true,
+        "content_signature": "9ace42e7c76b780f09904b43d73d70594024dddd244fcad783253958b17905c1"
+      },
+      {
+        "question_index": 8,
+        "pass": 2,
+        "http_ms": 12.12379988282919,
+        "pipeline_ms": 0.7732000667601824,
+        "cost_usd": 0.0,
+        "cached": true,
+        "content_signature": "59651e13a31e74853d515ac4ca1bef0a58e8898b8e185e6b33f7ff4f51ea723a"
+      },
+      {
+        "question_index": 9,
+        "pass": 2,
+        "http_ms": 11.371899861842394,
+        "pipeline_ms": 0.8676000870764256,
+        "cost_usd": 0.0,
+        "cached": true,
+        "content_signature": "6d7f67d32361ec67b18b7491feeacb8f18b61bb0955d42b79cf59420ce2ac4c1"
+      },
+      {
+        "question_index": 0,
+        "pass": 3,
+        "http_ms": 12.484899954870343,
+        "pipeline_ms": 0.5686001386493444,
+        "cost_usd": 0.0,
+        "cached": true,
+        "content_signature": "6d2a3571a76f9679c2be6d0f1db91fbb19f0e3340eda2d806bce02de9c5110e0"
+      },
+      {
+        "question_index": 1,
+        "pass": 3,
+        "http_ms": 11.017000069841743,
+        "pipeline_ms": 0.5731999408453703,
+        "cost_usd": 0.0,
+        "cached": true,
+        "content_signature": "c87526cfb6313f15eeb60636bca41701526e51a77ceed6294e198a46b5f8bd1a"
+      },
+      {
+        "question_index": 2,
+        "pass": 3,
+        "http_ms": 10.780700016766787,
+        "pipeline_ms": 0.6929000373929739,
+        "cost_usd": 0.0,
+        "cached": true,
+        "content_signature": "3bf750f80431b2831276c1e29e4cfeee4925ea440cf883b8974e63c63f41233d"
+      },
+      {
+        "question_index": 3,
+        "pass": 3,
+        "http_ms": 11.90500007942319,
+        "pipeline_ms": 0.547800213098526,
+        "cost_usd": 0.0,
+        "cached": true,
+        "content_signature": "ee11c845ca0cf2abdb1d6ccd93d39d27cd16d67182576fd56eba5bafb3022411"
+      },
+      {
+        "question_index": 4,
+        "pass": 3,
+        "http_ms": 10.791399981826544,
+        "pipeline_ms": 0.5661998875439167,
+        "cost_usd": 0.0,
+        "cached": true,
+        "content_signature": "c3fe0648ccbb96963c08bf910ad8253c3b8d66cbaf5f499533c9613dc16a9206"
+      },
+      {
+        "question_index": 5,
+        "pass": 3,
+        "http_ms": 35.081799840554595,
+        "pipeline_ms": 0.547399977222085,
+        "cost_usd": 0.0,
+        "cached": true,
+        "content_signature": "79ccb191e7c68f6f3c0828fbb926bee783cc2384e0f23f5f88ee329062f9eead"
+      },
+      {
+        "question_index": 6,
+        "pass": 3,
+        "http_ms": 11.663800105452538,
+        "pipeline_ms": 0.4990000743418932,
+        "cost_usd": 0.0,
+        "cached": true,
+        "content_signature": "f33e509b0f3e93a9d2211a830bb35c7a6831fae7ad10a1e47c84d4c96398a1d1"
+      },
+      {
+        "question_index": 7,
+        "pass": 3,
+        "http_ms": 11.584100080654025,
+        "pipeline_ms": 0.5952999927103519,
+        "cost_usd": 0.0,
+        "cached": true,
+        "content_signature": "9ace42e7c76b780f09904b43d73d70594024dddd244fcad783253958b17905c1"
+      },
+      {
+        "question_index": 8,
+        "pass": 3,
+        "http_ms": 11.980400187894702,
+        "pipeline_ms": 0.6685999687761068,
+        "cost_usd": 0.0,
+        "cached": true,
+        "content_signature": "59651e13a31e74853d515ac4ca1bef0a58e8898b8e185e6b33f7ff4f51ea723a"
+      },
+      {
+        "question_index": 9,
+        "pass": 3,
+        "http_ms": 22.669099969789386,
+        "pipeline_ms": 0.5532000213861465,
+        "cost_usd": 0.0,
+        "cached": true,
+        "content_signature": "6d7f67d32361ec67b18b7491feeacb8f18b61bb0955d42b79cf59420ce2ac4c1"
+      },
+      {
+        "question_index": 0,
+        "pass": 4,
+        "http_ms": 30.22919991053641,
+        "pipeline_ms": 0.5135000683367252,
+        "cost_usd": 0.0,
+        "cached": true,
+        "content_signature": "6d2a3571a76f9679c2be6d0f1db91fbb19f0e3340eda2d806bce02de9c5110e0"
+      },
+      {
+        "question_index": 1,
+        "pass": 4,
+        "http_ms": 11.823400156572461,
+        "pipeline_ms": 0.5049000028520823,
+        "cost_usd": 0.0,
+        "cached": true,
+        "content_signature": "c87526cfb6313f15eeb60636bca41701526e51a77ceed6294e198a46b5f8bd1a"
+      },
+      {
+        "question_index": 2,
+        "pass": 4,
+        "http_ms": 32.831700053066015,
+        "pipeline_ms": 0.546199968084693,
+        "cost_usd": 0.0,
+        "cached": true,
+        "content_signature": "3bf750f80431b2831276c1e29e4cfeee4925ea440cf883b8974e63c63f41233d"
+      },
+      {
+        "question_index": 3,
+        "pass": 4,
+        "http_ms": 31.352799851447344,
+        "pipeline_ms": 0.538199907168746,
+        "cost_usd": 0.0,
+        "cached": true,
+        "content_signature": "ee11c845ca0cf2abdb1d6ccd93d39d27cd16d67182576fd56eba5bafb3022411"
+      },
+      {
+        "question_index": 4,
+        "pass": 4,
+        "http_ms": 31.398099847137928,
+        "pipeline_ms": 0.8342999499291182,
+        "cost_usd": 0.0,
+        "cached": true,
+        "content_signature": "c3fe0648ccbb96963c08bf910ad8253c3b8d66cbaf5f499533c9613dc16a9206"
+      },
+      {
+        "question_index": 5,
+        "pass": 4,
+        "http_ms": 12.928799958899617,
+        "pipeline_ms": 0.533300219103694,
+        "cost_usd": 0.0,
+        "cached": true,
+        "content_signature": "79ccb191e7c68f6f3c0828fbb926bee783cc2384e0f23f5f88ee329062f9eead"
+      },
+      {
+        "question_index": 6,
+        "pass": 4,
+        "http_ms": 12.471399968490005,
+        "pipeline_ms": 0.550299882888794,
+        "cost_usd": 0.0,
+        "cached": true,
+        "content_signature": "f33e509b0f3e93a9d2211a830bb35c7a6831fae7ad10a1e47c84d4c96398a1d1"
+      },
+      {
+        "question_index": 7,
+        "pass": 4,
+        "http_ms": 11.22490013949573,
+        "pipeline_ms": 0.5606000777333975,
+        "cost_usd": 0.0,
+        "cached": true,
+        "content_signature": "9ace42e7c76b780f09904b43d73d70594024dddd244fcad783253958b17905c1"
+      },
+      {
+        "question_index": 8,
+        "pass": 4,
+        "http_ms": 11.04669994674623,
+        "pipeline_ms": 0.6344001740217209,
+        "cost_usd": 0.0,
+        "cached": true,
+        "content_signature": "59651e13a31e74853d515ac4ca1bef0a58e8898b8e185e6b33f7ff4f51ea723a"
+      },
+      {
+        "question_index": 9,
+        "pass": 4,
+        "http_ms": 12.491500005126,
+        "pipeline_ms": 0.5289001855999231,
+        "cost_usd": 0.0,
+        "cached": true,
+        "content_signature": "6d7f67d32361ec67b18b7491feeacb8f18b61bb0955d42b79cf59420ce2ac4c1"
+      }
+    ]
+  },
+  "limitations": "Small repeated-question workload, not a traffic forecast. Exact questions only. Cold misses still invoke retrieval/reranking/generation. Provider prompt caching and network variation can affect miss latency. Cache is per process and is lost on restart.",
+  "cache_policy": {
+    "before_enabled": false,
+    "after_enabled": true,
+    "ttl_seconds": 3600.0,
+    "max_entries": 1000
+  },
+  "recorded_answer_identity_check": {
+    "n": 125,
+    "unchanged": 125,
+    "method": "Replay of previously judged nano outputs; no new generation or judge calls"
+  }
+}

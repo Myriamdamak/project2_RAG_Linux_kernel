@@ -1,60 +1,133 @@
-# Week 8 — Optimisation report
+# Measured cost optimization — 3 November 2026
 
-**Target:** cut cost per request **or** p95 latency by **50%**, losing at most
-**2 points** of accuracy on our own eval. Every row below is measured before
-and after on the same 125 questions (`data/qa.jsonl`) and the same load test.
+The generation-only change passes the requested target: **70.67% lower model
+cost per request**, with **1.33 percentage points lower answer accuracy** on
+the same 125-question evaluation. Overall accuracy, including correct refusals,
+falls exactly two percentage points.
 
-> Fill the tables with your runs. The commands are exact; the "idea" column
-> explains why each change should help so you can predict before you measure.
+| Metric | Before: GPT-5.4 mini | After: GPT-5.4 nano | Change |
+|---|---:|---:|---:|
+| Mean generation + rewrite cost/request | $0.001580736 | $0.000463636 | **−70.67%** |
+| Cost per 1,000 requests | $1.581 | $0.464 | −$1.117 |
+| Answer accuracy, 113 answerable questions | 93.36% | 92.04% | **−1.33 points** |
+| Overall accuracy including refusals, 125 questions | 94.00% | 92.00% | −2.00 points |
+| Correct refusals, 12 unanswerable questions | 12/12 | 11/12 | −1 question |
+| Generation p50 | 1,129.4 ms | 1,178.2 ms | +4.32% |
+| Generation p95 | 2,160.1 ms | 2,135.9 ms | −1.12% |
 
-## Baseline (end of Week 7)
+**The cost criterion passes. A 50% end-to-end latency improvement has not been
+established.** The candidate's full pipeline p95 is not measured by this paired
+generation experiment.
 
-```bash
-make index
-python eval/retrieval_eval.py --tag baseline
-python eval/generation_eval.py --judge --tag baseline
-make run &   python eval/load_test.py --n 100 --concurrency 4 --tag baseline
+## What changed
+
+Generation now uses `openai:gpt-5.4-nano`, with `reasoning_effort=none`.
+Rewriting and the accuracy judge continue to use GPT-5.4 mini. Both models have
+explicit token prices in `librarian/config.py`; cached and uncached input and
+reasoning output are accounted for separately.
+
+The comparison retains the same BGE embeddings, Qdrant collection/generation,
+HNSW ef=256, BM25 fusion, cross-encoder, rerank pool of 30, six evidence chunks,
+IDK threshold, system prompt, and rewrite policy. Answer caching is disabled.
+No index rebuild or upload is required.
+
+## Measurement method
+
+`eval/optimize_generation.py` runs paired comparisons against `data/qa.jsonl`.
+For every question, it runs the baseline pipeline against the current index,
+then gives nano exactly the same retrieved chunks in the same order. Both
+answers are independently judged with GPT-5.4 mini and the same judge prompt
+and gold reference. The existing reranker-based refusal gate is shared.
+
+The final run contains 125 fully judged pairs: 113 answerable questions and
+12 unanswerable questions. There are no missing judgments. Answer accuracy is
+`(correct + 0.5 * partial) / 113`, matching `generation_eval.py`. Overall
+accuracy uses the same answer scores plus whether each unanswerable question
+was refused. The acceptance check enforces the two-point limit for both.
+
+The cost column uses returned API token usage and the verified price table.
+It includes each variant's generation cost plus the same measured rewrite
+cost. Judge costs are recorded separately and excluded from serving cost.
+Qdrant hosting and local embedding/reranking compute are excluded. Prompt-cache
+hits are counted at the discounted rate; the savings are not inferred solely
+from advertised prices.
+
+The baseline pipeline is measured live. Candidate generation latency is
+measured directly, but shared retrieval/rewrite stages are not rerun for nano.
+Consequently, the paired runner cannot establish candidate end-to-end p95.
+The earlier October generation report and the ten-request load test are
+historical references, not the before column in this comparison.
+
+## Evidence and reproduction
+
+- `results/optimization_nano.json`: complete comparison, configuration, exact
+  question manifest, index metadata, accuracy gate, costs, and generation latency.
+- `results/optimization_nano.checkpoint.json`: saved answers, source excerpts,
+  usage, and judgments for both variants; ignored by git.
+- `eval/optimize_generation.py`: resumable paired evaluation and acceptance check.
+
+Run from the project root in PowerShell:
+
+```powershell
+python -u eval/optimize_generation.py --use-dotenv-key --resume --workers 2
 ```
 
-| metric | baseline |
-|---|---|
-| accuracy (judge: correct + ½ partial) | |
-| faithfulness | |
-| citation accuracy | |
-| recall@5 (hybrid + rerank) | |
-| p50 / p95 latency, end to end (ms) | |
-| — of which rerank / generate p95 (ms) | |
-| input / output (+thinking) tokens per request | |
-| cost per request (USD) | |
-| cost per month today / at 100× | |
+That command reuses this completed checkpoint. To conduct an independent fresh
+comparison, use a new tag:
 
-## Changes (one at a time, then combined)
+```powershell
+python -u eval/optimize_generation.py --use-dotenv-key --workers 2 --tag optimization_nano_repeat
+```
 
-Each knob is a setting in `librarian/config.py`, set with an env var, so a
-change is a re-run, not a code edit.
+API generation and judge calls incur charges. `--limit 2` runs a pilot, whose
+incomplete results cannot pass the acceptance check. Resume without `--limit`
+to finish the identical question manifest. The credential-source option reads
+the local `.env` key instead of an inherited shell key; no keys are stored in
+the report. Different questions, prompts, index metadata, or retrieval settings
+invalidate the checkpoint fingerprint.
 
-| # | change | how | idea | Δ cost | Δ p95 | Δ accuracy | keep? |
-|---|---|---|---|---|---|---|---|
-| 1 | Fewer chunks to the model | `LIB_TOP_K=4` (from 6) | Input tokens dominate cost; the reranker puts the gold chunk in the top 3 most of the time — check `recall@3` vs `recall@5` first. | | | | |
-| 2 | Smaller chunks | rebuild with `--size 200` | Fewer tokens per chunk; check the chunk sweep's recall-per-token column. | | | | |
-| 3 | Skip the reranker when retrievers agree | `LIB_SKIP_RERANK_WHEN_CONFIDENT=1` | The cross-encoder is the largest CPU cost in the search step. When BM25 and vector agree on #1, reranking rarely changes the answer. | | | | |
-| 4 | Smaller reranker pool | `LIB_RERANK_POOL=15` | Cross-encoder time is linear in pool size. | | | | |
-| 5 | Never rewrite | `LIB_REWRITE=never` | Removes a whole LLM round-trip on short questions. Watch recall on 1–3 word questions. | | | | |
-| 6 | Cache repeated questions | `LIB_ANSWER_CACHE=1` | Classmates ask the same questions; a hit costs $0 and ~1 ms. Measure the hit rate from `logs/requests.jsonl`. | | | | |
-| 7 | IDK gate | tune `LIB_IDK_THRESHOLD` from `results/retrieval_*.json` | Unanswerable questions stop before the LLM call. | | | | |
-| 8 | Thinking level | `LIB_THINKING_LEVEL=minimal` vs `low` | Thinking tokens are billed as output (8× input price). | | | | |
-| 9 | Context caching | Gemini implicit caching of the fixed system prompt | Only helps once the fixed prefix passes the model's minimum cacheable size; our system prompt is short, so measure `cached_input_tokens` before claiming anything. | | | | |
-| 10 | Smaller embedding model / index | e.g. 256-d or int8 vectors | Index RAM and search time; search is already ~5 ms, so expect little. | | | | |
+## Serving and load testing
 
-## After
+The validated generation model is set in `librarian/config.py`, `.env.example`,
+and the local `.env`. Restart the running server to load it:
 
-| metric | baseline | optimised | change |
-|---|---|---|---|
-| accuracy | | | (must be ≥ −2 pts) |
-| cost per request | | | (target −50%) |
-| p95 latency | | | (target −50%) |
+```powershell
+python -m librarian.server
+```
 
-## What did not work
+A separate load test can measure live end-to-end latency:
 
-List every change that failed to pay off, with its numbers. Negative results
-are results.
+```powershell
+python eval/load_test.py --url http://localhost:8000 --n 125 --concurrency 1 --tag nano_live
+```
+
+Keep the same question order, request count, concurrency, index, and cache policy
+when comparing load runs. A matched live mini run would be needed to claim an
+end-to-end p95 improvement. The cost reduction above does not depend on repeated
+questions or prewarming the answer cache.
+
+## Quality limitation
+
+Nano answered one unanswerable question (`q117`) that mini correctly refused.
+This regression is retained in the evaluation, rather than removed from the
+scoring set. The accepted accuracy changes are measurements on this 125-question
+set, not a guarantee about all future traffic. Review low-confidence answers and
+rerun the full comparison when changing the corpus, model, or retrieval policy.
+
+Pricing references, checked 2026-11-03:
+[nano](https://developers.openai.com/api/docs/models/gpt-5.4-nano),
+[mini](https://developers.openai.com/api/docs/models/gpt-5.4-mini).
+
+## Follow-up: common-answer caching
+
+The matched nano cache benchmark is recorded separately in
+`results/cache_nano.md` and `results/cache_nano.json`. Ten common questions were
+asked five times in each arm, with an initially empty cache. At an 80% hit rate,
+overall HTTP p95 improved 35.82% (7.40 s to 4.75 s), repeated-request p95 improved
+99.45% (6.34 s to 35 ms), and model cost/request fell 78.78%.
+
+The cache preserves answer/source/citation content. All forty live hits and a
+separate replay of all 125 previously judged nano outputs passed identity checks.
+This is not a new judged accuracy score. The cache workload and earlier model
+comparison have different request distributions, so their savings are reported
+separately. Cache misses still use the full nano pipeline.

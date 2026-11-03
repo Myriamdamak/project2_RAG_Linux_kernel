@@ -1,0 +1,1838 @@
+{
+  "method": "paired generation change with identical live retrieval, rewrite results, and judge; no answer cache",
+  "cost_scope": "measured generation tokens plus the same measured rewrite tokens; excludes judge, hosting, and local compute",
+  "latency_scope": "generation only; candidate end-to-end p95 is not measured by this experiment",
+  "manifest": {
+    "qa": [
+      {
+        "id": "q001",
+        "question": "My CEC timings go out of spec with cec-gpio when chronyd is running. What should I change?",
+        "answer": "Add a 'maxslewrate 40000' line to chronyd.conf; it limits clock frequency change to 1/25th, keeping CEC timings within spec.",
+        "sources": [
+          {
+            "path": "admin-guide/media/cec.rst",
+            "evidence": "add a 'maxslewrate 40000' line to chronyd.conf"
+          }
+        ],
+        "category": "troubleshooting",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q002",
+        "question": "Why can't early parameters like mem= see values set in an embedded bootconfig, and which option fixes it?",
+        "answer": "The embedded bootconfig is parsed at runtime after parse_early_param() has run. CONFIG_CMDLINE_FROM_BOOTCONFIG renders the kernel subtree into a cmdline string at build time and prepends it so early params see it.",
+        "sources": [
+          {
+            "path": "admin-guide/bootconfig.rst",
+            "evidence": "resolves this by rendering the"
+          }
+        ],
+        "category": "config",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q003",
+        "question": "Which architectures support CONFIG_CMDLINE_FROM_BOOTCONFIG?",
+        "answer": "Currently only x86 selects it; other architectures only use the late runtime parser for embedded bootconfig.",
+        "sources": [
+          {
+            "path": "admin-guide/bootconfig.rst",
+            "evidence": "Currently only x86 selects it"
+          }
+        ],
+        "category": "config",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q004",
+        "question": "In cgroup v1, how do I limit a memory cgroup to 4 MB?",
+        "answer": "Write the limit to memory.limit_in_bytes, e.g. echo 4M > /sys/fs/cgroup/memory/0/memory.limit_in_bytes.",
+        "sources": [
+          {
+            "path": "admin-guide/cgroup-v1/memory.rst",
+            "evidence": "echo 4M > /sys/fs/cgroup/memory/0/memory.limit_in_bytes"
+          }
+        ],
+        "category": "procedure",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q005",
+        "question": "How do I remove a cgroup v1 memory limit and make it unlimited again?",
+        "answer": "Write -1 to the *.limit_in_bytes file.",
+        "sources": [
+          {
+            "path": "admin-guide/cgroup-v1/memory.rst",
+            "evidence": "We can write \"-1\" to reset"
+          }
+        ],
+        "category": "procedure",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q006",
+        "question": "Which dmem cgroup file tells me the total capacity of a device memory region, and where does it exist?",
+        "answer": "dmem.capacity, a read-only file that only exists on the root cgroup.",
+        "sources": [
+          {
+            "path": "admin-guide/cgroup-v2.rst",
+            "evidence": "It only exists on the root cgroup. Not all memory can be"
+          }
+        ],
+        "category": "factual",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q007",
+        "question": "What Unicode range does Linux reserve as the 'Linux Zone'?",
+        "answer": "U+F000 to U+F8FF, reserved for OS-wide allocation.",
+        "sources": [
+          {
+            "path": "admin-guide/unicode.rst",
+            "evidence": "U+F000 to U+F8FF has been reserved for OS-wide allocation"
+          }
+        ],
+        "category": "factual",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q008",
+        "question": "Can I move several PIDs at once by writing them to a cgroup v1 tasks file?",
+        "answer": "No, only one task at a time can be written to tasks; to move all threads of a process at once write to cgroup.procs instead.",
+        "sources": [
+          {
+            "path": "admin-guide/cgroup-v1/cgroups.rst",
+            "evidence": "You can only attach ONE task at a time."
+          }
+        ],
+        "category": "procedure",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q009",
+        "question": "After building a trimmed kernel, what command installs it?",
+        "answer": "command -v installkernel && sudo make modules_install install",
+        "sources": [
+          {
+            "path": "admin-guide/quickly-build-trimmed-linux.rst",
+            "evidence": "command -v installkernel && sudo make modules_install install"
+          }
+        ],
+        "category": "procedure",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q010",
+        "question": "How can I create a compressed cpio initrd image from a directory?",
+        "answer": "From inside the directory: find . | cpio --quiet -H newc -o | gzip -9 -n > /boot/imagefile.img",
+        "sources": [
+          {
+            "path": "admin-guide/initrd.rst",
+            "evidence": "find . | cpio --quiet -H newc -o | gzip -9 -n"
+          }
+        ],
+        "category": "procedure",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q011",
+        "question": "What does the L flag do in binfmt_misc?",
+        "answer": "The kernel loads the matched binary itself as the main image and substitutes the registered interpreter for the loader named in the binary's PT_INTERP. It is meant for native ELF binaries.",
+        "sources": [
+          {
+            "path": "admin-guide/binfmt-misc.rst",
+            "evidence": "substitutes the registered interpreter for the loader named in the binary's"
+          }
+        ],
+        "category": "factual",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q012",
+        "question": "What happens to processes in a cgroup v2 group once its memory usage goes over memory.high?",
+        "answer": "They are throttled and put under heavy reclaim pressure; memory.high is a throttle limit (default max).",
+        "sources": [
+          {
+            "path": "admin-guide/cgroup-v2.rst",
+            "evidence": "throttled and put under heavy reclaim pressure"
+          }
+        ],
+        "category": "factual",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q013",
+        "question": "What should I use instead of one-element or zero-length trailing arrays in kernel structs?",
+        "answer": "A flexible array member, together with the struct_size() and flex_array_size() helpers.",
+        "sources": [
+          {
+            "path": "process/deprecated.rst",
+            "evidence": "to implement this is through the use of a flexible array member"
+          }
+        ],
+        "category": "coding",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q014",
+        "question": "How should I write an allocation size like current_size + chunk_size * (count - 3) safely?",
+        "answer": "Compose the size_add(), size_mul() and size_sub() helpers instead of open-coded arithmetic.",
+        "sources": [
+          {
+            "path": "process/deprecated.rst",
+            "evidence": "please compose the use of the size_mul(), size_add(), and size_sub() helpers"
+          }
+        ],
+        "category": "coding",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q015",
+        "question": "How can I list the versions of the build tools installed on my system to compare with the kernel's minimal requirements?",
+        "answer": "Run ./scripts/ver_linux.",
+        "sources": [
+          {
+            "path": "process/changes.rst",
+            "evidence": "execute ./scripts/ver_linux"
+          }
+        ],
+        "category": "procedure",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q016",
+        "question": "Why shouldn't I print pointers with %p, and what should I use for code addresses?",
+        "answer": "%p values are hashed to avoid address exposure, so new uses should not be added; for text addresses %pS prints the symbol name. Boot with no_hash_pointers when debugging.",
+        "sources": [
+          {
+            "path": "process/deprecated.rst",
+            "evidence": "For text addresses, using \"%pS\" is likely better"
+          }
+        ],
+        "category": "coding",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q017",
+        "question": "Is sending pure coding-style cleanup patches a good way to start contributing?",
+        "answer": "No. Pure coding style fixes are seen as noise and tend to get a chilly reception; fix style only while working on code for other reasons.",
+        "sources": [
+          {
+            "path": "process/4.Coding.rst",
+            "evidence": "pure coding style fixes are seen as noise by the development community"
+          }
+        ],
+        "category": "process",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q018",
+        "question": "What severity levels does checkpatch.pl report?",
+        "answer": "Three levels: ERROR (very likely wrong), WARNING (needs careful review) and CHECK (needs thought).",
+        "sources": [
+          {
+            "path": "process/submitting-patches.rst",
+            "evidence": "The checker reports at three levels"
+          }
+        ],
+        "category": "process",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q019",
+        "question": "If my patch moves code to another file, can I also clean that code up in the same patch?",
+        "answer": "No. Do not modify moved code in the same patch that moves it, so reviewers and tools can see the move separately from changes.",
+        "sources": [
+          {
+            "path": "process/submitting-patches.rst",
+            "evidence": "you should not modify the moved code at all in the same patch which moves it"
+          }
+        ],
+        "category": "process",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q020",
+        "question": "How can I quickly check that a single file I changed while backporting still compiles?",
+        "answer": "Build just that object, e.g. make path/to/file.o. It won't catch linker errors, so do a full build afterwards.",
+        "sources": [
+          {
+            "path": "process/backporting.rst",
+            "evidence": "Note that this won't discover linker errors"
+          }
+        ],
+        "category": "procedure",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q021",
+        "question": "How do I make my Dell laptop keyboard backlight turn off after 10 minutes of inactivity?",
+        "answer": "echo 10m > /sys/class/leds/dell::kbd_backlight/stop_timeout (units s, m, h, d; default unit is seconds).",
+        "sources": [
+          {
+            "path": "ABI/testing/sysfs-platform-dell-laptop",
+            "evidence": "echo 10m > /sys/class/leds/dell::kbd_backlight/stop_timeout"
+          }
+        ],
+        "category": "sysfs",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q022",
+        "question": "How do I reset all the ACPI interrupt counters under /sys/firmware/acpi/interrupts?",
+        "answer": "Clear the total by writing 0 to the sci file: echo 0 > sci.",
+        "sources": [
+          {
+            "path": "ABI/testing/sysfs-firmware-acpi",
+            "evidence": "All counters can be cleared by clearing the total \"sci\""
+          }
+        ],
+        "category": "sysfs",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q023",
+        "question": "How do I reset an hfi1 InfiniBand chip through sysfs, and when is it allowed?",
+        "answer": "Write \"reset\" to chip_reset; it is only allowed when no user contexts using chip resources are open.",
+        "sources": [
+          {
+            "path": "ABI/stable/sysfs-class-infiniband",
+            "evidence": "Write \"reset\" to this file to reset the"
+          }
+        ],
+        "category": "sysfs",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q024",
+        "question": "How are duplicate DMI entry types named under /sys/firmware/dmi/entries?",
+        "answer": "N entries of type T are represented as T-0 through T-(N-1), the instance coming from ordinal position.",
+        "sources": [
+          {
+            "path": "ABI/testing/sysfs-firmware-dmi-entries",
+            "evidence": "they will be represented in sysfs as"
+          }
+        ],
+        "category": "sysfs",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q025",
+        "question": "My USB NCM modem fails with default cdc_ncm settings. Is there a quirk I can test?",
+        "answer": "Write 'Y' to /sys/class/net/<iface>/cdc_ncm/ndp_to_end to enable the 'NDP to end' quirk, which places the NDP after the payload.",
+        "sources": [
+          {
+            "path": "ABI/testing/sysfs-class-net-cdc_ncm",
+            "evidence": "makes the driver place the NDP"
+          }
+        ],
+        "category": "troubleshooting",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q026",
+        "question": "What does writing a negative value to a USB device's power/autosuspend file do?",
+        "answer": "Negative values prevent autosuspend entirely and resume the device if it is suspended; the value is the idle time in seconds, 0 means as soon as possible.",
+        "sources": [
+          {
+            "path": "ABI/stable/sysfs-bus-usb",
+            "evidence": "Negative values will prevent the device from"
+          }
+        ],
+        "category": "sysfs",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q027",
+        "question": "Until what date will ext4 timestamps work on filesystems with large inodes?",
+        "answer": "Extended 34-bit seconds with nanosecond precision mean timestamps should not overflow until May 2446.",
+        "sources": [
+          {
+            "path": "filesystems/ext4/inodes.rst",
+            "evidence": "timestamps should not overflow until May 2446"
+          }
+        ],
+        "category": "factual",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q028",
+        "question": "What is the name of the quota generic netlink interface?",
+        "answer": "VFS_DQUOT; messages are only sent in the initial network namespace.",
+        "sources": [
+          {
+            "path": "filesystems/quota.rst",
+            "evidence": "is \"VFS_DQUOT\""
+          }
+        ],
+        "category": "factual",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q029",
+        "question": "With ext4's sparse_super feature, which block groups keep backup superblocks?",
+        "answer": "Only groups whose number is 0 or a power of 3, 5 or 7.",
+        "sources": [
+          {
+            "path": "filesystems/ext4/super.rst",
+            "evidence": "number is either 0 or a power of 3, 5, or 7"
+          }
+        ],
+        "category": "factual",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q030",
+        "question": "Can I send only some patches of an XFS patchset to linux-xfs?",
+        "answer": "No. Any patchset changing XFS should be cc'd in its entirety to linux-xfs; partial patchsets are not wanted.",
+        "sources": [
+          {
+            "path": "filesystems/xfs/xfs-maintainer-entry-profile.rst",
+            "evidence": "should be cc'd in its entirety to linux-xfs"
+          }
+        ],
+        "category": "process",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q031",
+        "question": "Which inode flag marks an ext4 directory as using a hashed btree?",
+        "answer": "EXT4_INDEX_FL (0x1000).",
+        "sources": [
+          {
+            "path": "filesystems/ext4/directory.rst",
+            "evidence": "EXT4_INDEX_FL (0x1000)"
+          }
+        ],
+        "category": "factual",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q032",
+        "question": "What naming convention should switch port netdevs follow?",
+        "answer": "Name them via udev rules using the port PHYS name; suggested convention swXpYsZ (switch, port, sub-port).",
+        "sources": [
+          {
+            "path": "networking/switchdev.rst",
+            "evidence": "Suggested naming convention is \"swXpYsZ\""
+          }
+        ],
+        "category": "factual",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q033",
+        "question": "How do I set the MAC address of a VF on an Intel E800-series (ice) NIC, and how long does it last?",
+        "answer": "ip link set <ethX> vf 0 mac <address>; it lasts until the PF is reloaded, and the VM can no longer change it.",
+        "sources": [
+          {
+            "path": "networking/device_drivers/ethernet/intel/ice.rst",
+            "evidence": "This setting lasts until the PF is reloaded."
+          }
+        ],
+        "category": "procedure",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q034",
+        "question": "What does PHY_INTERFACE_MODE_RGMII_ID mean for a PHY driver?",
+        "answer": "The PHY should insert internal delays for both transmit and receive data lines.",
+        "sources": [
+          {
+            "path": "networking/phy.rst",
+            "evidence": "the PHY should insert internal delays for both transmit AND receive data lines"
+          }
+        ],
+        "category": "factual",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q035",
+        "question": "Which AF_PACKET fanout policy spreads packets round-robin across sockets?",
+        "answer": "PACKET_FANOUT_LB.",
+        "sources": [
+          {
+            "path": "networking/packet_mmap.rst",
+            "evidence": "PACKET_FANOUT_LB: schedule to socket by round-robin"
+          }
+        ],
+        "category": "factual",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q036",
+        "question": "When does RPS flow limit start dropping packets from large flows?",
+        "answer": "Once a CPU's input queue exceeds half of netdev_max_backlog, the kernel counts packets per flow over the last 256 packets and drops a new packet from a flow exceeding the ratio (default half).",
+        "sources": [
+          {
+            "path": "networking/scaling.rst",
+            "evidence": "count over the last 256 packets"
+          }
+        ],
+        "category": "factual",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q037",
+        "question": "On architectures with memoryless nodes, how should a subsystem find the local memory node of a CPU?",
+        "answer": "Use numa_mem_id() or cpu_to_mem().",
+        "sources": [
+          {
+            "path": "mm/numa.rst",
+            "evidence": "can use the numa_mem_id()"
+          }
+        ],
+        "category": "coding",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q038",
+        "question": "On PREEMPT_RT, what should kernel_fpu_begin() use instead of local_bh_disable()?",
+        "answer": "preempt_disable(), because softirqs always run in thread context under PREEMPT_RT.",
+        "sources": [
+          {
+            "path": "core-api/real-time/architecture-porting.rst",
+            "evidence": "it should use preempt_disable(), since softirqs"
+          }
+        ],
+        "category": "coding",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q039",
+        "question": "Does swiotlb_tbl_map_single() copy the original data into the bounce buffer?",
+        "answer": "Yes, it always does a sync (CPU copy) to initialise the bounce buffer from the original buffer.",
+        "sources": [
+          {
+            "path": "core-api/swiotlb.rst",
+            "evidence": "swiotlb_tbl_map_single() always does a \"sync\" operation"
+          }
+        ],
+        "category": "factual",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q040",
+        "question": "Why must architectures that aren't fully DMA-coherent set ARCH_DMA_MINALIGN?",
+        "answer": "So the allocator ensures a kmalloc'ed buffer doesn't share a cache line with others, keeping kmalloc buffers DMA-safe.",
+        "sources": [
+          {
+            "path": "core-api/dma-api-howto.rst",
+            "evidence": "makes sure that kmalloc'ed buffer doesn't share a cache line"
+          }
+        ],
+        "category": "factual",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q041",
+        "question": "How old must an object be before kmemleak reports it as a leak?",
+        "answer": "MSECS_MIN_AGE, which defaults to 1000 (milliseconds).",
+        "sources": [
+          {
+            "path": "dev-tools/kmemleak.rst",
+            "evidence": "MSECS_MIN_AGE (defaulting to 1000)"
+          }
+        ],
+        "category": "factual",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q042",
+        "question": "How do I tell kmemleak that an object it reports is not actually a leak?",
+        "answer": "Call kmemleak_not_leak() on it (kmemleak_ignore() if it also contains no pointers).",
+        "sources": [
+          {
+            "path": "dev-tools/kmemleak.rst",
+            "evidence": "kmemleak provides the kmemleak_not_leak function"
+          }
+        ],
+        "category": "coding",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q043",
+        "question": "Where do I read KUnit results when I run tests without kunit.py?",
+        "answer": "From /sys/kernel/debug/kunit/<test suite>/results; they can be parsed with kunit.py parse.",
+        "sources": [
+          {
+            "path": "dev-tools/kunit/faq.rst",
+            "evidence": "/sys/kernel/debug/kunit/<test suite>/results"
+          }
+        ],
+        "category": "procedure",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q044",
+        "question": "Is it OK to enable CONFIG_KUNIT in a production kernel?",
+        "answer": "No. Enabling KUnit disables KASLR and tests may change kernel state in ways unsuitable for production.",
+        "sources": [
+          {
+            "path": "dev-tools/kunit/start.rst",
+            "evidence": "Enabling KUnit disables Kernel Address-Space Layout Randomization"
+          }
+        ],
+        "category": "config",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q045",
+        "question": "Which cache-flush interface does the kernel call for whole address space operations like fork?",
+        "answer": "flush_cache_dup_mm(struct mm_struct *mm).",
+        "sources": [
+          {
+            "path": "core-api/cachetlb.rst",
+            "evidence": "page table operations such as what happens during fork"
+          }
+        ],
+        "category": "coding",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q046",
+        "question": "In hmm_range_fault_unlocked_timeout(), what does a timeout of 0 mean?",
+        "answer": "Retry indefinitely; otherwise -EBUSY is returned when the retry budget is exhausted.",
+        "sources": [
+          {
+            "path": "mm/hmm.rst",
+            "evidence": "passing 0 means retry indefinitely"
+          }
+        ],
+        "category": "coding",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q047",
+        "question": "In the function graph tracer, what does setting max_graph_depth to 1 do?",
+        "answer": "It shows only the first kernel function called from user space.",
+        "sources": [
+          {
+            "path": "trace/ftrace.rst",
+            "evidence": "one will show only the first kernel function"
+          }
+        ],
+        "category": "tracing",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q048",
+        "question": "Why does ftrace sometimes show <...> instead of a task name?",
+        "answer": "Only the pid is recorded; ftrace keeps a cache of pid-to-comm mappings (saved_cmdlines) and shows <...> when the pid is not in it.",
+        "sources": [
+          {
+            "path": "trace/ftrace.rst",
+            "evidence": "If a pid for a comm is not listed, then"
+          }
+        ],
+        "category": "tracing",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q049",
+        "question": "How do I reset a hist trigger's hash table without setting the trigger up again?",
+        "answer": "Append the 'clear' parameter to the hist trigger, e.g. echo 'hist:key=...:vals=...:clear' >> .../trigger.",
+        "sources": [
+          {
+            "path": "trace/histogram.rst",
+            "evidence": "The 'clear' hist trigger param can be used to clear the hash table."
+          }
+        ],
+        "category": "tracing",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q050",
+        "question": "How do I avoid computing tracepoint arguments when the tracepoint is disabled?",
+        "answer": "Wrap the work and the trace call in if (trace_<tracepoint>_enabled()), which uses the tracepoint's static key.",
+        "sources": [
+          {
+            "path": "trace/tracepoints.rst",
+            "evidence": "function defined that returns true if the tracepoint is enabled"
+          }
+        ],
+        "category": "tracing",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q051",
+        "question": "How do I build the kernel with clang-14 / ld.lld-14 instead of the unversioned LLVM tools?",
+        "answer": "Pass the suffix through LLVM: make LLVM=-14.",
+        "sources": [
+          {
+            "path": "kbuild/llvm.rst",
+            "evidence": "make LLVM=-14"
+          }
+        ],
+        "category": "build",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q052",
+        "question": "How do I pass a comma inside an argument of a Kconfig $(shell ...) call?",
+        "answer": "Define comma := , and use $(comma) in the argument, since commas in $( ) are always delimiters.",
+        "sources": [
+          {
+            "path": "kbuild/kconfig-macro-language.rst",
+            "evidence": "To pass commas in arguments, you can use the following trick"
+          }
+        ],
+        "category": "build",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q053",
+        "question": "Does Kconfig resolve recursive dependencies between symbols?",
+        "answer": "No, Kconfig does not do recursive dependency resolution; a circular relation triggers a 'recursive dependency detected' error.",
+        "sources": [
+          {
+            "path": "kbuild/kconfig-language.rst",
+            "evidence": "Kconfig does not do recursive dependency resolution"
+          }
+        ],
+        "category": "build",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q054",
+        "question": "When does a Kconfig menu entry become visible?",
+        "answer": "When its dependency expression evaluates to 'm' or 'y'.",
+        "sources": [
+          {
+            "path": "kbuild/kconfig-language.rst",
+            "evidence": "A menu entry becomes visible when its expression evaluates to 'm' or 'y'."
+          }
+        ],
+        "category": "build",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q055",
+        "question": "What is Energy Aware Scheduling trying to optimise?",
+        "answer": "Minimise energy while still getting the job done, i.e. maximise performance per watt (energy per instruction) instead of performance only.",
+        "sources": [
+          {
+            "path": "scheduler/sched-energy.rst",
+            "evidence": "The goal of EAS is to minimize energy"
+          }
+        ],
+        "category": "factual",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q056",
+        "question": "How can I check whether a task is running under sched_ext?",
+        "answer": "grep ext /proc/self/sched (or /proc/<pid>/sched) and look at ext.enabled.",
+        "sources": [
+          {
+            "path": "scheduler/sched-ext.rst",
+            "evidence": "grep ext /proc/self/sched"
+          }
+        ],
+        "category": "procedure",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q057",
+        "question": "How can user space stop a driver from runtime power-managing a device?",
+        "answer": "Write \"on\" to the device's /sys/devices/.../power/control, which calls pm_runtime_forbid().",
+        "sources": [
+          {
+            "path": "power/runtime_pm.rst",
+            "evidence": "attribute to \"on\", which causes pm_runtime_forbid() to be called"
+          }
+        ],
+        "category": "sysfs",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q058",
+        "question": "Where is an rt-mutex owner's priority-inheritance waiter tree stored, and what lock protects it?",
+        "answer": "In the task structure as the pi_waiters rbtree, protected by the task's pi_lock (taken with interrupts disabled).",
+        "sources": [
+          {
+            "path": "locking/rt-mutex-design.rst",
+            "evidence": "This tree is stored in the task structure of a process as a rbtree called pi_waiters."
+          }
+        ],
+        "category": "internals",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q059",
+        "question": "What happens if I unlock an hwspinlock that is already unlocked?",
+        "answer": "It is a bug; there is no protection against it, so code must never do it.",
+        "sources": [
+          {
+            "path": "locking/hwspinlock.rst",
+            "evidence": "code should never unlock an hwspinlock which is already unlocked"
+          }
+        ],
+        "category": "coding",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q060",
+        "question": "In a lockdep report like {-.-.}, what do the '-' and '.' characters mean?",
+        "answer": "'-' means acquired in irq context; '.' means acquired while irqs disabled and not in irq context.",
+        "sources": [
+          {
+            "path": "locking/lockdep-design.rst",
+            "evidence": "'-' acquired in irq context"
+          }
+        ],
+        "category": "internals",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q061",
+        "question": "What does a new Linux Security Module need before it is accepted into the kernel?",
+        "answer": "Its intent (what it protects against and when to use it) must be documented in Documentation/admin-guide/LSM/.",
+        "sources": [
+          {
+            "path": "security/lsm-development.rst",
+            "evidence": "a new LSM is accepted into the kernel when its intent"
+          }
+        ],
+        "category": "process",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q062",
+        "question": "With the CAAM trust source, which RNG generates trusted keys and how do I seed it from the CAAM hardware RNG?",
+        "answer": "The normal kernel RNG; enable CRYPTO_DEV_FSL_CAAM_RNG_API and make sure the device is probed.",
+        "sources": [
+          {
+            "path": "security/keys/trusted-encrypted.rst",
+            "evidence": "enable CRYPTO_DEV_FSL_CAAM_RNG_API"
+          }
+        ],
+        "category": "config",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q063",
+        "question": "Why does IPE's policy talk about operations rather than individual syscalls or LSM hooks?",
+        "answer": "It is designed for sysadmins, not kernel developers, so they only need to say e.g. 'restrict execution', which limits bypasses from missing a syscall.",
+        "sources": [
+          {
+            "path": "security/ipe.rst",
+            "evidence": "IPE's policy is designed for sysadmins, not kernel developers"
+          }
+        ],
+        "category": "factual",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q064",
+        "question": "How many bytes does the CDROMREADMODE2 ioctl read per block?",
+        "answer": "2336 bytes (CD_FRAMESIZE_RAW0).",
+        "sources": [
+          {
+            "path": "userspace-api/ioctl/cdrom.rst",
+            "evidence": "Read CDROM mode 2 data (2336 Bytes)"
+          }
+        ],
+        "category": "factual",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q065",
+        "question": "What is bpf_msg_apply_bytes() used for in a sockmap program?",
+        "answer": "It applies the BPF program's verdict to the next N bytes of the message, e.g. when one sendmsg holds several logical messages or only the first bytes matter.",
+        "sources": [
+          {
+            "path": "bpf/map_sockmap.rst",
+            "evidence": "apply the verdict of the BPF program to the next"
+          }
+        ],
+        "category": "coding",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q066",
+        "question": "What does /sys/firmware/acpi/platform_profile show when different drivers are set to different profiles?",
+        "answer": "It shows 'custom'; writing a common profile then sets all drivers.",
+        "sources": [
+          {
+            "path": "userspace-api/sysfs-platform_profile.rst",
+            "evidence": "will display the profile 'custom'"
+          }
+        ],
+        "category": "sysfs",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q067",
+        "question": "What error do I get if I try to become an exclusive CEC follower when another process already is one?",
+        "answer": "EBUSY.",
+        "sources": [
+          {
+            "path": "userspace-api/media/cec/cec-ioc-g-mode.rst",
+            "evidence": "the exclusive follower then an attempt to become one will return"
+          }
+        ],
+        "category": "factual",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q068",
+        "question": "How can a V4L2 driver tell whether a file handle is the only one open on its device node?",
+        "answer": "v4l2_fh_is_singular() returns 1 if it is the only open file handle (v4l2_fh_is_singular_file() for a struct file).",
+        "sources": [
+          {
+            "path": "driver-api/media/v4l2-fh.rst",
+            "evidence": "Returns 1 if the file handle is the only open file handle"
+          }
+        ],
+        "category": "coding",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q069",
+        "question": "In ublk, what happens when a thread issues a command for a (qid, tag) pair it is not the daemon of?",
+        "answer": "The command fails; only the thread that issued UBLK_U_IO_FETCH_REQ for that I/O is its daemon, and daemons can only be reset through recovery.",
+        "sources": [
+          {
+            "path": "block/ublk.rst",
+            "evidence": "Daemons can be reset only be going through"
+          }
+        ],
+        "category": "internals",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q070",
+        "question": "How do I delete a KVM memory slot with KVM_SET_USER_MEMORY_REGION? Can I resize one?",
+        "answer": "Pass memory_size 0 to delete it. Existing slots can be moved or have flags changed but not resized.",
+        "sources": [
+          {
+            "path": "virt/kvm/api.rst",
+            "evidence": "Deleting a slot is done by passing zero for memory_size."
+          }
+        ],
+        "category": "coding",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q071",
+        "question": "Why should the low 21 bits of guest_phys_addr and userspace_addr match in a KVM memory slot?",
+        "answer": "So that large pages in the guest can be backed by large pages in the host.",
+        "sources": [
+          {
+            "path": "virt/kvm/api.rst",
+            "evidence": "This allows large pages in the guest to be backed by large"
+          }
+        ],
+        "category": "factual",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q072",
+        "question": "On arm64 with SVE, what happens to the SVE registers across a system call?",
+        "answer": "Bits [127:0] of Z0-Z31 (the V registers) are preserved; all other Z bits, P0-P15 and FFR become zero on return.",
+        "sources": [
+          {
+            "path": "arch/arm64/sve.rst",
+            "evidence": "All other bits of Z0..Z31, and all of P0..P15 and FFR"
+          }
+        ],
+        "category": "factual",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q073",
+        "question": "How does RISC-V dynamic ftrace patch function entries atomically without stop_machine()?",
+        "answer": "Each patchable entry is pre-initialised at boot to AUIPC + NOP, so enabling/disabling only rewrites one naturally aligned instruction.",
+        "sources": [
+          {
+            "path": "arch/riscv/cmodx.rst",
+            "evidence": "setting the first instruction to AUIPC, and the second to NOP"
+          }
+        ],
+        "category": "internals",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q074",
+        "question": "Where must the Kconfig option guarding a Rust #[test] suite be defined?",
+        "answer": "In rust/kernel/Kconfig.test.",
+        "sources": [
+          {
+            "path": "rust/testing.rst",
+            "evidence": "Each test suite should be guarded by a Kconfig option in"
+          }
+        ],
+        "category": "build",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q075",
+        "question": "What is the EHCI log2_irq_thresh module parameter and what are its limits?",
+        "answer": "Log2 of the interrupt delay in microframes: default 0 (1 microframe, 125 usec), maximum 6 (64 microframes).",
+        "sources": [
+          {
+            "path": "usb/ehci.rst",
+            "evidence": "Maximum value is 6, indicating 2^6 = 64 microframes"
+          }
+        ],
+        "category": "config",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q076",
+        "question": "What should I do if the EHCI driver misbehaves with my USB 2.0 devices?",
+        "answer": "Remove the ehci-hcd module; the companion controller driver (ohci-hcd/uhci-hcd) then takes over those devices at lower speed.",
+        "sources": [
+          {
+            "path": "usb/ehci.rst",
+            "evidence": "remove its module and then the driver for that companion controller will"
+          }
+        ],
+        "category": "troubleshooting",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q077",
+        "question": "In a cpufreq driver, what happens if get_intermediate() returns 0?",
+        "answer": "The driver doesn't want an intermediate frequency for that target; the core calls ->target_index() directly.",
+        "sources": [
+          {
+            "path": "cpu-freq/cpu-drivers.rst",
+            "evidence": "Drivers can return '0' from get_intermediate()"
+          }
+        ],
+        "category": "coding",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q078",
+        "question": "Which BIT token id does nova use to locate the Falcon data in the VBIOS?",
+        "answer": "Token id 0x70.",
+        "sources": [
+          {
+            "path": "gpu/nova/core/vbios.rst",
+            "evidence": "Falcon data token id (0x70)"
+          }
+        ],
+        "category": "factual",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q079",
+        "question": "Which section flags mark livepatch relocation sections?",
+        "answer": "They are SHT_RELA sections marked SHF_ALLOC and SHF_RELA_LIVEPATCH.",
+        "sources": [
+          {
+            "path": "livepatch/module-elf-format.rst",
+            "evidence": "SHF_RELA_LIVEPATCH flag"
+          }
+        ],
+        "category": "internals",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q080",
+        "question": "If every operation on my cache happens in user context, what kind of lock should protect it?",
+        "answer": "A mutex, since user context can sleep.",
+        "sources": [
+          {
+            "path": "kernel-hacking/locking.rst",
+            "evidence": "so we can sleep. This means we can use a mutex"
+          }
+        ],
+        "category": "coding",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q081",
+        "question": "What does spin_lock_bh() block?",
+        "answer": "Any software interrupt on the current CPU.",
+        "sources": [
+          {
+            "path": "kernel-hacking/locking.rst",
+            "evidence": "blocks any software interrupt on the current CPU"
+          }
+        ],
+        "category": "coding",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q082",
+        "question": "Is a clock source allowed to stop counting?",
+        "answer": "Ideally it never stops while the system runs, but it may stop during system suspend.",
+        "sources": [
+          {
+            "path": "timers/timekeeping.rst",
+            "evidence": "may stop during system suspend"
+          }
+        ],
+        "category": "factual",
+        "answerable": true,
+        "origin": "sampled"
+      },
+      {
+        "id": "q083",
+        "question": "What does vm.swappiness control, what range does it take, and what is its default?",
+        "answer": "It sets the rough relative IO cost of swapping vs filesystem paging, 0-200 (100 = equal cost); the default is 60.",
+        "sources": [
+          {
+            "path": "admin-guide/sysctl/vm.rst",
+            "evidence": "rough relative IO cost of swapping"
+          }
+        ],
+        "category": "sysctl",
+        "answerable": true,
+        "origin": "common"
+      },
+      {
+        "id": "q084",
+        "question": "How do I free the page cache and slab objects without rebooting?",
+        "answer": "echo 3 > /proc/sys/vm/drop_caches (1 = pagecache, 2 = slab). It is non-destructive; run sync first to free more.",
+        "sources": [
+          {
+            "path": "admin-guide/sysctl/vm.rst",
+            "evidence": "To free slab objects and pagecache"
+          }
+        ],
+        "category": "sysctl",
+        "answerable": true,
+        "origin": "common"
+      },
+      {
+        "id": "q085",
+        "question": "How do I enable all magic SysRq functions at runtime?",
+        "answer": "Write 1 to /proc/sys/kernel/sysrq (echo 1 > /proc/sys/kernel/sysrq); the default comes from CONFIG_MAGIC_SYSRQ_DEFAULT_ENABLE.",
+        "sources": [
+          {
+            "path": "admin-guide/sysrq.rst",
+            "evidence": "1 - enable all functions of sysrq"
+          }
+        ],
+        "category": "sysctl",
+        "answerable": true,
+        "origin": "common"
+      },
+      {
+        "id": "q086",
+        "question": "Which SysRq bitmask value allows only reboot and poweroff?",
+        "answer": "128 (0x80).",
+        "sources": [
+          {
+            "path": "admin-guide/sysrq.rst",
+            "evidence": "128 = 0x80 - allow reboot/poweroff"
+          }
+        ],
+        "category": "sysctl",
+        "answerable": true,
+        "origin": "common"
+      },
+      {
+        "id": "q087",
+        "question": "How wide is an indentation level in kernel coding style?",
+        "answer": "8 characters: tabs are 8 characters and indentation is one tab.",
+        "sources": [
+          {
+            "path": "process/coding-style.rst",
+            "evidence": "Tabs are 8 characters, and thus indentations are also 8 characters."
+          }
+        ],
+        "category": "coding",
+        "answerable": true,
+        "origin": "common"
+      },
+      {
+        "id": "q088",
+        "question": "What is the preferred maximum line length in kernel code?",
+        "answer": "80 columns, broken into sensible chunks unless that hurts readability.",
+        "sources": [
+          {
+            "path": "process/coding-style.rst",
+            "evidence": "The preferred limit on the length of a single line is 80 columns."
+          }
+        ],
+        "category": "coding",
+        "answerable": true,
+        "origin": "common"
+      },
+      {
+        "id": "q089",
+        "question": "How do I reference the commit that introduced the bug my patch fixes?",
+        "answer": "Add a Fixes: tag with at least the first 12 characters of the SHA-1 and the one-line summary, e.g. Fixes: 54a4f0239f2e (\"...\").",
+        "sources": [
+          {
+            "path": "process/submitting-patches.rst",
+            "evidence": "please use the 'Fixes:' tag with at least the first 12"
+          }
+        ],
+        "category": "process",
+        "answerable": true,
+        "origin": "common"
+      },
+      {
+        "id": "q090",
+        "question": "What rules must a patch meet to be accepted into a -stable kernel?",
+        "answer": "It (or an equivalent) must already be in mainline, and it cannot be bigger than 100 lines with context, among other rules.",
+        "sources": [
+          {
+            "path": "process/stable-kernel-rules.rst",
+            "evidence": "It cannot be bigger than 100 lines, with context."
+          }
+        ],
+        "category": "process",
+        "answerable": true,
+        "origin": "common"
+      },
+      {
+        "id": "q091",
+        "question": "What values can /proc/<pid>/oom_score_adj take, and how do I stop the OOM killer from picking a process?",
+        "answer": "-1000 to +1000; -1000 effectively disables OOM killing for that task.",
+        "sources": [
+          {
+            "path": "filesystems/proc.rst",
+            "evidence": "Acceptable values range from -1000"
+          }
+        ],
+        "category": "procfs",
+        "answerable": true,
+        "origin": "common"
+      },
+      {
+        "id": "q092",
+        "question": "What log level number corresponds to KERN_ERR and which helper prints at that level?",
+        "answer": "Level \"3\"; pr_err().",
+        "sources": [
+          {
+            "path": "core-api/printk-basics.rst",
+            "evidence": "KERN_ERR \"3\" pr_err()"
+          }
+        ],
+        "category": "coding",
+        "answerable": true,
+        "origin": "common"
+      },
+      {
+        "id": "q093",
+        "question": "My kernel is tainted with 'P'. What does that mean?",
+        "answer": "A proprietary module was loaded.",
+        "sources": [
+          {
+            "path": "admin-guide/tainted-kernels.rst",
+            "evidence": "proprietary module was loaded"
+          }
+        ],
+        "category": "troubleshooting",
+        "answerable": true,
+        "origin": "common"
+      },
+      {
+        "id": "q094",
+        "question": "How do I mount the cgroup v2 hierarchy?",
+        "answer": "mount -t cgroup2 none $MOUNT_POINT",
+        "sources": [
+          {
+            "path": "admin-guide/cgroup-v2.rst",
+            "evidence": "mount -t cgroup2 none $MOUNT_POINT"
+          }
+        ],
+        "category": "procedure",
+        "answerable": true,
+        "origin": "common"
+      },
+      {
+        "id": "q095",
+        "question": "Which GFP flags should I use when allocating memory from an interrupt handler?",
+        "answer": "GFP_NOWAIT (no direct reclaim, may fail, needs a fallback); GFP_ATOMIC only if dipping into memory reserves is justified.",
+        "sources": [
+          {
+            "path": "core-api/memory-allocation.rst",
+            "evidence": "If the allocation is performed from an atomic context, e.g interrupt"
+          }
+        ],
+        "category": "coding",
+        "answerable": true,
+        "origin": "common"
+      },
+      {
+        "id": "q096",
+        "question": "How do I set a parameter for a module that is built into the kernel?",
+        "answer": "On the kernel command line with the module name as prefix, e.g. usbcore.blinkenlights=1.",
+        "sources": [
+          {
+            "path": "admin-guide/kernel-parameters.rst",
+            "evidence": "Parameters for modules which are built into the kernel need to be"
+          }
+        ],
+        "category": "config",
+        "answerable": true,
+        "origin": "common"
+      },
+      {
+        "id": "q097",
+        "question": "Is log_buf_len the same parameter as log-buf-len?",
+        "answer": "Yes, hyphens and underscores are equivalent in parameter names.",
+        "sources": [
+          {
+            "path": "admin-guide/kernel-parameters.rst",
+            "evidence": "Hyphens (dashes) and underscores are equivalent in parameter names"
+          }
+        ],
+        "category": "config",
+        "answerable": true,
+        "origin": "common"
+      },
+      {
+        "id": "q098",
+        "question": "How can I change a loaded module's parameter at runtime?",
+        "answer": "Some can be changed with echo -n ${value} > /sys/module/${modulename}/parameters/${parm}.",
+        "sources": [
+          {
+            "path": "admin-guide/kernel-parameters.rst",
+            "evidence": "parameters may be changed at runtime by the command"
+          }
+        ],
+        "category": "config",
+        "answerable": true,
+        "origin": "common"
+      },
+      {
+        "id": "q099",
+        "question": "What is the minimum GCC version needed to build this kernel?",
+        "answer": "GNU C 8.1.",
+        "sources": [
+          {
+            "path": "process/changes.rst",
+            "evidence": "GNU C 8.1 gcc --version"
+          }
+        ],
+        "category": "build",
+        "answerable": true,
+        "origin": "common"
+      },
+      {
+        "id": "q100",
+        "question": "What is the minimum Rust version for building Rust support in this kernel?",
+        "answer": "rustc 1.85.0 (Rust is optional).",
+        "sources": [
+          {
+            "path": "process/changes.rst",
+            "evidence": "Rust (optional) 1.85.0 rustc --version"
+          }
+        ],
+        "category": "build",
+        "answerable": true,
+        "origin": "common"
+      },
+      {
+        "id": "q101",
+        "question": "How do I make CPUs 1, 6, 7 and 8 adaptive-ticks (tickless) CPUs?",
+        "answer": "Boot with nohz_full=1,6-8.",
+        "sources": [
+          {
+            "path": "timers/no_hz.rst",
+            "evidence": "nohz_full=1,6-8\" says that CPUs 1, 6, 7, and 8"
+          }
+        ],
+        "category": "config",
+        "answerable": true,
+        "origin": "common"
+      },
+      {
+        "id": "q102",
+        "question": "What does crashkernel=64M@16M mean for kdump?",
+        "answer": "Reserve 64 MB of memory starting at physical address 16 MB for the dump-capture kernel.",
+        "sources": [
+          {
+            "path": "admin-guide/kdump/kdump.rst",
+            "evidence": "tells the system kernel to reserve 64 MB of memory"
+          }
+        ],
+        "category": "config",
+        "answerable": true,
+        "origin": "common"
+      },
+      {
+        "id": "q103",
+        "question": "How can I see which compression algorithms zram supports and which one is active?",
+        "answer": "cat /sys/block/zram0/comp_algorithm lists available ones and marks the selected one.",
+        "sources": [
+          {
+            "path": "admin-guide/blockdev/zram.rst",
+            "evidence": "Using comp_algorithm device attribute one can see available and"
+          }
+        ],
+        "category": "sysfs",
+        "answerable": true,
+        "origin": "common"
+      },
+      {
+        "id": "q104",
+        "question": "Should I attach patches to emails when sending them to kernel mailing lists?",
+        "answer": "Attachments are generally frowned upon; send patches inline as plain text, typically with git send-email.",
+        "sources": [
+          {
+            "path": "process/email-clients.rst",
+            "evidence": "attachments are generally frowned upon"
+          }
+        ],
+        "category": "process",
+        "answerable": true,
+        "origin": "common"
+      },
+      {
+        "id": "q105",
+        "question": "How do I enable the function tracer with ftrace?",
+        "answer": "echo function > current_tracer in the tracefs directory (/sys/kernel/tracing).",
+        "sources": [
+          {
+            "path": "trace/ftrace.rst",
+            "evidence": "echo function > current_tracer"
+          }
+        ],
+        "category": "tracing",
+        "answerable": true,
+        "origin": "common"
+      },
+      {
+        "id": "q106",
+        "question": "What does setting transparent_hugepage defrag to 'always' do?",
+        "answer": "Applications requesting THP stall on allocation failure and directly reclaim and compact memory to get a THP immediately.",
+        "sources": [
+          {
+            "path": "admin-guide/mm/transhuge.rst",
+            "evidence": "means that an application requesting THP will stall on"
+          }
+        ],
+        "category": "sysfs",
+        "answerable": true,
+        "origin": "common"
+      },
+      {
+        "id": "q107",
+        "question": "How can I tell whether my kernel supports dynamic debug?",
+        "answer": "If /proc/dynamic_debug/control exists, the kernel has dynamic debug (root needed to use it).",
+        "sources": [
+          {
+            "path": "admin-guide/dynamic-debug-howto.rst",
+            "evidence": "exists, your kernel has dynamic"
+          }
+        ],
+        "category": "tracing",
+        "answerable": true,
+        "origin": "common"
+      },
+      {
+        "id": "q108",
+        "question": "Which boot parameter makes the kernel run a different program instead of /sbin/init?",
+        "answer": "init=<full_path> runs the specified binary instead of /sbin/init as the init process.",
+        "sources": [
+          {
+            "path": "admin-guide/kernel-parameters.txt",
+            "evidence": "Run specified binary instead of /sbin/init as init"
+          }
+        ],
+        "category": "boot-param",
+        "answerable": true,
+        "origin": "common"
+      },
+      {
+        "id": "q109",
+        "question": "What does the nosmp boot parameter do?",
+        "answer": "It tells an SMP kernel to act as a UP kernel and disables the IO APIC (legacy for maxcpus=0).",
+        "sources": [
+          {
+            "path": "admin-guide/kernel-parameters.txt",
+            "evidence": "Tells an SMP kernel to act as a UP kernel"
+          }
+        ],
+        "category": "boot-param",
+        "answerable": true,
+        "origin": "common"
+      },
+      {
+        "id": "q110",
+        "question": "What does adding 'quiet' to the kernel command line do?",
+        "answer": "It disables most log messages.",
+        "sources": [
+          {
+            "path": "admin-guide/kernel-parameters.txt",
+            "evidence": "quiet [KNL,EARLY] Disable most log messages"
+          }
+        ],
+        "category": "boot-param",
+        "answerable": true,
+        "origin": "common"
+      },
+      {
+        "id": "q111",
+        "question": "What is the cgroup v2 equivalent of cgroup v1's memory.limit_in_bytes, and what happens when it is reached?",
+        "answer": "memory.max (v1 used memory.limit_in_bytes). It is the hard limit; if usage hits it and can't be reduced, the OOM killer is invoked in the cgroup.",
+        "sources": [
+          {
+            "path": "admin-guide/cgroup-v2.rst",
+            "evidence": "Memory usage hard limit."
+          },
+          {
+            "path": "admin-guide/cgroup-v1/memory.rst",
+            "evidence": "echo 4M > /sys/fs/cgroup/memory/0/memory.limit_in_bytes"
+          }
+        ],
+        "category": "multi-hop",
+        "answerable": true,
+        "origin": "written"
+      },
+      {
+        "id": "q112",
+        "question": "What is the global default swappiness, and can a cgroup v1 memory group override it?",
+        "answer": "The global vm.swappiness default is 60; in cgroup v1 the group's memory.swappiness overrides /proc/sys/vm/swappiness for that group.",
+        "sources": [
+          {
+            "path": "admin-guide/sysctl/vm.rst",
+            "evidence": "rough relative IO cost of swapping"
+          },
+          {
+            "path": "admin-guide/cgroup-v1/memory.rst",
+            "evidence": "Overrides /proc/sys/vm/swappiness for the particular group"
+          }
+        ],
+        "category": "multi-hop",
+        "answerable": true,
+        "origin": "written"
+      },
+      {
+        "id": "q113",
+        "question": "What is the minimum Clang version to build the kernel, and how do I build with a versioned LLVM like clang-14?",
+        "answer": "Clang/LLVM 17.0.1 is the minimum; select a versioned toolchain with make LLVM=-<version> (e.g. LLVM=-14 picks clang-14).",
+        "sources": [
+          {
+            "path": "process/changes.rst",
+            "evidence": "Clang/LLVM (optional) 17.0.1 clang --version"
+          },
+          {
+            "path": "kbuild/llvm.rst",
+            "evidence": "make LLVM=-14"
+          }
+        ],
+        "category": "multi-hop",
+        "answerable": true,
+        "origin": "written"
+      },
+      {
+        "id": "q114",
+        "question": "What is the capital of Tunisia?",
+        "answer": "I don't know",
+        "sources": [],
+        "category": "unanswerable",
+        "answerable": false,
+        "origin": "written",
+        "note": "out of domain"
+      },
+      {
+        "id": "q115",
+        "question": "How do I connect to Wi-Fi with nmcli?",
+        "answer": "I don't know",
+        "sources": [],
+        "category": "unanswerable",
+        "answerable": false,
+        "origin": "written",
+        "note": "userspace tool, not documented in the kernel tree"
+      },
+      {
+        "id": "q116",
+        "question": "How much does a Red Hat Enterprise Linux subscription cost?",
+        "answer": "I don't know",
+        "sources": [],
+        "category": "unanswerable",
+        "answerable": false,
+        "origin": "written",
+        "note": "commercial, not in docs"
+      },
+      {
+        "id": "q117",
+        "question": "Who will maintain the kernel after Linus Torvalds retires?",
+        "answer": "I don't know",
+        "sources": [],
+        "category": "unanswerable",
+        "answerable": false,
+        "origin": "written",
+        "note": "speculative"
+      },
+      {
+        "id": "q118",
+        "question": "What new features were added in Linux 8.0?",
+        "answer": "I don't know",
+        "sources": [],
+        "category": "unanswerable",
+        "answerable": false,
+        "origin": "written",
+        "note": "future release, not in v7.3 docs"
+      },
+      {
+        "id": "q119",
+        "question": "How do I change the GRUB boot menu theme?",
+        "answer": "I don't know",
+        "sources": [],
+        "category": "unanswerable",
+        "answerable": false,
+        "origin": "written",
+        "note": "bootloader configuration, not kernel docs"
+      },
+      {
+        "id": "q120",
+        "question": "What is the default value of vm.swap_boost_factor?",
+        "answer": "I don't know",
+        "sources": [],
+        "category": "unanswerable",
+        "answerable": false,
+        "origin": "written",
+        "note": "fictional sysctl"
+      },
+      {
+        "id": "q121",
+        "question": "What does the CONFIG_QUANTUM_SCHED option do?",
+        "answer": "I don't know",
+        "sources": [],
+        "category": "unanswerable",
+        "answerable": false,
+        "origin": "written",
+        "note": "fictional config option"
+      },
+      {
+        "id": "q122",
+        "question": "How do I install the NVIDIA proprietary driver on Fedora?",
+        "answer": "I don't know",
+        "sources": [],
+        "category": "unanswerable",
+        "answerable": false,
+        "origin": "written",
+        "note": "distribution/vendor packaging"
+      },
+      {
+        "id": "q123",
+        "question": "Which Linux distribution has the best gaming performance?",
+        "answer": "I don't know",
+        "sources": [],
+        "category": "unanswerable",
+        "answerable": false,
+        "origin": "written",
+        "note": "opinion, not in docs"
+      },
+      {
+        "id": "q124",
+        "question": "How do I write a kernel driver for Windows 11?",
+        "answer": "I don't know",
+        "sources": [],
+        "category": "unanswerable",
+        "answerable": false,
+        "origin": "written",
+        "note": "different OS"
+      },
+      {
+        "id": "q125",
+        "question": "What was the stock price of Intel when the kernel added Rust support?",
+        "answer": "I don't know",
+        "sources": [],
+        "category": "unanswerable",
+        "answerable": false,
+        "origin": "written",
+        "note": "out of domain"
+      }
+    ],
+    "index": {
+      "built_at": "2026-11-03T13:50:08",
+      "embedder": "st:BAAI/bge-small-en-v1.5",
+      "chunker": "structure",
+      "vector_store": "qdrant",
+      "qdrant_collection": "kernel_documentation",
+      "qdrant_generation": "a341a175f5aa429c95aa796beab5e5c7",
+      "chunk_tokens": 350,
+      "chunk_overlap": 50,
+      "n_docs": 4569,
+      "n_chunks": 41646,
+      "dims": 384,
+      "seconds": {
+        "chunk": 78.28720021247864,
+        "bm25": 11.968225717544556,
+        "embed": 873.643138885498
+      },
+      "bytes": {
+        "bm25.idf.npy": 495200,
+        "bm25.npz": 9504908,
+        "bm25.vocab.json": 2690733,
+        "chunks.jsonl": 53178259,
+        "download_bge.py": 832,
+        "vectors.npy": 31984256,
+        "verify_upload.py": 1323
+      }
+    },
+    "settings": {
+      "corpus_dir": "C:\\Users\\21653\\Desktop\\Medtech\\courses\\final\\AI\\librarian\\librarian\\corpus\\linux\\Documentation",
+      "index_dir": "index_qdrant",
+      "log_dir": "C:\\Users\\21653\\Desktop\\Medtech\\courses\\final\\AI\\librarian\\librarian\\logs",
+      "exclude_dirs": "translations,sphinx,sphinx-static,sphinx-includes,images",
+      "chunker": "structure",
+      "chunk_tokens": 350,
+      "chunk_overlap": 50,
+      "min_chunk_words": 5,
+      "qdrant_url": "https://0d0ae701-01de-4533-8b5b-ae23d69e825e.eu-central-1-0.aws.cloud.qdrant.io:6333",
+      "qdrant_collection": "kernel_documentation",
+      "qdrant_batch": 256,
+      "qdrant_hnsw_m": 16,
+      "qdrant_hnsw_ef_construct": 100,
+      "qdrant_hnsw_ef": 256,
+      "qdrant_full_scan_threshold": 1000,
+      "qdrant_indexing_threshold": 2000,
+      "embedder": "st:BAAI/bge-small-en-v1.5",
+      "embed_batch": 64,
+      "embed_model_path": "index_qdrant/bge_model",
+      "candidates": 50,
+      "rrf_k": 60,
+      "bm25_weight": 1.0,
+      "vector_weight": 1.0,
+      "top_k": 6,
+      "reranker": "ce:cross-encoder/ms-marco-MiniLM-L-6-v2",
+      "rerank_pool": 30,
+      "idk_threshold": -6.0,
+      "skip_rerank_when_confident": false,
+      "rewrite": "auto",
+      "rewrite_model": "gpt-5.4-mini",
+      "reasoning_effort": "none",
+      "max_answer_tokens": 1600,
+      "max_rewrite_tokens": 800,
+      "openai_base_url": "https://api.openai.com/v1",
+      "answer_cache": false,
+      "host": "0.0.0.0",
+      "port": 8000,
+      "excluded": [
+        "translations",
+        "sphinx",
+        "sphinx-static",
+        "sphinx-includes",
+        "images"
+      ]
+    },
+    "baseline_model": "gpt-5.4-mini",
+    "candidate_model": "gpt-5.4-nano",
+    "judge_model": "gpt-5.4-mini",
+    "system_prompt": "You are The Librarian, a question-answering assistant for the Linux kernel documentation (the Documentation/ tree of the kernel source).\n\nYou will receive numbered source excerpts and a question. Rules:\n1. Answer ONLY from the excerpts. Do not use outside knowledge, even if you are confident.\n2. After every sentence that states a fact, cite the excerpt(s) that support it with bracketed numbers, e.g. \"The default is 60 [2].\" or \"[1][3]\". Cite only excerpts that actually say it.\n3. If the excerpts do not contain the answer, reply with exactly: I don't know\n   Then, on a new line, one sentence saying what is missing. Do not guess.\n4. If the excerpts answer only part of the question, answer that part with citations and say plainly which part is not covered.\n5. Be concise: usually 1-5 sentences. Keep exact names of files, sysctls, config options, commands and functions as written in the excerpts. Use a short code block for commands.\n6. Questions refer to the kernel version stated in the excerpts' header; do not speculate about other versions.",
+    "rewrite_prompt": "Rewrite the user's question into 1-3 short search queries for a keyword+semantic search over the Linux kernel Documentation tree.\n- Expand vague or very short questions with the likely kernel terms (sysctl names, subsystem names, config options).\n- Split multi-part questions into one query per part.\nReturn only the queries, one per line, no numbering, no commentary.",
+    "judge_prompt": "You grade answers produced by a documentation assistant. You receive:\n- QUESTION, REFERENCE answer written by a human, and the system's ANSWER;\n- SOURCES: the numbered excerpts the system was given.\n\nReturn JSON:\n{\"correctness\": \"correct\" | \"partial\" | \"wrong\",\n \"claims\": [{\"claim\": \"<one factual claim from ANSWER>\", \"cited\": [<numbers cited for it>],\n             \"supported_by_cited\": true|false, \"supported_by_any_source\": true|false}]}\n\nRules:\n- correctness compares ANSWER with REFERENCE: \"correct\" if it contains the reference's key facts and nothing contradicting them, \"partial\" if some key facts are missing, \"wrong\" if it contradicts the reference or answers a different question. An \"I don't know\" is \"wrong\" when the reference has an answer.\n- List every factual claim in ANSWER (skip filler). supported_by_cited: the excerpts it cites state the claim. supported_by_any_source: some excerpt states it. Judge only from SOURCES, never from your own knowledge.\n- If ANSWER is \"I don't know\", return an empty claims list."
+  },
+  "before": {
+    "n": 125,
+    "judged": 125,
+    "judged_answerable": 113,
+    "complete": true,
+    "accuracy": 0.9336283185840708,
+    "overall_accuracy_with_idk": 0.94,
+    "idk_recall": 1.0,
+    "mean_cost_usd": 0.001580736,
+    "mean_generation_cost_usd": 0.0015416376,
+    "generation_p50_ms": 1129.4,
+    "generation_p95_ms": 2160.1,
+    "judge_cost_usd": 0.22154175
+  },
+  "after": {
+    "n": 125,
+    "judged": 125,
+    "judged_answerable": 113,
+    "complete": true,
+    "accuracy": 0.9203539823008849,
+    "overall_accuracy_with_idk": 0.92,
+    "idk_recall": 0.9166666666666666,
+    "mean_cost_usd": 0.0004636359199999999,
+    "mean_generation_cost_usd": 0.00042452792,
+    "generation_p50_ms": 1178.1830999534577,
+    "generation_p95_ms": 2135.8768600970507,
+    "judge_cost_usd": 0.21796665
+  },
+  "comparison": {
+    "complete": true,
+    "cost_reduction_fraction": 0.706696171909794,
+    "accuracy_change_percentage_points": -1.3274336283185861,
+    "overall_accuracy_change_percentage_points": -1.9999999999999907,
+    "target_met": true
+  },
+  "error": null
+}
